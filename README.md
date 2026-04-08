@@ -114,7 +114,7 @@ For questions or collaboration inquiries:
 
 **Deniz Varılsüha**  
 GitHub: https://github.com/varilsuhad  
-
+Email: deniz.varilsuha@itu.edu.tr
 ---
 
 ## License
