@@ -1,12 +1,23 @@
-clear all;clc;
+% ========================================================================
+% Author: Deniz Varılsüha
+% Affiliation: Istanbul Technical University (ITU)
+% Contact: deniz.varilsuha@itu.edu.tr
+% Journal: Computers & Geosciences
+% Manuscript metadata: Included for journal submission compliance
+% Last updated: 2026-04-08
+% ========================================================================
+%% Initialization
+clear all;
+clc;
 close all;
 
-ww=load('usuimodelFEFF.mat');
+%% Load reference data
+ww = load('usuimodelFEFF.mat');
 
-mu=4*pi*10^-7;
-ii=1;
-
-ara=9:16;
+%% Physical constants and configuration
+mu = 4*pi*10^-7;
+ii = 1;
+ara = 9:16;
 
 zxx1=ww.veri(ii).Z0(ara,1);
 zxy1=ww.veri(ii).Z0(ara,2);
