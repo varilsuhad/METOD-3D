@@ -1,0 +1,4973 @@
+%% 
+clear all;clc;close all;
+format longG
+
+%%%ÇALIŞIYOR XX VE YY GÜZEL OLDU!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+reset(gpuDevice);
+
+% load('Modelfor_modelingEE.mat');
+% load('Model_Homo_2000.mat');
+% load('testmesh8.mat');
+% A=load('hillmodel_deniz1.mat');
+% 
+% 
+% load('Modelfor_modeling_hill.mat');
+% recv=A.recv;
+% 
+% 
+% rho=datan.proje{1,1}.modelmesh.unstr{1,1}.model.rho;
+% % 
+% % rho((rho>10^8))=10^8;
+% node=datan.proje{1,1}.modelmesh.unstr{1,1}.model.model.Mesh.Nodes;
+% eleman=datan.proje{1,1}.modelmesh.unstr{1,1}.model.model.Mesh.Elements;
+% yuzeynode=datan.proje{1,1}.modelmesh.unstr{1,1}.model.node_in_faceIDs';
+
+
+% load('testhill8nofix.mat');
+
+% load('testhill8.mat');
+% load('testhill8.mat');
+% load('testhill_final1.mat');
+% load('csamt_mesh7.mat');
+% load('hpMesh2.mat');
+% load('TM2_hp1.mat');
+
+
+% load('TM2_hp4.mat');
+% load('TM2_1000.mat');
+% load('TM2_sd5.mat');
+
+
+% load('TM2_kup2.mat');
+load('TM2_p4.mat');
+% load('TM2_p5.mat');
+
+% load('TM2_cubic.mat');
+
+
+
+% rho=ones(size(rho))*10^1;
+% 
+% rho(elemhp2)=10^5;
+% 
+% 
+% 
+% % ek-
+% xyon=[-24145.625 24145.625];
+% 
+% qmeshkesit(eleman,node,rho,xyon,[-20000 4000],0,2);
+% 
+% 
+% return
+
+
+
+% load('csamt_meshZ3.mat');
+
+
+
+
+% return
+
+% rho(rho==1000)=0.01;
+% rho(rho==1000)=0.01;
+% rho(rho==0)=100;
+
+% rho(rho==10^8)=10^6;
+
+unique(rho)
+
+
+
+% return
+% rho(rho==100)=1;
+
+% return
+
+% return
+
+% load('testhillOrta.mat');
+
+
+% [thetaMinTet, thetaMinGlobal] = minTetDihedral(node', eleman');
+% kars=sort(thetaMinTet);
+% 
+% 
+% return
+
+al=node(:,yuzeynode);
+min(al(1,:))
+max(al(1,:))
+min(al(2,:))
+max(al(2,:))
+
+al=node(:,:);
+min(al(1,:))
+max(al(1,:))
+min(al(2,:))
+max(al(2,:))
+
+
+% return
+
+% clear recv
+% 
+% c=0;
+% for i=-2000:1000:2000
+%     for j=-2000:1000:2000
+%     c=c+1;
+%     recv(c,:)=[i j 0];
+%     end
+% end
+
+
+
+% rho(rho==100)=1;
+
+% [recv] = istasyonElemanBagi(yuzeynode,node,eleman,rho,recv(:,1:3));
+% istasyonElemanBagi(yuzeynode,node,eleman,rho,recv(:,1:3));
+
+
+% return
+
+xa1= [ 0.2500000000000000, 0.5000000000000000, 0.1666666666666667, 0.1666666666666667, 0.1666666666666667];
+ya1= [ 0.2500000000000000, 0.1666666666666667, 0.1666666666666667, 0.1666666666666667, 0.5000000000000000];
+za1= [ 0.2500000000000000, 0.1666666666666667, 0.1666666666666667, 0.5000000000000000, 0.1666666666666667];
+wt1= [-0.8000000000000000, 0.4500000000000000, 0.4500000000000000, 0.4500000000000000, 0.4500000000000000]/6;
+
+
+xa2= [0.2500000000000000, 0.7857142857142857, 0.0714285714285714, 0.0714285714285714, 0.0714285714285714, ...
+     0.1005964238332008, 0.3994035761667992, 0.3994035761667992, 0.3994035761667992, 0.1005964238332008, 0.1005964238332008];
+ya2= [0.2500000000000000, 0.0714285714285714, 0.0714285714285714, 0.0714285714285714, 0.7857142857142857, ...
+     0.3994035761667992, 0.1005964238332008, 0.3994035761667992, 0.1005964238332008, 0.3994035761667992, 0.1005964238332008];
+za2= [0.2500000000000000, 0.0714285714285714, 0.0714285714285714, 0.7857142857142857, 0.0714285714285714, ...
+     0.3994035761667992, 0.3994035761667992, 0.1005964238332008, 0.1005964238332008, 0.1005964238332008, 0.3994035761667992];
+wt2=[-0.0789333333333333, 0.0457333333333333, 0.0457333333333333, 0.0457333333333333, 0.0457333333333333, ...
+     0.1493333333333333, 0.1493333333333333, 0.1493333333333333, 0.1493333333333333, 0.1493333333333333, 0.1493333333333333]/6;
+
+ xa3=[0.2500000000000000, 0.0000000000000000, 0.3333333333333333, 0.3333333333333333, 0.3333333333333333, ...
+     0.7272727272727273, 0.0909090909090909, 0.0909090909090909, 0.0909090909090909, 0.4334498464263357, ...
+     0.0665501535736643, 0.0665501535736643, 0.0665501535736643, 0.4334498464263357, 0.4334498464263357];
+ ya3=[0.2500000000000000, 0.3333333333333333, 0.3333333333333333, 0.3333333333333333, 0.0000000000000000, ...
+     0.0909090909090909, 0.0909090909090909, 0.0909090909090909, 0.7272727272727273, 0.0665501535736643, ...
+     0.4334498464263357, 0.0665501535736643, 0.4334498464263357, 0.0665501535736643, 0.4334498464263357];
+ za3=[0.2500000000000000, 0.3333333333333333, 0.3333333333333333, 0.0000000000000000, 0.3333333333333333, ...
+     0.0909090909090909, 0.0909090909090909, 0.7272727272727273, 0.0909090909090909, 0.0665501535736643, ...
+     0.0665501535736643, 0.4334498464263357, 0.4334498464263357, 0.4334498464263357, 0.0665501535736643];
+ wt3=[0.1817020685825351, 0.0361607142857143, 0.0361607142857143, 0.0361607142857143, 0.0361607142857143, ...
+     0.0698714945161738, 0.0698714945161738, 0.0698714945161738, 0.0698714945161738, 0.0656948493683187, ...
+     0.0656948493683187, 0.0656948493683187, 0.0656948493683187, 0.0656948493683187, 0.0656948493683187]/6;
+
+
+
+  wt4(1:24,1) = [ ...
+    0.039922750257869636194, ...
+    0.039922750257869636194, ...
+    0.039922750257869636194, ...
+    0.039922750257869636194, ...
+    0.010077211055345822612, ...
+    0.010077211055345822612, ...
+    0.010077211055345822612, ...
+    0.010077211055345822612, ...
+    0.055357181543927398338, ...
+    0.055357181543927398338, ...
+    0.055357181543927398338, ...
+    0.055357181543927398338, ...
+    0.048214285714285714286, ...
+    0.048214285714285714286, ...
+    0.048214285714285714286, ...
+    0.048214285714285714286, ...
+    0.048214285714285714286, ...
+    0.048214285714285714286, ...
+    0.048214285714285714286, ...
+    0.048214285714285714286, ...
+    0.048214285714285714286, ...
+    0.048214285714285714286, ...
+    0.048214285714285714286, ...
+    0.048214285714285714286 ]/6;
+
+  xyz(1:3,1:24) = [ ...
+    0.35619138622025439121,  0.21460287125991520293,  0.21460287125991520293; ...
+    0.21460287125991520293,  0.35619138622025439121,  0.21460287125991520293; ...
+    0.21460287125991520293,  0.21460287125991520293,  0.35619138622025439121; ...
+    0.21460287125991520293,  0.21460287125991520293,  0.21460287125991520293; ...
+    0.87797812439616594065,  0.040673958534611353116,  0.040673958534611353116; ...
+    0.040673958534611353116,  0.87797812439616594065,  0.040673958534611353116; ...
+    0.040673958534611353116,  0.040673958534611353116,  0.87797812439616594065; ...
+    0.040673958534611353116,  0.040673958534611353116,  0.040673958534611353116; ...
+    0.032986329573173468968,  0.32233789014227551034,  0.32233789014227551034; ...
+    0.32233789014227551034,  0.032986329573173468968,  0.32233789014227551034; ...
+    0.32233789014227551034,  0.32233789014227551034,  0.032986329573173468968; ...
+    0.32233789014227551034,  0.32233789014227551034,  0.32233789014227551034; ...
+    0.60300566479164914137,  0.26967233145831580803,  0.063661001875017525299; ...
+    0.60300566479164914137,  0.063661001875017525299,  0.26967233145831580803; ...
+    0.60300566479164914137,  0.063661001875017525299,  0.063661001875017525299; ...
+    0.063661001875017525299,  0.60300566479164914137,  0.26967233145831580803; ...
+    0.063661001875017525299,  0.60300566479164914137,  0.063661001875017525299; ...
+    0.063661001875017525299,  0.063661001875017525299,  0.60300566479164914137; ...
+    0.26967233145831580803,  0.60300566479164914137,  0.063661001875017525299; ...
+    0.26967233145831580803,  0.063661001875017525299,  0.60300566479164914137; ...
+    0.26967233145831580803,  0.063661001875017525299,  0.063661001875017525299; ...
+    0.063661001875017525299,  0.26967233145831580803,  0.60300566479164914137; ...
+    0.063661001875017525299,  0.26967233145831580803,  0.063661001875017525299; ...
+    0.063661001875017525299,  0.063661001875017525299,  0.26967233145831580803 ]';
+  xa4=xyz(1,:);
+  ya4=xyz(2,:);
+
+  za4=xyz(3,:);
+
+
+
+
+
+
+
+eleman=sort(eleman,1);
+[EL,node_no,edge_no,totkenar,totyuzey,yuzey_no,yuzeybd] = ELkurtet2(node,eleman,rho); %Eleman matrisi
+
+
+% al=EL(:,16:19);
+% bak=unique(al(:));
+% ii=find(al(:)==-5);
+
+% node_no -> global node değerinden A matrisindeki node değerine
+% edge_no -> global node dan kenara
+% yuzey_no -> 2 kenardan yuzeye
+% Knodes blob yüzeydeki nodelar
+% recvelems blob elemanları
+
+EL=[EL zeros(size(EL,1),1)];
+
+
+
+% 
+% nodehp=[Knodes];
+% elemhp=[recvelems];
+% % % % [EL,HPK1,HPY1,totkenarhp1,totyuzeyhp1] = hprefinementsub(EL,eleman,node,elemhp2,nodehp2,0);  %%%%KAPADIM
+
+
+
+% [EL,HPK2,HPY2,totkenarhp2,totyuzeyhp2] = hprefinementsub(EL,eleman,node,elemhp1,nodehp1,1);
+% [EL,HPK1,HPY1,totkenarhp1,totyuzeyhp1] = hprefinementsub(EL,eleman,node,elemhp2,nodehp2,0);
+% [EL,HPK2,HPY2,totkenarhp2,totyuzeyhp2] = hprefinementsub(EL,eleman,node,elemhp2,nodehp2,1);
+% [EL,HPK1,HPY1,totkenarhp1,totyuzeyhp1] = hprefinementsub(EL,eleman,node,elemhp2,nodehp2,0);
+% [EL,HPK2,HPY2,totkenarhp2,totyuzeyhp2] = hprefinementsub(EL,eleman,node,elemhp1,nodehp2,1);
+
+
+% totel1=size(HPK1,1);
+
+
+% SIRF QUADRATIC
+EL(:,20)=0;
+totkenarhp1=0;
+totyuzeyhp1=0;
+totel1=0;
+HPK1=0;
+HPY1=0;
+
+
+
+% max(EL(:,21))
+
+
+
+
+
+
+
+
+eleman=eleman';
+node=node';
+
+
+ep=10^-5;
+
+lis=[1 2;1 3; 1 4 ; 2 3; 2 4 ;3 4]; %bu kenar node listesi
+lis2=[3 2 4 ; 3 1 4; 2 1 4; 2 1 3]; 
+lis3=[1 2 3 4 ; 2 3 4 1; 3 4 1 2; 4 1 2 3]; 
+
+d=zeros(4,1);
+c=d;b=d;a=d;
+M=ones(4,4);
+
+Clar=zeros(4,4,3);
+Dlar=zeros(4,4);
+CDlar=zeros(4,4,4,4);
+
+al=EL(:,12:15);
+al=al(al>0);
+totnode=max(al)-totkenar;
+
+% sag1=zeros(totkenar*2+totyuzey*2,1);
+% sag2=zeros(totkenar*2+totyuzey*2,1);
+% sagm=zeros(totkenar+totkenarhp+totyuzeyhp*2,2);
+% sagm=zeros(totkenar+totkenarhp1+totyuzeyhp1*2+totkenarhp2+totyuzeyhp2*4+3*totel2,2);
+sagm=zeros(totkenar*2+totkenarhp1+totyuzey*2+totyuzeyhp1*4+3*totel1,2);
+
+
+DoF=totkenar*2+totkenarhp1+totyuzey*2+totyuzeyhp1*4+3*totel1
+
+
+EL(recv(:,4),20)
+% return
+totel=size(EL,1);
+
+totel1/totel
+
+% return
+
+
+ix1=[];iy1=[];iv1a=[];iv1b=[];sayac1=0; %rot +F
+% ix2=[];iy2=[];iv2=[];sayac2=0; %F
+% ix3=[];iy3=[];iv3=[];sayac3=0; %D
+% ix4=[];iy4=[];iv4=[];sayac4=0; %P
+
+
+
+rot1=zeros(6,6);  %edge1 edge1
+F1=zeros(6,6);    %edge1 edge1
+
+kler=zeros(1,6);
+
+
+
+spmd
+
+VTa=0;
+
+for ii=1:size(eleman,1)
+
+if(mod(ii,spmdSize)==spmdIndex-1)
+else
+continue;
+end   
+
+sigma=1./EL(ii,11);
+nler=eleman(ii,1:4);
+
+XYZ=node(nler,:)';
+
+M(2:end,:)=XYZ;
+
+Ve=det(M)/6;
+
+b(1)=-det(M([1 3 4],[2 3 4]));
+b(2)=det(M([1 3 4],[1 3 4]));
+b(3)=-det(M([1 3 4],[1 2 4]));
+b(4)=det(M([1 3 4],[1 2 3]));
+
+c(1)=det(M([1 2 4],[2 3 4]));
+c(2)=-det(M([1 2 4],[1 3 4]));
+c(3)=det(M([1 2 4],[1 2 4]));
+c(4)=-det(M([1 2 4],[1 2 3]));
+
+d(1)=-det(M([1 2 3],[2 3 4]));
+d(2)=det(M([1 2 3],[1 3 4]));
+d(3)=-det(M([1 2 3],[1 2 4]));
+d(4)=det(M([1 2 3],[1 2 3]));
+
+
+b=b*sign(Ve);
+c=c*sign(Ve);
+d=d*sign(Ve);
+
+G=[b c d];
+
+sgn=sign(Ve);
+Jabc=[ (-XYZ(1,1)+XYZ(1,2)) (-XYZ(2,1)+XYZ(2,2)) (-XYZ(3,1)+XYZ(3,2));...
+       (-XYZ(1,1)+XYZ(1,3)) (-XYZ(2,1)+XYZ(2,3)) (-XYZ(3,1)+XYZ(3,3));... 
+       (-XYZ(1,1)+XYZ(1,4)) (-XYZ(2,1)+XYZ(2,4)) (-XYZ(3,1)+XYZ(3,4))];
+
+det1=det(Jabc)*sgn;
+
+
+le(1)=sqrt((XYZ(1,1)-XYZ(1,2))^2+(XYZ(2,1)-XYZ(2,2))^2+(XYZ(3,1)-XYZ(3,2))^2);
+le(2)=sqrt((XYZ(1,1)-XYZ(1,3))^2+(XYZ(2,1)-XYZ(2,3))^2+(XYZ(3,1)-XYZ(3,3))^2);
+le(3)=sqrt((XYZ(1,1)-XYZ(1,4))^2+(XYZ(2,1)-XYZ(2,4))^2+(XYZ(3,1)-XYZ(3,4))^2);
+le(4)=sqrt((XYZ(1,2)-XYZ(1,3))^2+(XYZ(2,2)-XYZ(2,3))^2+(XYZ(3,2)-XYZ(3,3))^2);
+le(5)=sqrt((XYZ(1,2)-XYZ(1,4))^2+(XYZ(2,2)-XYZ(2,4))^2+(XYZ(3,2)-XYZ(3,4))^2);
+le(6)=sqrt((XYZ(1,3)-XYZ(1,4))^2+(XYZ(2,3)-XYZ(2,4))^2+(XYZ(3,3)-XYZ(3,4))^2);
+le(:)=1;
+
+Jxyz=inv(Jabc);
+
+Ve=abs(Ve);
+
+
+xa=xa1;
+ya=ya1;
+za=za1;
+wt=wt1;
+%%% Rot edge1*edge1
+for i=1:6
+    for j=1:6
+
+    i1=lis(i,1); 
+    i2=lis(i,2);
+
+    j1=lis(j,1);
+    j2=lis(j,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        % L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=2*cross(p1,p2);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        % L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=2*cross(p1,p2);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        rot1(i,j)=sum1*le(i)*le(j); 
+    end
+end
+
+xa=xa1;
+ya=ya1;
+za=za1;
+wt=wt1;
+%%% Rot edge1*face1
+for i=1:6
+    for j=1:4
+
+    i1=lis(i,1); 
+    i2=lis(i,2);
+
+    j1=lis2(j,1);
+    j2=lis2(j,2);
+    j3=lis2(j,3);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        % L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=2*cross(p1,p2);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);        
+        % L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=3*cross(L3*p2+L2*p3,p1);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        rot4(i,j)=sum1*le(i); 
+
+
+        j1=lis2(j,2);
+        j2=lis2(j,3);
+        j3=lis2(j,1);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        % L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=2*cross(p1,p2);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);        
+        % L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=3*cross(L3*p2+L2*p3,p1);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        rot4(i,j+4)=sum1*le(i);        
+    end
+end
+
+
+xa=xa1;
+ya=ya1;
+za=za1;
+wt=wt1;
+%%% Rot face1*face1
+for i=1:4
+    for j=1:4
+
+    i1=lis2(i,1); 
+    i2=lis2(i,2);
+    i3=lis2(i,3);
+
+    j1=lis2(j,1);
+    j2=lis2(j,2);
+    j3=lis2(j,3);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=3*cross(L3*p2+L2*p3,p1);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);        
+        % L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=3*cross(L3*p2+L2*p3,p1);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        rot6(i,j)=sum1; 
+
+
+        j1=lis2(j,2);
+        j2=lis2(j,3);
+        j3=lis2(j,1);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=3*cross(L3*p2+L2*p3,p1);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);        
+        % L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=3*cross(L3*p2+L2*p3,p1);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        rot6(i,j+4)=sum1;
+        rot6(j+4,i)=sum1;  
+
+        i1=lis2(i,2); 
+        i2=lis2(i,3);
+        i3=lis2(i,1);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=3*cross(L3*p2+L2*p3,p1);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);        
+        % L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=3*cross(L3*p2+L2*p3,p1);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        rot6(i+4,j+4)=sum1;      
+         
+    end
+end
+
+
+
+xa=xa2;
+ya=ya2;
+za=za2;
+wt=wt2;
+%%% Rot face1*face3
+for i=1:4
+    for j=1:4
+
+    i1=lis2(i,1); 
+    i2=lis2(i,2);
+    i3=lis2(i,3);
+
+    j1=lis2(j,1);
+    j2=lis2(j,2);
+    j3=lis2(j,3);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=3*cross(L3*p2+L2*p3,p1);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);        
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=4*cross((L2^2-2*L2*L3)*p3+(2*L2*L3-L3^2)*p2,p1);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        rot22(i,j)=sum1; 
+
+
+        j1=lis2(j,2);
+        j2=lis2(j,3);
+        j3=lis2(j,1);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=3*cross(L3*p2+L2*p3,p1);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);        
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=4*cross((L2^2-2*L2*L3)*p3+(2*L2*L3-L3^2)*p2,p1);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        rot22(i,j+4)=sum1;  
+
+        j1=lis2(j,3);
+        j2=lis2(j,1);
+        j3=lis2(j,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=3*cross(L3*p2+L2*p3,p1);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);        
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=4*cross((L2^2-2*L2*L3)*p3+(2*L2*L3-L3^2)*p2,p1);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        rot22(i,j+8)=sum1;  
+
+
+
+        i1=lis2(i,2); 
+        i2=lis2(i,3);
+        i3=lis2(i,1);
+    
+        j1=lis2(j,1);
+        j2=lis2(j,2);
+        j3=lis2(j,3);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=3*cross(L3*p2+L2*p3,p1);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);        
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=4*cross((L2^2-2*L2*L3)*p3+(2*L2*L3-L3^2)*p2,p1);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        rot22(i+4,j)=sum1; 
+
+
+        j1=lis2(j,2);
+        j2=lis2(j,3);
+        j3=lis2(j,1);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=3*cross(L3*p2+L2*p3,p1);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);        
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=4*cross((L2^2-2*L2*L3)*p3+(2*L2*L3-L3^2)*p2,p1);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        rot22(i+4,j+4)=sum1;  
+
+        j1=lis2(j,3);
+        j2=lis2(j,1);
+        j3=lis2(j,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=3*cross(L3*p2+L2*p3,p1);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);        
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=4*cross((L2^2-2*L2*L3)*p3+(2*L2*L3-L3^2)*p2,p1);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        rot22(i+4,j+8)=sum1;            
+
+    end
+end
+
+
+
+xa=xa2;
+ya=ya2;
+za=za2;
+wt=wt2;
+%%% Rot face1*vol1
+for i=1:4
+    for j=1:3
+
+    i1=lis2(i,1); 
+    i2=lis2(i,2);
+    i3=lis2(i,3);
+
+    j1=lis3(j,1);
+    j2=lis3(j,2);
+    j3=lis3(j,3);
+    j4=lis3(j,4);
+    
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=3*cross(L3*p2+L2*p3,p1);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2); 
+        p4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,2);        
+        
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=4*cross(L3*L4*p2+L2*L4*p3+L2*L3*p4,p1);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        rot23(i,j)=sum1; 
+
+
+        i1=lis2(i,2); 
+        i2=lis2(i,3);
+        i3=lis2(i,1);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=3*cross(L3*p2+L2*p3,p1);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2); 
+        p4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,2);        
+        
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=4*cross(L3*L4*p2+L2*L4*p3+L2*L3*p4,p1);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        rot23(i+4,j)=sum1; 
+         
+    end
+end
+
+xa=xa2;
+ya=ya2;
+za=za2;
+wt=wt2;
+%%% Rot face3*face3
+for i=1:4
+    for j=1:4
+
+    i1=lis2(i,1); 
+    i2=lis2(i,2);
+    i3=lis2(i,3);
+
+    j1=lis2(j,1);
+    j2=lis2(j,2);
+    j3=lis2(j,3);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=4*cross((L2^2-2*L2*L3)*p3+(2*L2*L3-L3^2)*p2,p1);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);        
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=4*cross((L2^2-2*L2*L3)*p3+(2*L2*L3-L3^2)*p2,p1);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        rot26(i,j)=sum1; 
+
+    i1=lis2(i,2); 
+    i2=lis2(i,3);
+    i3=lis2(i,1);
+
+    j1=lis2(j,2);
+    j2=lis2(j,3);
+    j3=lis2(j,1);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=4*cross((L2^2-2*L2*L3)*p3+(2*L2*L3-L3^2)*p2,p1);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);        
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=4*cross((L2^2-2*L2*L3)*p3+(2*L2*L3-L3^2)*p2,p1);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        rot26(i+4,j+4)=sum1;  
+
+    
+        i1=lis2(i,3); 
+        i2=lis2(i,1);
+        i3=lis2(i,2);
+    
+        j1=lis2(j,3);
+        j2=lis2(j,1);
+        j3=lis2(j,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=4*cross((L2^2-2*L2*L3)*p3+(2*L2*L3-L3^2)*p2,p1);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);        
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=4*cross((L2^2-2*L2*L3)*p3+(2*L2*L3-L3^2)*p2,p1);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        rot26(i+8,j+8)=sum1;  
+
+
+        i1=lis2(i,1); 
+        i2=lis2(i,2);
+        i3=lis2(i,3);
+    
+        j1=lis2(j,2);
+        j2=lis2(j,3);
+        j3=lis2(j,1);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=4*cross((L2^2-2*L2*L3)*p3+(2*L2*L3-L3^2)*p2,p1);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);        
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=4*cross((L2^2-2*L2*L3)*p3+(2*L2*L3-L3^2)*p2,p1);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        rot26(i,j+4)=sum1;        
+        rot26(j+4,i)=sum1;  
+
+        i1=lis2(i,1); 
+        i2=lis2(i,2);
+        i3=lis2(i,3);
+    
+        j1=lis2(j,3);
+        j2=lis2(j,1);
+        j3=lis2(j,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=4*cross((L2^2-2*L2*L3)*p3+(2*L2*L3-L3^2)*p2,p1);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);        
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=4*cross((L2^2-2*L2*L3)*p3+(2*L2*L3-L3^2)*p2,p1);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        rot26(i,j+8)=sum1;        
+        rot26(j+8,i)=sum1; 
+
+        i1=lis2(i,2); 
+        i2=lis2(i,3);
+        i3=lis2(i,1);
+    
+        j1=lis2(j,3);
+        j2=lis2(j,1);
+        j3=lis2(j,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=4*cross((L2^2-2*L2*L3)*p3+(2*L2*L3-L3^2)*p2,p1);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);        
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=4*cross((L2^2-2*L2*L3)*p3+(2*L2*L3-L3^2)*p2,p1);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        rot26(i+4,j+8)=sum1;        
+        rot26(j+8,i+4)=sum1;            
+
+
+    end
+end
+
+
+xa=xa2;
+ya=ya2;
+za=za2;
+wt=wt2;
+%%% Rot face3*vol1
+for i=1:4
+    for j=1:3
+
+    i1=lis2(i,1); 
+    i2=lis2(i,2);
+    i3=lis2(i,3);
+
+    j1=lis3(j,1);
+    j2=lis3(j,2);
+    j3=lis3(j,3);
+    j4=lis3(j,4);
+    
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=4*cross((L2^2-2*L2*L3)*p3+(2*L2*L3-L3^2)*p2,p1);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2); 
+        p4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,2);        
+        
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=4*cross(L3*L4*p2+L2*L4*p3+L2*L3*p4,p1);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        rot27(i,j)=sum1; 
+
+
+    i1=lis2(i,2); 
+    i2=lis2(i,3);
+    i3=lis2(i,1);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=4*cross((L2^2-2*L2*L3)*p3+(2*L2*L3-L3^2)*p2,p1);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2); 
+        p4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,2);        
+        
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=4*cross(L3*L4*p2+L2*L4*p3+L2*L3*p4,p1);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        rot27(i+4,j)=sum1; 
+
+
+        i1=lis2(i,3); 
+        i2=lis2(i,1);
+        i3=lis2(i,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=4*cross((L2^2-2*L2*L3)*p3+(2*L2*L3-L3^2)*p2,p1);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2); 
+        p4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,2);        
+        
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=4*cross(L3*L4*p2+L2*L4*p3+L2*L3*p4,p1);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        rot27(i+8,j)=sum1;           
+
+
+    end
+end
+
+
+
+xa=xa2;
+ya=ya2;
+za=za2;
+wt=wt2;
+%%% Rot vol1*vol1
+for i=1:3
+    for j=1:3
+
+    i1=lis3(i,1); 
+    i2=lis3(i,2);
+    i3=lis3(i,3);
+    i4=lis3(i,4);
+
+    j1=lis3(j,1);
+    j2=lis3(j,2);
+    j3=lis3(j,3);
+    j4=lis3(j,4);
+    
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p4=sekil1(i4,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L4=sekil1(i4,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=4*cross(L3*L4*p2+L2*L4*p3+L2*L3*p4,p1);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2); 
+        p4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,2);        
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=4*cross(L3*L4*p2+L2*L4*p3+L2*L3*p4,p1);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        rot28(i,j)=sum1; 
+
+    end
+end
+
+
+
+xa=xa1;
+ya=ya1;
+za=za1;
+wt=wt1;
+%%% M edge1*edge1
+for i=1:6
+    for j=1:6
+
+    i1=lis(i,1); 
+    i2=lis(i,2);
+
+    j1=lis(j,1);
+    j2=lis(j,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L1*p2-L2*p1;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=L1*p2-L2*p1;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F1(i,j)=sum1*le(i)*le(j); 
+    end
+end
+
+
+
+xa=xa1;
+ya=ya1;
+za=za1;
+wt=wt1;
+%%% M edge1*edge2
+for i=1:6
+    for j=1:6
+
+    i1=lis(i,1); 
+    i2=lis(i,2);
+
+    j1=lis(j,1);
+    j2=lis(j,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L1*p2-L2*p1;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=L1*p2+L2*p1;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F2(i,j)=sum1*le(i)*le(j);
+    end
+end
+
+xa=xa1;
+ya=ya1;
+za=za1;
+wt=wt1;
+%%% M edge2*edge2
+for i=1:6
+    for j=1:6
+
+    i1=lis(i,1); 
+    i2=lis(i,2);
+
+    j1=lis(j,1);
+    j2=lis(j,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L1*p2+L2*p1;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=L1*p2+L2*p1;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F3(i,j)=sum1*le(i)*le(j);
+    end
+end
+
+
+
+xa=xa1;
+ya=ya1;
+za=za1;
+wt=wt1;
+%%% M edge1*face1
+for i=1:6
+    for j=1:4
+
+    i1=lis(i,1); 
+    i2=lis(i,2);
+
+    j1=lis2(j,1);
+    j2=lis2(j,2);
+    j3=lis2(j,3);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=(L1*p2-L2*p1)*le(i);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        % sek2=2*L2*L3*p1-L1*L2*p3-L1*L3*p2;
+        sek2=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
+        
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F4(i,j)=sum1;
+
+
+        j1=lis2(j,2);
+        j2=lis2(j,3);
+        j3=lis2(j,1);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=(L1*p2-L2*p1)*le(i);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        % sek2=2*L2*L3*p1-L1*L2*p3-L1*L3*p2;
+        sek2=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F4(i,j+4)=sum1; 
+
+    end
+end
+
+
+xa=xa1;
+ya=ya1;
+za=za1;
+wt=wt1;
+%%% M edge2*face1
+for i=1:6
+    for j=1:4
+
+    i1=lis(i,1); 
+    i2=lis(i,2);
+
+    j1=lis2(j,1);
+    j2=lis2(j,2);
+    j3=lis2(j,3);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=(L1*p2+L2*p1);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        % sek2=2*L2*L3*p1-L1*L2*p3-L1*L3*p2;
+        sek2=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
+
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F5(i,j)=le(i)*sum1; 
+
+
+        j1=lis2(j,2);
+        j2=lis2(j,3);
+        j3=lis2(j,1);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=(L1*p2+L2*p1);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        % sek2=2*L2*L3*p1-L1*L2*p3-L1*L3*p2;
+        sek2=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F5(i,j+4)=le(i)*sum1; 
+
+    end
+end
+
+
+
+xa=xa2;
+ya=ya2;
+za=za2;
+wt=wt2;
+%M face1-face1
+for i=1:4
+    for j=1:4
+
+    i1=lis2(i,1); 
+    i2=lis2(i,2);
+    i3=lis2(i,3);
+
+    j1=lis2(j,1);
+    j2=lis2(j,2);
+    j3=lis2(j,3);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        % sek1=2*L2*L3*p1-L1*L2*p3-L1*L3*p2;
+        sek1=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        % sek2=2*L2*L3*p1-L1*L2*p3-L1*L3*p2;
+        sek2=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F6(i,j)=sum1; 
+
+
+        j1=lis2(j,2);
+        j2=lis2(j,3);
+        j3=lis2(j,1);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F6(i,j+4)=sum1; 
+        F6(j+4,i)=sum1; 
+
+        i1=lis2(i,2); 
+        i2=lis2(i,3);
+        i3=lis2(i,1);        
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F6(i+4,j+4)=sum1; 
+
+    end
+end
+
+
+
+
+
+xa=xa1;
+ya=ya1;
+za=za1;
+wt=wt1;
+%%% M edge1*edge3
+for i=1:6
+    for j=1:6
+
+    i1=lis(i,1); 
+    i2=lis(i,2);
+
+    j1=lis(j,1);
+    j2=lis(j,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L1*p2-L2*p1;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(2*L1*L2-L2^2)*p1+(L1^2-2*L1*L2)*p2;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F7(i,j)=sum1*le(i)*le(j);
+    end
+end
+
+
+
+xa=xa1;
+ya=ya1;
+za=za1;
+wt=wt1;
+%%% M edge1*face2
+for i=1:6
+    for j=1:4
+
+    i1=lis(i,1); 
+    i2=lis(i,2);
+
+    j1=lis2(j,3);
+    j2=lis2(j,1);
+    j3=lis2(j,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=(L1*p2-L2*p1);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=L1*L2*p3+L1*L3*p2+L2*L3*p1;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F8(i,j)=le(i)*sum1; 
+
+    end
+end
+
+
+
+xa=xa1;
+ya=ya1;
+za=za1;
+wt=wt1;
+%%% M edge2*edge3
+for i=1:6
+    for j=1:6
+
+    i1=lis(i,1); 
+    i2=lis(i,2);
+
+    j1=lis(j,1);
+    j2=lis(j,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L1*p2+L2*p1;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(2*L1*L2-L2^2)*p1+(L1^2-2*L1*L2)*p2;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F9(i,j)=sum1*le(i)*le(j);
+    end
+end
+
+
+xa=xa1;
+ya=ya1;
+za=za1;
+wt=wt1;
+%%% M edge2*face2
+for i=1:6
+    for j=1:4
+
+    i1=lis(i,1); 
+    i2=lis(i,2);
+
+    j1=lis2(j,3);
+    j2=lis2(j,1);
+    j3=lis2(j,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=(L1*p2+L2*p1);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=L1*L2*p3+L1*L3*p2+L2*L3*p1;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F10(i,j)=le(i)*sum1; 
+
+    end
+end
+
+
+xa=xa2;
+ya=ya2;
+za=za2;
+wt=wt2;
+%%% M edge3*edge3
+for i=1:6
+    for j=1:6
+
+    i1=lis(i,1); 
+    i2=lis(i,2);
+
+    j1=lis(j,1);
+    j2=lis(j,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=(2*L1*L2-L2^2)*p1+(L1^2-2*L1*L2)*p2;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(2*L1*L2-L2^2)*p1+(L1^2-2*L1*L2)*p2;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F11(i,j)=sum1*le(i)*le(j);
+    end
+end
+
+
+xa=xa2;
+ya=ya2;
+za=za2;
+wt=wt2;
+%%% M edge3*face1
+for i=1:6
+    for j=1:4
+
+    i1=lis(i,1); 
+    i2=lis(i,2);
+
+    j1=lis2(j,1);
+    j2=lis2(j,2);
+    j3=lis2(j,3);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=(2*L1*L2-L2^2)*p1+(L1^2-2*L1*L2)*p2;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F12(i,j)=le(i)*sum1;
+
+        j1=lis2(j,2);
+        j2=lis2(j,3);
+        j3=lis2(j,1);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=(2*L1*L2-L2^2)*p1+(L1^2-2*L1*L2)*p2;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F12(i,j+4)=le(i)*sum1;         
+
+    end
+end
+
+
+
+xa=xa2;
+ya=ya2;
+za=za2;
+wt=wt2;
+%%% M edge3*face2
+for i=1:6
+    for j=1:4
+
+    i1=lis(i,1); 
+    i2=lis(i,2);
+
+    j1=lis2(j,3);
+    j2=lis2(j,1);
+    j3=lis2(j,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=(2*L1*L2-L2^2)*p1+(L1^2-2*L1*L2)*p2;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=L1*L2*p3+L1*L3*p2+L2*L3*p1;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F13(i,j)=le(i)*sum1; 
+
+    end
+end
+
+
+
+xa=xa2;
+ya=ya2;
+za=za2;
+wt=wt2;
+%M face1-face2
+for i=1:4
+    for j=1:4
+
+    i1=lis2(i,1); 
+    i2=lis2(i,2);
+    i3=lis2(i,3);
+
+    j1=lis2(j,3);
+    j2=lis2(j,1);
+    j3=lis2(j,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        % sek1=2*L2*L3*p1-L1*L2*p3-L1*L3*p2;
+        sek1=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=L1*L2*p3+L1*L3*p2+L2*L3*p1;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F14(i,j)=sum1; 
+
+
+        i1=lis2(i,2);
+        i2=lis2(i,3);
+        i3=lis2(i,1);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=L1*L2*p3+L1*L3*p2+L2*L3*p1;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F14(i+4,j)=sum1; 
+
+    end
+end
+
+
+
+xa=xa2;
+ya=ya2;
+za=za2;
+wt=wt2;
+%M face2-face2
+for i=1:4
+    for j=1:4
+
+    i1=lis2(i,3); 
+    i2=lis2(i,1);
+    i3=lis2(i,2);
+
+    j1=lis2(j,3);
+    j2=lis2(j,1);
+    j3=lis2(j,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L1*L2*p3+L1*L3*p2+L2*L3*p1;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=L1*L2*p3+L1*L3*p2+L2*L3*p1;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F15(i,j)=sum1; 
+
+
+    end
+end
+
+
+
+xa=xa2;
+ya=ya2;
+za=za2;
+wt=wt2;
+%%% M edge1*face3
+for i=1:6
+    i1=lis(i,1); 
+    i2=lis(i,2);    
+    for j=1:4
+
+
+        j1=lis2(j,1);
+        j2=lis2(j,2);
+        j3=lis2(j,3);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L1*p2-L2*p1;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F16(i,j)=le(i)*sum1;
+
+        j1=lis2(j,2);
+        j2=lis2(j,3);
+        j3=lis2(j,1);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L1*p2-L2*p1;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F16(i,j+4)=le(i)*sum1;      
+
+
+        j1=lis2(j,3);
+        j2=lis2(j,1);
+        j3=lis2(j,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L1*p2-L2*p1;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F16(i,j+8)=le(i)*sum1;        
+        
+
+    end
+end
+
+
+
+xa=xa2;
+ya=ya2;
+za=za2;
+wt=wt2;
+%%% M edge1*vol1
+for i=1:6
+    i1=lis(i,1); 
+    i2=lis(i,2);    
+    for j=1:3
+
+        j1=lis3(j,1);
+        j2=lis3(j,2);
+        j3=lis3(j,3);
+        j4=lis3(j,4);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L1*p2-L2*p1;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,2);
+        
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=3*L2*L3*L4*p1-L1*L3*L4*p2-L1*L2*L4*p3-L1*L2*L3*p4;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F17(i,j)=le(i)*sum1;
+
+    end
+end
+
+
+
+
+xa=xa2;
+ya=ya2;
+za=za2;
+wt=wt2;
+%%% M edge2*face3
+for i=1:6
+    i1=lis(i,1); 
+    i2=lis(i,2);    
+    for j=1:4
+
+        j1=lis2(j,1);
+        j2=lis2(j,2);
+        j3=lis2(j,3);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L1*p2+L2*p1;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F18(i,j)=le(i)*sum1;
+
+        j1=lis2(j,2);
+        j2=lis2(j,3);
+        j3=lis2(j,1);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L1*p2+L2*p1;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F18(i,j+4)=le(i)*sum1;      
+
+
+        j1=lis2(j,3);
+        j2=lis2(j,1);
+        j3=lis2(j,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L1*p2+L2*p1;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F18(i,j+8)=le(i)*sum1;        
+        
+
+    end
+end
+
+
+xa=xa2;
+ya=ya2;
+za=za2;
+wt=wt2;
+%%% M edge2*vol1
+for i=1:6
+    i1=lis(i,1); 
+    i2=lis(i,2);    
+    for j=1:3
+
+        j1=lis3(j,1);
+        j2=lis3(j,2);
+        j3=lis3(j,3);
+        j4=lis3(j,4);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L1*p2+L2*p1;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,2);
+        
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=3*L2*L3*L4*p1-L1*L3*L4*p2-L1*L2*L4*p3-L1*L2*L3*p4;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F19(i,j)=le(i)*sum1;
+
+    end
+end
+
+
+
+xa=xa3;
+ya=ya3;
+za=za3;
+wt=wt3;
+%%% M edge3*face3
+for i=1:6
+    i1=lis(i,1); 
+    i2=lis(i,2);    
+    for j=1:4
+
+        j1=lis2(j,1);
+        j2=lis2(j,2);
+        j3=lis2(j,3);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=(2*L1*L2-L2^2)*p1+(L1^2-2*L1*L2)*p2;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F20(i,j)=le(i)*sum1;
+
+        j1=lis2(j,2);
+        j2=lis2(j,3);
+        j3=lis2(j,1);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=(2*L1*L2-L2^2)*p1+(L1^2-2*L1*L2)*p2;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F20(i,j+4)=le(i)*sum1;
+
+        j1=lis2(j,3);
+        j2=lis2(j,1);
+        j3=lis2(j,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=(2*L1*L2-L2^2)*p1+(L1^2-2*L1*L2)*p2;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F20(i,j+8)=le(i)*sum1;        
+
+    end
+end
+
+
+
+
+
+xa=xa3;
+ya=ya3;
+za=za3;
+wt=wt3;
+%%% M edge3*vol1
+for i=1:6
+    i1=lis(i,1); 
+    i2=lis(i,2);    
+    for j=1:3
+
+        j1=lis3(j,1);
+        j2=lis3(j,2);
+        j3=lis3(j,3);
+        j4=lis3(j,4);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=(2*L1*L2-L2^2)*p1+(L1^2-2*L1*L2)*p2;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,2);
+        
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=3*L2*L3*L4*p1-L1*L3*L4*p2-L1*L2*L4*p3-L1*L2*L3*p4;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F21(i,j)=le(i)*sum1;
+
+    end
+end
+
+
+
+xa=xa3;
+ya=ya3;
+za=za3;
+wt=wt3;
+%M face1-face3
+for i=1:4
+
+    for j=1:4
+    i1=lis2(i,1); 
+    i2=lis2(i,2);
+    i3=lis2(i,3);    
+
+
+    j1=lis2(j,1);
+    j2=lis2(j,2);
+    j3=lis2(j,3);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F22(i,j)=sum1; 
+
+
+        j1=lis2(j,2);
+        j2=lis2(j,3);
+        j3=lis2(j,1);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F22(i,j+4)=sum1; 
+
+
+        j1=lis2(j,3);
+        j2=lis2(j,1);
+        j3=lis2(j,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F22(i,j+8)=sum1;         
+
+        i1=lis2(i,2); 
+        i2=lis2(i,3);
+        i3=lis2(i,1);  
+    
+        j1=lis2(j,1);
+        j2=lis2(j,2);
+        j3=lis2(j,3);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F22(i+4,j)=sum1; 
+
+
+        j1=lis2(j,2);
+        j2=lis2(j,3);
+        j3=lis2(j,1);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F22(i+4,j+4)=sum1; 
+
+
+        j1=lis2(j,3);
+        j2=lis2(j,1);
+        j3=lis2(j,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F22(i+4,j+8)=sum1; 
+
+    end
+end
+
+
+
+xa=xa3;
+ya=ya3;
+za=za3;
+wt=wt3;
+%M face1-vol1
+for i=1:4
+
+    for j=1:3
+    i1=lis2(i,1); 
+    i2=lis2(i,2);
+    i3=lis2(i,3);    
+
+
+        j1=lis3(j,1);
+        j2=lis3(j,2);
+        j3=lis3(j,3);
+        j4=lis3(j,4);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=3*L2*L3*L4*p1-L1*L3*L4*p2-L1*L2*L4*p3-L1*L2*L3*p4;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F23(i,j)=sum1; 
+
+
+        i1=lis2(i,2); 
+        i2=lis2(i,3);
+        i3=lis2(i,1);    
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=3*L2*L3*L4*p1-L1*L3*L4*p2-L1*L2*L4*p3-L1*L2*L3*p4;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F23(i+4,j)=sum1; 
+
+    end
+end
+
+
+
+
+xa=xa3;
+ya=ya3;
+za=za3;
+wt=wt3;
+%M face2-face3
+for i=1:4
+
+    for j=1:4
+    i1=lis2(i,3); 
+    i2=lis2(i,1);
+    i3=lis2(i,2);    
+
+
+    j1=lis2(j,1);
+    j2=lis2(j,2);
+    j3=lis2(j,3);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L1*L2*p3+L1*L3*p2+L2*L3*p1;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F24(i,j)=sum1;
+
+        j1=lis2(j,2);
+        j2=lis2(j,3);
+        j3=lis2(j,1);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L1*L2*p3+L1*L3*p2+L2*L3*p1;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F24(i,j+4)=sum1;
+
+        j1=lis2(j,3);
+        j2=lis2(j,1);
+        j3=lis2(j,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L1*L2*p3+L1*L3*p2+L2*L3*p1;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F24(i,j+8)=sum1;         
+        
+    end
+end
+
+
+xa=xa3;
+ya=ya3;
+za=za3;
+wt=wt3;
+%M face2-vol1
+for i=1:4
+
+    for j=1:3
+    i1=lis2(i,3); 
+    i2=lis2(i,1);
+    i3=lis2(i,2);    
+
+
+        j1=lis3(j,1);
+        j2=lis3(j,2);
+        j3=lis3(j,3);
+        j4=lis3(j,4);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=L1*L2*p3+L1*L3*p2+L2*L3*p1;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=3*L2*L3*L4*p1-L1*L3*L4*p2-L1*L2*L4*p3-L1*L2*L3*p4;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F25(i,j)=sum1; 
+
+    end
+end
+
+
+
+
+xa=xa4;
+ya=ya4;
+za=za4;
+wt=wt4;
+%M face3-face3
+for i=1:4
+
+    for j=1:4
+    i1=lis2(i,1); 
+    i2=lis2(i,2);
+    i3=lis2(i,3);    
+
+
+    j1=lis2(j,1);
+    j2=lis2(j,2);
+    j3=lis2(j,3);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F26(i,j)=sum1;
+
+
+        i1=lis2(i,2); 
+        i2=lis2(i,3);
+        i3=lis2(i,1);    
+    
+        j1=lis2(j,2);
+        j2=lis2(j,3);
+        j3=lis2(j,1);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F26(i+4,j+4)=sum1; 
+
+        i1=lis2(i,3); 
+        i2=lis2(i,1);
+        i3=lis2(i,2);    
+    
+        j1=lis2(j,3);
+        j2=lis2(j,1);
+        j3=lis2(j,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F26(i+8,j+8)=sum1;  
+
+
+        i1=lis2(i,1); 
+        i2=lis2(i,2);
+        i3=lis2(i,3);    
+
+        j1=lis2(j,2);
+        j2=lis2(j,3);
+        j3=lis2(j,1);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F26(i,j+4)=sum1;   
+        F26(j+4,i)=sum1;   
+
+        i1=lis2(i,1); 
+        i2=lis2(i,2);
+        i3=lis2(i,3);    
+
+        j1=lis2(j,3);
+        j2=lis2(j,1);
+        j3=lis2(j,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F26(i,j+8)=sum1;         
+        F26(j+8,i)=sum1;    
+
+        i1=lis2(i,2); 
+        i2=lis2(i,3);
+        i3=lis2(i,1);    
+
+        j1=lis2(j,3);
+        j2=lis2(j,1);
+        j3=lis2(j,2);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F26(i+4,j+8)=sum1;         
+        F26(j+8,i+4)=sum1;         
+        
+
+    end
+end
+
+
+
+xa=xa4;
+ya=ya4;
+za=za4;
+wt=wt4;
+%M face3-vol1
+for i=1:4
+
+    for j=1:3
+        i1=lis2(i,1); 
+        i2=lis2(i,2);
+        i3=lis2(i,3);    
+
+
+        j1=lis3(j,1);
+        j2=lis3(j,2);
+        j3=lis3(j,3);
+        j4=lis3(j,4);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=3*L2*L3*L4*p1-L1*L3*L4*p2-L1*L2*L4*p3-L1*L2*L3*p4;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F27(i,j)=sum1;
+
+        i1=lis2(i,2); 
+        i2=lis2(i,3);
+        i3=lis2(i,1);    
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=3*L2*L3*L4*p1-L1*L3*L4*p2-L1*L2*L4*p3-L1*L2*L3*p4;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F27(i+4,j)=sum1;  
+
+        i1=lis2(i,3); 
+        i2=lis2(i,1);
+        i3=lis2(i,2);    
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=(3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=3*L2*L3*L4*p1-L1*L3*L4*p2-L1*L2*L4*p3-L1*L2*L3*p4;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F27(i+8,j)=sum1;         
+
+    end
+end
+
+
+
+xa=xa4;
+ya=ya4;
+za=za4;
+wt=wt4;
+%M vol1-vol1
+for i=1:3
+
+    for j=1:3
+        i1=lis3(i,1); 
+        i2=lis3(i,2);
+        i3=lis3(i,3);    
+        i4=lis3(i,4);    
+
+        j1=lis3(j,1);
+        j2=lis3(j,2);
+        j3=lis3(j,3);
+        j4=lis3(j,4);
+
+        sum1=0;
+       for jj=1:length(xa)
+
+        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p4=sekil1(i4,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L4=sekil1(i4,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek1=3*L2*L3*L4*p1-L1*L3*L4*p2-L1*L2*L4*p3-L1*L2*L3*p4;
+
+        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L4=sekil1(j4,xa(jj),ya(jj),za(jj),Jxyz,1);
+        
+        sek2=3*L2*L3*L4*p1-L1*L3*L4*p2-L1*L2*L4*p3-L1*L2*L3*p4;
+
+        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;    
+       end
+        F28(i,j)=sum1;
+
+
+    end
+end
+
+
+
+
+F1=sigma*F1; %sonrada iw ve mu ekleyeceğiz şimdilik reel olarak kalsın
+F2=sigma*F2;
+F3=sigma*F3;
+F4=sigma*F4;
+F5=sigma*F5;
+F6=sigma*F6;
+F7=sigma*F7;
+F8=sigma*F8;
+F9=sigma*F9;
+F10=sigma*F10;
+F11=sigma*F11;
+F12=sigma*F12;
+F13=sigma*F13;
+F14=sigma*F14;
+F15=sigma*F15;
+F16=sigma*F16;
+F17=sigma*F17;
+F18=sigma*F18;
+F19=sigma*F19;
+F20=sigma*F20;
+F21=sigma*F21;
+F22=sigma*F22;
+F23=sigma*F23;
+F24=sigma*F24;
+F25=sigma*F25;
+F26=sigma*F26;
+F27=sigma*F27;
+F28=sigma*F28;
+
+
+hp1=EL(ii,20);
+
+
+% if(hp1==35)
+% 
+% 
+% 
+% end
+
+% hp2=EL(ii,21);
+
+% 
+% if(hp1==0)
+% 
+% FF=F1;
+% RR=rot1;
+% 
+% klerv2=EL(ii,5:10);
+% 
+% kler=EL(ii,5:10);
+% kler2=zeros(1,8);
+
+if(hp1==0)
+FF=[F1 F2 F4;
+    F2' F3 F5;
+    F4' F5' F6];
+
+RR=[rot1 zeros(6,6) rot4;...
+   zeros(6,6) zeros(6,6) zeros(6,8);...
+   rot4' zeros(8,6) rot6];
+
+klerv2=zeros(1,20);
+klerv2(1:6)=EL(ii,5:10);
+
+
+ko1=EL(ii,5:10);
+j1=find(ko1>0);
+klerv2(7:12)=ko1;
+klerv2(6+j1)=klerv2(6+j1)+totkenar;
+
+
+ko=EL(ii,16:19);
+j1=find(ko>0);
+
+klerv2(13:16)=ko;
+klerv2(17:20)=ko;
+klerv2(12+j1)=klerv2(12+j1)+totkenar*2+totkenarhp1;
+klerv2(16+j1)=klerv2(16+j1)+totkenar*2+totkenarhp1+totyuzey;
+
+
+kler=EL(ii,5:10);
+ko=EL(ii,16:19);
+
+j1=find(ko>0);
+kler2=[ko ko];
+% kler2(0+j1)=kler2(0+j1)+totkenar*2+totkenarhp1;
+% kler2(4+j1)=kler2(4+j1)+totkenar*2+totkenarhp1+totyuzey;
+
+kler2(4+j1)=kler2(4+j1)+totyuzey;
+
+elseif(hp1>0 )
+
+FF=[F1 F2 F7 F4 F8 F16 F17;
+    F2' F3 F9 F5 F10 F18 F19;
+    F7' F9' F11 F12 F13 F20 F21;
+    F4' F5' F12' F6 F14 F22 F23;
+    F8' F10' F13' F14' F15 F24 F25;
+    F16' F18' F20' F22' F24' F26 F27;
+    F17' F19' F21' F23' F25' F27' F28];
+
+RR=zeros(45,45);
+
+RR(1:6,1:6)=rot1;
+RR(1:6,19:26)=rot4;
+RR(19:26,1:6)=rot4';
+RR(19:26,19:26)=rot6;
+RR(19:26,31:42)=rot22;
+RR(31:42,19:26)=rot22';
+RR(19:26,43:45)=rot23;
+RR(43:45,19:26)=rot23';
+RR(31:42,31:42)=rot26;
+RR(31:42,43:45)=rot27;
+RR(43:45,31:42)=rot27';
+RR(43:45,43:45)=rot28';
+
+
+klerv2=zeros(1,45);
+klerv2(1:6)=EL(ii,5:10);
+
+
+ko1=EL(ii,5:10);
+j1=find(ko1>0);
+klerv2(7:12)=ko1;
+klerv2(6+j1)=klerv2(6+j1)+totkenar;
+
+
+ko1=HPK1(hp1,:);
+j1=find(ko1>0);
+klerv2(13:18)=ko1;
+klerv2(12+j1)=klerv2(12+j1)+totkenar*2;
+
+
+ko=EL(ii,16:19);
+j1=find(ko>0);
+klerv2(19:22)=ko;
+klerv2(18+j1)=klerv2(18+j1)+totkenar*2+totkenarhp1;
+
+ko=EL(ii,16:19);
+j1=find(ko>0);
+klerv2(23:26)=ko;
+klerv2(22+j1)=klerv2(22+j1)+totkenar*2+totkenarhp1+totyuzey;
+
+
+ko=HPY1(hp1,:);
+j1=find(ko>0);
+klerv2(27:30)=ko;
+klerv2(31:34)=ko;
+klerv2(35:38)=ko;
+klerv2(39:42)=ko;
+
+klerv2(26+j1)=klerv2(26+j1)+totkenar*2+totkenarhp1+totyuzey*2;
+klerv2(30+j1)=klerv2(30+j1)+totkenar*2+totkenarhp1+totyuzey*2+totyuzeyhp1;
+klerv2(34+j1)=klerv2(34+j1)+totkenar*2+totkenarhp1+totyuzey*2+totyuzeyhp1*2;
+klerv2(38+j1)=klerv2(38+j1)+totkenar*2+totkenarhp1+totyuzey*2+totyuzeyhp1*3;
+
+ko=[hp1 hp1+totel1 hp1+totel1*2];
+klerv2(43:45)=ko;
+klerv2(43:45)=klerv2(43:45)+totkenar*2+totkenarhp1+totyuzey*2+totyuzeyhp1*4;
+
+
+ko=EL(ii,5:10);
+j1=find(ko>0);
+
+ko1=HPK1(hp1,:);
+j2=find(ko1>0);
+
+kler=zeros(1,18);
+kler(1:6)=ko;
+kler(7:12)=ko;
+kler(13:18)=ko;
+kler(6+j1)=kler(6+j1)+totkenar;
+kler(12+j2)=kler(12+j2)+totkenar*2;
+
+
+ko=EL(ii,16:19);
+j1=find(ko>0);
+ko1=HPY1(hp1,:);
+j2=find(ko1>0);
+
+
+% kler2=[EL(ii,16:19) EL(ii,16:19) HPY1(hp1,:) HPY1(hp1,:) HPY1(hp1,:) HPY1(hp1,:)];
+
+
+
+ko=EL(ii,16:19);
+j1=find(ko>0);
+kler2=zeros(1,8);
+kler2(1:4)=ko;
+kler2(5:8)=ko;
+kler2(4+j1)=kler2(4+j1)+totyuzey;
+
+
+ko=HPY1(hp1,:);
+j1=find(ko>0);
+kler3=zeros(1,12);
+kler3(1:4)=ko;
+kler3(5:8)=ko;
+kler3(9:12)=ko;
+kler3(4+j1)=kler3(4+j1)+totyuzeyhp1;
+kler3(8+j1)=kler3(8+j1)+totyuzeyhp1*2;
+
+
+
+
+else
+
+error('Bir sorun var\n');
+
+end
+
+
+
+% 
+% cc=0;
+% for i=1:3
+%     for j=i+1:4
+%         cc=cc+1;
+%         kler(cc)=full(edge_no(nler(i),nler(j)));
+%     end
+% end
+% 
+% 
+% 
+% kler2=zeros(1,8);
+% for i=1:4
+%     if(i==1)
+%         al=kler([4 5 6]);
+%         sw=1;
+%     elseif(i==2)
+%         al=kler([2 3 6]);
+%         sw=2;
+%     elseif(i==3)
+%         al=kler([1 3 5]);
+%         sw=3;
+%     elseif(i==4)
+%         al=kler([1 2 4]);
+%         sw=4;
+%     end
+% 
+%     al(al<0)=0;
+% 
+%     if(nnz(al)>1)
+%         al=sort(al(al>0));
+%         kler2(i)=full(yuzey_no(al(1),al(2)));
+%         kler2(i+4)=kler2(i)+totyuzey;
+%     elseif(nnz(al)==1)
+%         kler2(i)=yuzeybd(ii,sw);
+%         kler2(i+4)=kler2(i)+totyuzey;
+%         if(kler2(i)==0)
+%         error('0 index');
+%         end
+%     else
+%         kler2(i)=yuzeybd(ii,sw);
+%         kler2(i+4)=kler2(i);
+%         if(kler2(i)==0)
+%         error('0 index');
+%         end
+%     end
+% end
+% 
+% 
+% 
+% klerv2=zeros(1,20);  %tüm non-phi
+% for i=1:6
+%     if(kler(i)>0)
+%     klerv2(i)=kler(i);
+%     klerv2(i+6)=kler(i)+totkenar;
+%     else
+%     klerv2(i)=kler(i);
+%     klerv2(i+6)=kler(i);
+%     end
+% end
+% 
+% for i=13:20
+%     if(kler2(i-12)>0)
+%         klerv2(i)=kler2(i-12)+totkenar*2;
+%     else
+%         klerv2(i)=kler2(i-12);
+%     end
+% end
+% 
+
+    iszerov2=length(find(klerv2<1));  %tüm non-phi
+
+
+    if(iszerov2==0)
+
+        sa=length(klerv2);
+
+        rr=repmat(klerv2',[1 sa]); %row nolar
+        cc=rr'; %col nolar;
+        
+        ix1(sayac1+1:sayac1+sa^2)=rr(:);
+        iy1(sayac1+1:sayac1+sa^2)=cc(:);
+        iv1a(sayac1+1:sayac1+sa^2)=RR(:);
+        iv1b(sayac1+1:sayac1+sa^2)=FF(:);
+        sayac1=sayac1+sa^2;
+    else
+        % klerv2
+        nke=find(klerv2>0); % bunlar kalacak
+        rr=repmat(klerv2(nke)',[1 length(nke)]); %row nolar
+        cc=rr'; %col nolar;
+        nonz=length(nke)^2;
+
+        RRm=RR(nke,nke);
+        FFm=FF(nke,nke);
+        
+
+        ix1(sayac1+1:sayac1+nonz)=rr(:);
+        iy1(sayac1+1:sayac1+nonz)=cc(:);
+        iv1a(sayac1+1:sayac1+nonz)=RRm(:);
+        iv1b(sayac1+1:sayac1+nonz)=FFm(:);        
+        sayac1=sayac1+nonz;        
+    end
+
+
+
+
+    iszero=length(find(kler<0));
+    
+    % if(hp>0 && iszero>0)
+    % iszero;
+    % end
+    if(iszero~=0) %Eğer sınıra denk gelmiyorsa burası
+    
+        %Eğer sınırda kenar varsa burası
+        
+        ke=find(kler<0); % bunlar dizeyden düşecek
+        nke=find(kler>0); % bunlar kalacak
+        nke2=find(kler2>0); % bunlar kalacak
+        
+        sag_local1=zeros(6,2);
+        sag_local3=zeros(8,2);
+        
+        for i=1:length(ke)
+            
+            %Burada noktaların sırası önemli vektörler n1 den n2 ye gidiyor
+            if(ke(i)==1)
+                n1=nler(1);
+                n2=nler(2);
+            elseif(ke(i)==2)
+                n1=nler(1);
+                n2=nler(3);
+            elseif(ke(i)==3)
+                n1=nler(1);
+                n2=nler(4);
+            elseif(ke(i)==4)
+                n1=nler(2);
+                n2=nler(3);
+            elseif(ke(i)==5)
+                n1=nler(2);
+                n2=nler(4);
+            elseif(ke(i)==6)
+                n1=nler(3);
+                n2=nler(4);
+            end
+
+
+            xyz1=node(n1,:);
+            xyz2=node(n2,:);
+
+            if(kler(ke(i))==-5 || kler(ke(i))==-6)
+                if( abs(xyz1(3)-xyz2(3))>ep)
+                    if(abs(xyz1(2)-xyz2(2))<ep)
+                    kler(ke(i))=-3;
+                    end
+    
+                    if(abs(xyz1(1)-xyz2(1))<ep)
+                    kler(ke(i))=-1;
+                    end                
+                end
+            end
+
+
+            %Burada hangi yüzeyde olduğuba bakıyorum
+            if(kler(ke(i))==-1 || kler(ke(i))==-2) %solda sagda  y-z yönünde açı var
+            xyz1=node(n1,:);
+            xyz2=node(n2,:);
+
+            if( abs(xyz1(1)-xyz2(1))>ep)
+            error('x aynı olmalı');
+            end
+
+            if( abs(xyz1(2)-xyz2(2))<ep)
+                continue;
+            end
+            
+            nor(1)=xyz2(2)-xyz1(2);
+            nor(2)=(xyz2(3)-xyz1(3));
+            aci=atan2(nor(2),nor(1))/pi*180;
+
+            aci=360-aci;
+
+            vec=[1;0]; 
+            R1=[cosd(aci) -sind(aci) ; sind(aci) cosd(aci)];
+            al=R1*vec;
+            val=al(1); % sol yada sagdaki kenarın değeri 
+
+            % val=1;
+
+            sag_local1(nke,1)=sag_local1(nke,1)-rot1(nke,ke(i))*val;
+            sag_local3(nke2,1)=sag_local3(nke2,1)-rot4(ke(i),nke2)'*val;
+            
+            % 
+            elseif(kler(ke(i))==-3 || kler(ke(i))==-4) %önde arkada x-z yönünde açı var
+
+            xyz1=node(n1,:);
+            xyz2=node(n2,:);
+
+            if( abs(xyz1(2)-xyz2(2))>ep)
+            error('y aynı olmalı');
+            end
+
+
+            if( abs(xyz1(1)-xyz2(1))<ep)
+                continue;
+            end            
+
+            nor(1)=xyz2(1)-xyz1(1);
+            nor(2)=(xyz2(3)-xyz1(3));
+            aci=atan2(nor(2),nor(1))/pi*180;
+
+            aci=360-aci;
+
+            vec=[1;0]; 
+            R1=[cosd(aci) -sind(aci) ; sind(aci) cosd(aci)];
+            al=R1*vec;
+            val=al(1); % ön yada arka kenarın değeri bu
+
+            % val=1;
+
+            sag_local1(nke,2)=sag_local1(nke,2)-rot1(nke,ke(i))*val;
+            sag_local3(nke2,2)=sag_local3(nke2,2)-rot4(ke(i),nke2)'*val;
+
+            elseif(kler(ke(i))==-5 || kler(ke(i))==-6) %üstte altta x y yününde açı var
+            
+            if( abs(xyz1(3)-xyz2(3))>ep)
+            error('z aynı olmalı');
+            end
+
+            xyz1=node(n1,:);
+            xyz2=node(n2,:);   
+            nor(1)=xyz2(1)-xyz1(1);
+            nor(2)=xyz2(2)-xyz1(2);
+            aci=atan2(nor(2),nor(1))/pi*180;
+
+            % aci=360-aci;
+
+            %Ex basıyorum
+            vec=[1;0]; 
+            R1=[cosd(aci) -sind(aci) ; sind(aci) cosd(aci)];
+            al=R1*vec;
+            val=al(1); % üst yada alt
+            % val=al(2);
+
+            sag_local1(nke,2)=sag_local1(nke,2)-rot1(nke,ke(i))*val;
+            sag_local3(nke2,2)=sag_local3(nke2,2)-rot4(ke(i),nke2)'*val;
+
+            val=al(2);
+
+            sag_local1(nke,1)=sag_local1(nke,1)-rot1(nke,ke(i))*val;
+            sag_local3(nke2,1)=sag_local3(nke2,1)-rot4(ke(i),nke2)'*val;
+            
+            else
+            error('1-6 olmalı');
+
+            end
+        end
+
+            sagm(kler(nke),:)=sagm(kler(nke),:)+sag_local1(nke,:);
+            sagm(kler2(nke2)+totkenar*2+totkenarhp1,:)=sagm(kler2(nke2)+totkenar*2+totkenarhp1,:)+sag_local3(nke2,:);
+         end
+
+    iszero2=length(find(kler2<0));
+
+
+    if(iszero2~=0)
+        nke=find(kler>0); % bunlar kalacak
+        nke2=find(kler2>0); % bunlar kalacak
+        ke=find(kler2<0); % bunlar dizeyden düşecek
+        
+        sag_local1=zeros(6,2);
+        sag_local3=zeros(8,2);
+        
+        % lis2=[3 2 4 ; 3 1 4; 2 1 4; 2 1 3]; 
+        
+        for i=1:length(ke)
+            
+            %Burada noktaların sırası önemli vektörler n1 den n2 ye gidiyor
+            if(ke(i)==1)
+                n1=nler(2);
+                n2=nler(4);
+            elseif(ke(i)==2)
+                n1=nler(1);
+                n2=nler(4);
+            elseif(ke(i)==3)
+                n1=nler(1);
+                n2=nler(4);
+            elseif(ke(i)==4)
+                n1=nler(1);
+                n2=nler(3);
+            elseif(ke(i)==5)
+                n1=nler(2);
+                n2=nler(3);
+            elseif(ke(i)==6)
+                n1=nler(1);
+                n2=nler(3);
+            elseif(ke(i)==7)
+                n1=nler(1);
+                n2=nler(2);
+            elseif(ke(i)==8)
+                n1=nler(1);
+                n2=nler(2);                
+            end
+            
+
+            xyz1=node(n1,:);
+            xyz2=node(n2,:);
+
+            if( abs(xyz1(1)-xyz2(1))<ep)
+            kler2(ke(i))=-1;
+            % error('x aynı olmalı');
+            elseif(abs(xyz1(2)-xyz2(2))<ep)
+            kler2(ke(i))=-3;
+            else
+            kler2(ke(i))=-5;
+            end      
+
+            if(kler2(ke(i))==-1 || kler2(ke(i))==-2) %solda sagda  y-z yönünde açı var
+            xyz1=node(n1,:);
+            xyz2=node(n2,:);
+
+            if( abs(xyz1(1)-xyz2(1))>ep)
+            error('x aynı olmalı');
+            end
+
+            if( abs(xyz1(2)-xyz2(2))<ep)
+                continue;
+            end
+            
+            nor(1)=xyz2(2)-xyz1(2);
+            nor(2)=(xyz2(3)-xyz1(3));
+            aci=atan2(nor(2),nor(1))/pi*180;
+
+            aci=360-aci;
+
+            vec=[1;0]; 
+            R1=[cosd(aci) -sind(aci) ; sind(aci) cosd(aci)];
+            al=R1*vec;
+            val=al(1); % sol yada sagdaki kenarın değeri 
+
+            % val=1;
+
+            sag_local1(nke,1)=sag_local1(nke,1)-rot4(nke,ke(i))*val;
+            sag_local3(nke2,1)=sag_local3(nke2,1)-rot6(nke2,ke(i))*val;
+            
+            elseif(kler2(ke(i))==-3 || kler2(ke(i))==-4) %önde arkada x-z yönünde açı var
+
+            xyz1=node(n1,:);
+            xyz2=node(n2,:);
+
+            if( abs(xyz1(2)-xyz2(2))>ep)
+            error('y aynı olmalı');
+            end
+
+
+            if( abs(xyz1(1)-xyz2(1))<ep)
+                continue;
+            end            
+
+            nor(1)=xyz2(1)-xyz1(1);
+            nor(2)=(xyz2(3)-xyz1(3));
+            aci=atan2(nor(2),nor(1))/pi*180;
+
+            aci=360-aci;
+
+            vec=[1;0]; 
+            R1=[cosd(aci) -sind(aci) ; sind(aci) cosd(aci)];
+            al=R1*vec;
+            val=al(1); % ön yada arka kenarın değeri bu
+
+            sag_local1(nke,2)=sag_local1(nke,2)-rot4(nke,ke(i))*val;
+            sag_local3(nke2,2)=sag_local3(nke2,2)-rot6(nke2,ke(i))*val;
+        
+            elseif(kler2(ke(i))==-5 || kler2(ke(i))==-6) %üstte altta x y yününde açı var
+            
+
+            if( abs(xyz1(3)-xyz2(3))>ep)
+            error('z aynı olmalı');
+            end
+
+            % %BURAYI KAPATINCA BİRŞEY OLMUYOR
+            % 
+            xyz1=node(n1,:);
+            xyz2=node(n2,:);   
+            nor(1)=xyz2(1)-xyz1(1);
+            nor(2)=xyz2(2)-xyz1(2);
+            aci=atan2(nor(2),nor(1))/pi*180;
+
+            % aci=360-aci;
+
+            %Ex basıyorum
+            vec=[1;0]; 
+            R1=[cosd(aci) -sind(aci) ; sind(aci) cosd(aci)];
+            al=R1*vec;
+            val=al(1); % üst yada alt
+            % val=al(2); % üst yada alt
+
+            % val=1;
+            sag_local1(nke,2)=sag_local1(nke,2)-rot4(nke,ke(i))*val;
+            sag_local3(nke2,2)=sag_local3(nke2,2)-rot6(nke2,ke(i))*val;           
+            val=al(2); % üst yada alt
+
+            % val=al(1);
+            % val=1;
+
+            sag_local1(nke,1)=sag_local1(nke,1)-rot4(nke,ke(i))*val;
+            sag_local3(nke2,1)=sag_local3(nke2,1)-rot6(nke2,ke(i))*val;
+
+            else
+            error('1-6 olmalı');
+
+            end
+        end
+
+        sagm(kler(nke),:)=sagm(kler(nke),:)+sag_local1(nke,:);
+        sagm(kler2(nke2)+totkenar*2+totkenarhp1,:)=sagm(kler2(nke2)+totkenar*2+totkenarhp1,:)+sag_local3(nke2,:);
+        
+
+    end
+
+end
+
+
+
+R1=sparse(ix1,iy1,iv1a,totkenar*2+totkenarhp1+totyuzey*2+totyuzeyhp1*4+3*totel1,totkenar*2+totkenarhp1+totyuzey*2+totyuzeyhp1*4+3*totel1); % double curl
+M1=sparse(ix1,iy1,iv1b,totkenar*2+totkenarhp1+totyuzey*2+totyuzeyhp1*4+3*totel1,totkenar*2+totkenarhp1+totyuzey*2+totyuzeyhp1*4+3*totel1); % 
+% D1=sparse(ix3,iy3,iv3,totnode+totkenar,totkenar*2+totyuzey*2); % 
+% P1=sparse(ix4,iy4,iv4,totnode+totkenar,totnode+totkenar); % 
+
+
+R1=spmdReduce(@plus,R1,1);
+M1=spmdReduce(@plus,M1,1);
+% D1=spmdReduce(@plus,D1,1);
+% P1=spmdReduce(@plus,P1,1);
+
+sagm=spmdReduce(@plus,sagm,1);
+VTa=spmdReduce(@plus,VTa,1);
+
+
+end
+
+R1=R1{1};
+M1=M1{1};
+% D1=D1{1};
+% P1=P1{1};
+sagm=sagm{1};
+VTa=VTa{1};
+
+% return
+
+
+% spmd
+% 
+% R1=sparse(ix1,iy1,iv1a,totkenar+totkenarhp1+totyuzeyhp1*2+totkenarhp2+totyuzeyhp2*4+totel2*3,totkenar+totkenarhp1+totyuzeyhp1*2+totkenarhp2+totyuzeyhp2*4+totel2*3); % double curl
+% M1=sparse(ix1,iy1,iv1b,totkenar+totkenarhp1+totyuzeyhp1*2+totkenarhp2+totyuzeyhp2*4+totel2*3,totkenar+totkenarhp1+totyuzeyhp1*2+totkenarhp2+totyuzeyhp2*4+totel2*3); % 
+% 
+% R1=spmdReduce(@plus,R1,1);
+% M1=spmdReduce(@plus,M1,1);
+% 
+% end
+
+
+
+% 
+% figure;spy(R1)
+% figure;spy(M1)
+
+
+
+
+% 
+% return
+% 
+% 
+% ww=load('usuimodelFEFF.mat');
+% flist=ww.f;
+% 
+% sag=sagm;
+% kk=1;
+% 
+% f=flist(kk); % frekanslar
+% mu=4*pi*10^-7;
+% w=2*pi*f;
+% kat=sqrt(-1)*w*mu;
+% 
+% A=[R1+kat*M1];
+% 
+% 
+% % [m,n] = size(A);
+% % assert(m==n)
+% % assert(nnz(isnan(nonzeros(A)))==0)
+% % assert(nnz(isinf(nonzeros(A)))==0)
+% 
+% rowsum = full(sum(abs(A),2));
+% colsums = full(sum(abs(A),1)).';
+%  kars=[sort(rowsum) sort(colsums)];
+% 
+% % bak=find(rowsum==0);
+% % bak=find(rowsum==7.870465679742975e-12);
+% % 
+% 
+% 
+% 
+% % [min(rowsum) min(colsums)]
+% 
+% % svds(A,1,'largest')
+% % svds(A,1,'smallest')
+% 
+% 
+% kars=[sort(rowsum) sort(colsums)];
+% 
+% d = abs(diag(A));
+% dpos = d(d>0);
+% [max(dpos)/min(dpos)]
+% 
+% return
+
+% f=1; % frekanslar
+
+
+
+
+
+ww=load('usuimodelFEFF.mat');
+flist=ww.f;
+
+sag=sagm;
+kk=1;
+
+
+
+for kk=1:length(flist)
+
+f=flist(kk); % frekanslar
+mu=4*pi*10^-7;
+w=2*pi*f;
+kat=sqrt(-1)*w*mu;
+
+Amatris=[R1+kat*M1];
+
+% Amatris=triu(Amatris);
+
+
+% [val,row,col]=sparse2csr(Amatris,1);
+% n = size(sag,1);
+% 
+% tic
+% pardiso_LUC(1,row,col,n) ;  % analyze
+% toc
+% 
+% tic
+% pardiso_LUC(2,val);
+% toc
+% 
+% tic
+% x=pardiso_LUC(3,complex(sag));
+% toc
+% 
+% pardiso_LUC(4)
+% 
+% 
+% [kappa_est, invA1_est, it] = condest_hager_core(Amatris, 150,1);
+% 
+
+
+[v0,r0,c0]=sparse2csr(Amatris);
+rowg=gpuArray(r0);
+colg=gpuArray(c0);
+valg=gpuArray(v0);
+bg=gpuArray(sag);
+
+% condest(Amatris)
+
+tic
+[xx]=LUcuDSS(rowg,colg,valg,complex(bg),int32(2)); %sweeping
+toc
+
+% tic
+% [xx]=LUcuDSSMG(rowg,colg,valg,complex(bg),int32(size(bg,2)),int32(2)); %sweeping
+% toc
+
+relres=norm(Amatris*xx-sag)/norm(sag);
+fprintf("Düz çözüm relative residual=%e\n",relres);
+
+
+
+% save('pardiso_matrix2.mat','Amatris','sag');
+
+
+% return
+
+% A=(Amatris+Amatris.')/2;
+% A=Amatris;
+% % A=triu(A);
+% 
+% 
+% [val,row,col]=sparse2csr(A,1);
+% n = size(sag,1);
+% 
+% tic
+% [x, treo, tfac, tsol] = pardiso_mex2(row, col, val, complex(sag), n);
+% toc
+% 
+% % tic
+% x2=A\sag;
+% toc
+
+
+% return
+
+
+
+xx=gather(xx);
+x1=xx(:,1);
+x2=xx(:,2);
+
+
+% tri = triangulation(eleman, node);
+% for i=1:size(recv,1)
+% al=recv(i,1:3);
+% elemID = pointLocation(tri, al);         % K-by-1 (NaN if outside)
+% recv(i,4)=elemID;
+% end
+
+
+
+totel=size(EL,1);
+
+M=ones(4,4);
+mu=4*pi*10^-7;
+clear G le kler a b c d
+for jj=1:size(recv,1)
+
+    ii=recv(jj,4); 
+
+    nler=eleman(ii,1:4);
+    
+    XYZ=node(nler,:)';
+
+    % x0=recv(jj,1);
+    % y0=recv(jj,2);
+    x0=mean(XYZ(1,:)); 
+    y0=mean(XYZ(2,:));    
+    z0=mean(XYZ(3,:));    
+    
+    M(2:end,:)=XYZ;
+    
+    Ve=det(M)/6;
+
+    a(1)=det(M([2 3 4],[2 3 4]));
+    a(2)=-det(M([2 3 4],[1 3 4]));
+    a(3)=det(M([2 3 4],[1 2 4]));
+    a(4)=-det(M([2 3 4],[1 2 3]));    
+    
+    b(1)=-det(M([1 3 4],[2 3 4]));
+    b(2)=det(M([1 3 4],[1 3 4]));
+    b(3)=-det(M([1 3 4],[1 2 4]));
+    b(4)=det(M([1 3 4],[1 2 3]));
+    
+    c(1)=det(M([1 2 4],[2 3 4]));
+    c(2)=-det(M([1 2 4],[1 3 4]));
+    c(3)=det(M([1 2 4],[1 2 4]));
+    c(4)=-det(M([1 2 4],[1 2 3]));
+    
+    d(1)=-det(M([1 2 3],[2 3 4]));
+    d(2)=det(M([1 2 3],[1 3 4]));
+    d(3)=-det(M([1 2 3],[1 2 4]));
+    d(4)=det(M([1 2 3],[1 2 3]));
+
+    a=a*sign(Ve);
+    b=b*sign(Ve);
+    c=c*sign(Ve);
+    d=d*sign(Ve);
+    
+
+    G=[b(:) c(:) d(:)];
+
+
+    % sign(Ve)
+    Ve=abs(Ve); 
+
+    cc=0;
+    clear kler
+    for i=1:3
+        for j=i+1:4
+            cc=cc+1;
+            kler(cc)=full(edge_no(nler(i),nler(j)));
+            kler(cc+6)=full(edge_no(nler(i),nler(j)))+totkenar;
+            kler(cc+12)=full(edge_no(nler(i),nler(j)))+totkenar*2;            
+        end
+    end
+
+
+    kler2=zeros(1,8);
+    for i=1:4
+        if(i==1)
+            al=kler([4 5 6]);
+            sw=1;
+        elseif(i==2)
+            al=kler([2 3 6]);
+            sw=2;
+        elseif(i==3)
+            al=kler([1 3 5]);
+            sw=3;
+        elseif(i==4)
+            al=kler([1 2 4]);
+            sw=4;
+        end
+
+        al(al<0)=0;
+
+        if(nnz(al)>1)
+            al=sort(al(al>0));
+            kler2(i)=full(yuzey_no(al(1),al(2)));
+            kler2(i+4)=kler2(i)+totyuzey;
+            kler2(i+8)=kler2(i)+totyuzey*2;
+            kler2(i+12)=kler2(i)+totyuzey*3;
+            kler2(i+16)=kler2(i)+totyuzey*4;
+            kler2(i+20)=kler2(i)+totyuzey*5;
+        elseif(nnz(al)==1)
+            kler2(i)=yuzeybd(ii,sw);
+            kler2(i+4)=kler2(i)+totyuzey;
+            kler2(i+8)=kler2(i)+totyuzey*2;
+            kler2(i+12)=kler2(i)+totyuzey*3;            
+            kler2(i+16)=kler2(i)+totyuzey*4;            
+            kler2(i+20)=kler2(i)+totyuzey*5;            
+            if(kler2(i)==0)
+            error('0 index');
+            end
+        else
+            kler2(i)=yuzeybd(ii,sw);
+            kler2(i+4)=kler2(i);
+            kler2(i+8)=kler2(i); 
+            kler2(i+12)=kler2(i);            
+            kler2(i+16)=kler2(i);            
+            kler2(i+20)=kler2(i);                       
+            if(kler2(i)==0)
+            error('0 index');
+            end
+        end
+    end
+
+
+    kler2=kler2+totkenar*3;
+
+    kler3=[ii ii+totel ii+totel*2]+totkenar*3+totyuzey*6;
+
+
+    le(1)=sqrt((XYZ(1,1)-XYZ(1,2))^2+(XYZ(2,1)-XYZ(2,2))^2+(XYZ(3,1)-XYZ(3,2))^2);
+    le(2)=sqrt((XYZ(1,1)-XYZ(1,3))^2+(XYZ(2,1)-XYZ(2,3))^2+(XYZ(3,1)-XYZ(3,3))^2);
+    le(3)=sqrt((XYZ(1,1)-XYZ(1,4))^2+(XYZ(2,1)-XYZ(2,4))^2+(XYZ(3,1)-XYZ(3,4))^2);
+    le(4)=sqrt((XYZ(1,2)-XYZ(1,3))^2+(XYZ(2,2)-XYZ(2,3))^2+(XYZ(3,2)-XYZ(3,3))^2);
+    le(5)=sqrt((XYZ(1,2)-XYZ(1,4))^2+(XYZ(2,2)-XYZ(2,4))^2+(XYZ(3,2)-XYZ(3,4))^2);
+    le(6)=sqrt((XYZ(1,3)-XYZ(1,4))^2+(XYZ(2,3)-XYZ(2,4))^2+(XYZ(3,3)-XYZ(3,4))^2);
+    le(:)=1;
+
+    for i=1:4
+    duzkose(i,1)=1/(6*Ve)*(a(i)+b(i)*x0+c(i)*y0+d(i)*z0);
+    end  
+
+    for i=1:6
+    i1=lis(i,1);
+    i2=lis(i,2);
+
+    L1=duzkose(i1);
+    L2=duzkose(i2);    
+    p1=G(i1,:);
+    p2=G(i2,:);       
+    
+    rotkenar(i,:)=2*cross(p1,p2)/(6*Ve)^2*le(i);
+    rotkenar(i+6,:)=0;
+    rotkenar(i+12,:)=0;
+
+    duzkenar(i,:)=(L1*p2-L2*p1)/(6*Ve)*le(i);
+    duzkenar(i+6,:)=(L1*p2+L2*p1)/(6*Ve)*le(i);
+    duzkenar(i+12,:)=((2*L1*L2-L2^2)*p1+(L1^2-2*L1*L2)*p2)/(6*Ve)*le(i);
+    end
+
+
+    for i=1:4
+
+    i1=lis2(i,1);
+    i2=lis2(i,2);
+    i3=lis2(i,3);  
+
+    L1=duzkose(i1);
+    L2=duzkose(i2);
+    L3=duzkose(i3);    
+    p1=G(i1,:);
+    p2=G(i2,:);    
+    p3=G(i3,:);    
+
+    duzkenar2(i,:)=(2*L2*L3*p1-L1*L2*p3-L1*L3*p2)/(6*Ve);
+    rotkenar2(i,:)=3*cross(L3*p2+L2*p3,p1)/(6*Ve)^2;
+
+    i1=lis2(i,2);
+    i2=lis2(i,3);
+    i3=lis2(i,1); 
+
+    L1=duzkose(i1);
+    L2=duzkose(i2);
+    L3=duzkose(i3);    
+    p1=G(i1,:);
+    p2=G(i2,:);    
+    p3=G(i3,:);     
+
+    duzkenar2(i+4,:)=(2*L2*L3*p1-L1*L2*p3-L1*L3*p2)/(6*Ve);
+    rotkenar2(i+4,:)=3*cross(L3*p2+L2*p3,p1)/(6*Ve)^2;
+
+    i1=lis2(i,3);
+    i2=lis2(i,1);
+    i3=lis2(i,2); 
+
+    L1=duzkose(i1);
+    L2=duzkose(i2);
+    L3=duzkose(i3);    
+    p1=G(i1,:);
+    p2=G(i2,:);    
+    p3=G(i3,:);     
+
+    duzkenar2(i+8,:)=(L2*L3*p1+L1*L2*p3+L1*L3*p2)/(6*Ve);
+    rotkenar2(i+8,:)=0;   
+
+    i1=lis2(i,1);
+    i2=lis2(i,2);
+    i3=lis2(i,3);  
+
+    L1=duzkose(i1);
+    L2=duzkose(i2);
+    L3=duzkose(i3);    
+    p1=G(i1,:);
+    p2=G(i2,:);    
+    p3=G(i3,:);   
+
+    duzkenar2(i+12,:)=((3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3)/(6*Ve);
+    rotkenar2(i+12,:)=4*cross((L2^2-2*L2*L3)*p3+(2*L2*L3-L3^2)*p2,p1)/(6*Ve)^2; 
+
+    i1=lis2(i,2);
+    i2=lis2(i,3);
+    i3=lis2(i,1);  
+
+    L1=duzkose(i1);
+    L2=duzkose(i2);
+    L3=duzkose(i3);    
+    p1=G(i1,:);
+    p2=G(i2,:);    
+    p3=G(i3,:);   
+
+    duzkenar2(i+16,:)=((3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3)/(6*Ve);
+    rotkenar2(i+16,:)=4*cross((L2^2-2*L2*L3)*p3+(2*L2*L3-L3^2)*p2,p1)/(6*Ve)^2; 
+
+    i1=lis2(i,3);
+    i2=lis2(i,1);
+    i3=lis2(i,2);  
+
+    L1=duzkose(i1);
+    L2=duzkose(i2);
+    L3=duzkose(i3);    
+    p1=G(i1,:);
+    p2=G(i2,:);    
+    p3=G(i3,:);   
+
+    duzkenar2(i+20,:)=((3*L2^2*L3-3*L2*L3^2)*p1+(L1*L3^2-2*L1*L2*L3)*p2+(2*L1*L2*L3-L1*L2^2)*p3)/(6*Ve);
+    rotkenar2(i+20,:)=4*cross((L2^2-2*L2*L3)*p3+(2*L2*L3-L3^2)*p2,p1)/(6*Ve)^2;        
+
+    end
+
+
+    for i=1:3
+
+    i1=lis3(i,1);
+    i2=lis3(i,2);
+    i3=lis3(i,3);  
+    i4=lis3(i,4); 
+
+    L1=duzkose(i1);
+    L2=duzkose(i2);
+    L3=duzkose(i3);
+    L4=duzkose(i4);    
+    
+    p1=G(i1,:);
+    p2=G(i2,:);    
+    p3=G(i3,:);      
+    p4=G(i4,:);      
+
+    duzkenar3(i,:)=(3*L2*L3*L4*p1-L1*L3*L4*p2-L1*L2*L4*p3-L1*L2*L3*p4)/(6*Ve);
+    rotkenar3(i,:)=(4*cross(L3*L4*p2+L2*L4*p3+L2*L3*p4,p1))/(6*Ve)^2;      
+    end
+
+    duzkenarA=[duzkenar;duzkenar2;duzkenar3];
+    rotkenarA=[rotkenar;rotkenar2;rotkenar3];
+
+    % duzkenarA=[duzkenar(1:12,:);duzkenar2(1:8,:)];
+    % rotkenarA=[rotkenar(1:12,:);rotkenar2(1:8,:)];    
+
+
+    duzkenarf=[duzkenarA];
+    rotkenarf=[rotkenarA/(-sqrt(-1)*w*mu)];
+    klerf=[kler kler2 kler3];
+
+
+    hp1=EL(ii,20);
+
+    if(hp1>0)
+    % 
+    klerf=kler(1:6);    
+    klerk1=kler(1:6)+totkenar;
+    klerk2=HPK1(hp1,:)+totkenar*2;
+    klery1=EL(ii,16:19)+totkenar*2+totkenarhp1;
+    klery2=EL(ii,16:19)+totkenar*2+totkenarhp1+totyuzey;
+    klery3=HPY1(hp1,:)+totkenar*2+totkenarhp1+totyuzey*2;
+    klery4=HPY1(hp1,:)+totkenar*2+totkenarhp1+totyuzey*2+totyuzeyhp1;
+    klery5=HPY1(hp1,:)+totkenar*2+totkenarhp1+totyuzey*2+totyuzeyhp1*2;
+    klery6=HPY1(hp1,:)+totkenar*2+totkenarhp1+totyuzey*2+totyuzeyhp1*3;
+    klery7=[hp1 hp1+totel1 hp1+totel1*2]+totkenar*2+totkenarhp1+totyuzey*2+totyuzeyhp1*4;
+    klerf=[klerf klerk1 klerk2 klery1 klery2 klery3 klery4 klery5 klery6 klery7];
+    else
+
+
+    duzkenarA=[duzkenar(1:12,:);duzkenar2(1:8,:)];
+    rotkenarA=[rotkenar(1:12,:);rotkenar2(1:8,:)];    
+
+
+    duzkenarf=[duzkenarA];
+    rotkenarf=[rotkenarA/(-sqrt(-1)*w*mu)];
+    klerf=[kler kler2 kler3];
+
+    klerf=klerf(1:6);    
+    klerk1=kler(1:6)+totkenar;
+    klery1=EL(ii,16:19)+totkenar*2+totkenarhp1;
+    klery2=EL(ii,16:19)+totkenar*2+totkenarhp1+totyuzey;
+    klerf=[klerf klerk1 klery1 klery2];
+
+    end
+
+    % klerf=klerf(1:6);    
+    % klerk1=HPK1(hp1,:)+totkenar;
+    % klery1=HPY1(hp1,:)+totkenar*2+totkenarhp1;
+    % klery2=HPY1(hp1,:)+totkenar*2+totkenarhp1+totyuzey;
+    % klerf=[klerf klerk1 klery1 klery2];
+    % 
+
+
+    
+    e1=x1(klerf);
+    e2=x2(klerf);
+
+    E1=(duzkenarf')*e1;
+    H1=(rotkenarf'*e1);
+    
+    E2=(duzkenarf')*e2;
+    H2=(rotkenarf'*e2);
+
+
+    ex1=E1(1);
+    ey1=E1(2);
+    hx1=H1(1);
+    hy1=H1(2);
+    hz1=H1(3);
+
+    ex2=E2(1);
+    ey2=E2(2);
+    hx2=H2(1);
+    hy2=H2(2);
+    hz2=H2(3);
+
+    Z=inv([hx1 hy1;hx2 hy2])*[ex1 ey1 hz1;ex2 ey2 hz2];    
+    T0=-[Z(1,3);Z(2,3)];
+    Z0=Z(1:2,1:2).';
+
+    Z=Z0;
+    T=T0;
+    
+    Zler(kk,jj,1)=Z(1,1);
+    Zler(kk,jj,2)=Z(1,2);
+    Zler(kk,jj,3)=Z(2,1);
+    Zler(kk,jj,4)=Z(2,2);
+    Tler(kk,jj,1)=T(1,1);
+    Tler(kk,jj,2)=T(2,1);
+
+    Zler0(kk,jj,1)=Z0(1,1);
+    Zler0(kk,jj,2)=Z0(1,2);
+    Zler0(kk,jj,3)=Z0(2,1);
+    Zler0(kk,jj,4)=Z0(2,2);
+    Tler0(kk,jj,1)=T0(1,1);
+    Tler0(kk,jj,2)=T0(2,1);
+
+    E1ler(jj,1:2)=[ex1 ey1];
+    E2ler(jj,1:2)=[ex2 ey2];
+    H1ler(jj,1:3)=[hx1 hy1 hz1];
+    H2ler(jj,1:3)=[hx2 hy2 hz2];
+
+    detler(jj,1)=1./det([hx1 hy1;hx2 hy2]);
+
+    roa(kk,jj,1)=abs(Z(1,1))^2/(mu*w);
+    roa(kk,jj,2)=abs(Z(1,2))^2/(mu*w);
+    roa(kk,jj,3)=abs(Z(2,1))^2/(mu*w);
+    roa(kk,jj,4)=abs(Z(2,2))^2/(mu*w);
+
+    faza(kk,jj,1)=angle(Z(1,1))/pi*180;
+    faza(kk,jj,2)=angle(Z(1,2))/pi*180;
+    faza(kk,jj,3)=angle(Z(2,1))/pi*180;
+    faza(kk,jj,4)=angle(Z(2,2))/pi*180;
+
+end
+    
+end
+
+
+% save('hpsonucCaseCn.mat','roa','faza','flist','Zler','Tler');
+
+
+
+
+
+
+
+ww=load('usuimodelFEFF.mat');
+
+
+Z1=[];
+Z2=[];
+wei=[];
+for ii=1:16%:length(flist)
+
+    zxx1=ww.veri(ii).Z0(:,1);
+    zxy1=ww.veri(ii).Z0(:,2);
+    zyx1=ww.veri(ii).Z0(:,3);
+    zyy1=ww.veri(ii).Z0(:,4);
+
+    zxx2=Zler(ii,:,1).';
+    zxy2=Zler(ii,:,2).';
+    zyx2=Zler(ii,:,3).';
+    zyy2=Zler(ii,:,4).';    
+    
+    for jj=1:size(zxx1,1)
+    al=[zxx1(jj) zxy1(jj) zyx1(jj) zyy1(jj)];
+    al=abs(al);
+    al=max(al)*0.05;
+    wei=[wei;al;al;al;al];
+    Z1=[Z1;zxx1(jj);zxy1(jj);zyx1(jj);zyy1(jj)];
+    Z2=[Z2;zxx2(jj);zxy2(jj);zyx2(jj);zyy2(jj)];
+
+    % wei=[wei;al;al]; 
+    % Z1=[Z1;zxy1(jj);zyx1(jj)];
+    % Z2=[Z2;zxy2(jj);zyx2(jj)];
+
+    end
+
+
+end
+
+
+ara=(Z1-Z2)./wei;
+kars=gather([Z1 Z2 ara]);
+
+norm(ara)
+
+
+sqrt(ara'*ara/length(ara))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+return
+
+
+
+
+
+f=0.001; % frekanslar
+
+
+% f=10; % frekanslar
+mu=4*pi*10^-7;
+w=2*pi*f;
+kat=sqrt(-1)*w*mu;
+Amatris=[R1+kat*M1];
+sag=sagm;
+
+% Amatris=Amatris(1:totkenar,1:totkenar);
+% sag=sagm(1:totkenar,:);
+
+
+% ll=load('debug1.mat');
+
+
+[v0,r0,c0]=sparse2csr(Amatris);
+rowg=gpuArray(r0);
+colg=gpuArray(c0);
+valg=gpuArray(v0);
+bg=gpuArray(sag);
+
+tic
+[xx]=LUcuDSS(rowg,colg,valg,complex(bg),int32(size(bg,2))); %sweeping
+toc
+xx=gather(xx);
+
+relres=norm(Amatris*xx-sag)/norm(sag);
+fprintf("Düz çözüm relative residual=%e\n",relres);
+
+xx=gather(xx);
+
+x1=xx(:,1);
+x2=xx(:,2);
+
+
+
+
+
+M=ones(4,4);
+mu=4*pi*10^-7;
+clear G le kler a b c d
+for jj=1:size(recv,1)
+
+    ii=recv(jj,5); 
+
+
+
+    % ii=26;
+
+    nler=eleman(ii,1:4);
+    hp=EL(jj,20); 
+    
+    
+    XYZ=node(nler,:)';
+
+    % x0=recv(jj,1);
+    % y0=recv(jj,2);
+    x0=mean(XYZ(1,:)); 
+    y0=mean(XYZ(2,:));    
+    z0=mean(XYZ(3,:));    
+    xler(jj)=x0;
+    
+    M(2:end,:)=XYZ;
+    
+    Ve=det(M)/6;
+
+    a(1)=det(M([2 3 4],[2 3 4]));
+    a(2)=-det(M([2 3 4],[1 3 4]));
+    a(3)=det(M([2 3 4],[1 2 4]));
+    a(4)=-det(M([2 3 4],[1 2 3]));    
+    
+    b(1)=-det(M([1 3 4],[2 3 4]));
+    b(2)=det(M([1 3 4],[1 3 4]));
+    b(3)=-det(M([1 3 4],[1 2 4]));
+    b(4)=det(M([1 3 4],[1 2 3]));
+    
+    c(1)=det(M([1 2 4],[2 3 4]));
+    c(2)=-det(M([1 2 4],[1 3 4]));
+    c(3)=det(M([1 2 4],[1 2 4]));
+    c(4)=-det(M([1 2 4],[1 2 3]));
+    
+    d(1)=-det(M([1 2 3],[2 3 4]));
+    d(2)=det(M([1 2 3],[1 3 4]));
+    d(3)=-det(M([1 2 3],[1 2 4]));
+    d(4)=det(M([1 2 3],[1 2 3]));
+
+    a=a*sign(Ve);
+    b=b*sign(Ve);
+    c=c*sign(Ve);
+    d=d*sign(Ve);
+    
+
+    G=[b(:) c(:) d(:)];
+
+
+    % sign(Ve)
+    Ve=abs(Ve); 
+
+    cc=0;
+    clear kler
+    for i=1:3
+        for j=i+1:4
+            cc=cc+1;
+            kler(cc)=full(edge_no(nler(i),nler(j)));
+            kler(cc+6)=full(edge_no(nler(i),nler(j)))+totkenar;
+        end
+    end
+
+
+    kler2=zeros(1,8);
+    for i=1:4
+        if(i==1)
+            al=kler([4 5 6]);
+            sw=1;
+        elseif(i==2)
+            al=kler([2 3 6]);
+            sw=2;
+        elseif(i==3)
+            al=kler([1 3 5]);
+            sw=3;
+        elseif(i==4)
+            al=kler([1 2 4]);
+            sw=4;
+        end
+
+        al(al<0)=0;
+
+        if(nnz(al)>1)
+            al=sort(al(al>0));
+            kler2(i)=full(yuzey_no(al(1),al(2)));
+            kler2(i+4)=kler2(i)+totyuzey;
+        elseif(nnz(al)==1)
+            kler2(i)=yuzeybd(ii,sw);
+            kler2(i+4)=kler2(i)+totyuzey;
+            if(kler2(i)==0)
+            error('0 index');
+            end
+        else
+            kler2(i)=yuzeybd(ii,sw);
+            kler2(i+4)=kler2(i);
+            if(kler2(i)==0)
+            error('0 index');
+            end
+        end
+    end
+
+    kler2=kler2+totkenar*2;
+
+    for i=1:4
+    duzkose(i,1)=1/(6*Ve)*(a(i)+b(i)*x0+c(i)*y0+d(i)*z0);
+    end  
+
+    clear duzkenar
+    for i=1:6
+    i1=lis(i,1);
+    i2=lis(i,2);
+
+    L1=duzkose(i1);
+    L2=duzkose(i2);    
+    p1=G(i1,:);
+    p2=G(i2,:);       
+    
+    rotkenar(i,:)=2*cross(p1,p2)/(6*Ve)^2;
+    rotkenar(i+6,:)=0;
+
+    duzkenar(i,:)=(L1*p2-L2*p1)/(6*Ve);
+    duzkenar(i+6,:)=(L1*p2+L2*p1)/(6*Ve);
+    end
+
+
+    for i=1:4
+
+    i1=lis2(i,1);
+    i2=lis2(i,2);
+    i3=lis2(i,3);  
+
+    L1=duzkose(i1);
+    L2=duzkose(i2);
+    L3=duzkose(i3);    
+    p1=G(i1,:);
+    p2=G(i2,:);    
+    p3=G(i3,:);    
+
+    duzkenar2(i,:)=(2*L2*L3*p1-L1*L2*p3-L1*L3*p2)/(6*Ve);
+    rotkenar2(i,:)=3*cross(L3*p2+L2*p3,p1)/(6*Ve)^2;
+
+    i1=lis2(i,2);
+    i2=lis2(i,3);
+    i3=lis2(i,1); 
+
+    L1=duzkose(i1);
+    L2=duzkose(i2);
+    L3=duzkose(i3);    
+    p1=G(i1,:);
+    p2=G(i2,:);    
+    p3=G(i3,:);     
+
+    duzkenar2(i+4,:)=(2*L2*L3*p1-L1*L2*p3-L1*L3*p2)/(6*Ve);
+    rotkenar2(i+4,:)=3*cross(L3*p2+L2*p3,p1)/(6*Ve)^2;
+
+    end
+
+
+    duzkenarA=[duzkenar;duzkenar2];
+    rotkenarA=[rotkenar;rotkenar2];
+
+   
+    duzkenarf=[duzkenarA];
+    rotkenarf=[rotkenarA/(-sqrt(-1)*w*mu)];  %%%
+    klerf=[kler kler2];
+
+    % duzkenarf=duzkenarf(1:6,:);
+    % rotkenarf=rotkenarf(1:6,:);
+    % klerf=klerf(1:6);
+
+
+    duzkenarf=duzkenarf(1:20,:);
+    rotkenarf=rotkenarf(1:20,:);    
+    klerf=klerf(1:6);    
+    klerhp1=HPm1(hp,:)+totkenar;
+    klerhp2=HPm2(hp,:)+totkenar+totkenarhp;
+    klerf=[klerf klerhp1 klerhp2 klerhp2+totyuzeyhp];
+
+    e1=x1(klerf);
+    e2=x2(klerf);
+
+    E1=(duzkenarf')*e1;
+    H1=(rotkenarf'*e1);
+    
+    E2=(duzkenarf')*e2;
+    H2=(rotkenarf'*e2);
+
+
+    ex1=E1(1);
+    ey1=E1(2);
+    hx1=H1(1);
+    hy1=H1(2);
+    hz1=H1(3);
+
+    ex2=E2(1);
+    ey2=E2(2);
+    hx2=H2(1);
+    hy2=H2(2);
+    hz2=H2(3);
+
+    Z=inv([hx1 hy1;hx2 hy2])*[ex1 ey1 hz1;ex2 ey2 hz2];    
+    T0=-[Z(1,3);Z(2,3)];
+    Z0=Z(1:2,1:2).';
+
+    Z=Z0;
+    T=T0;
+    
+    Zler(jj,1)=Z(1,1);
+    Zler(jj,2)=Z(1,2);
+    Zler(jj,3)=Z(2,1);
+    Zler(jj,4)=Z(2,2);
+    Tler(jj,1)=T(1,1);
+    Tler(jj,2)=T(2,1);
+
+    Zler0(jj,1)=Z0(1,1);
+    Zler0(jj,2)=Z0(1,2);
+    Zler0(jj,3)=Z0(2,1);
+    Zler0(jj,4)=Z0(2,2);
+    Tler0(jj,1)=T0(1,1);
+    Tler0(jj,2)=T0(2,1);
+
+
+    E1ler(jj,1:2)=[ex1 ey1];
+    E2ler(jj,1:2)=[ex2 ey2];
+    H1ler(jj,1:3)=[hx1 hy1 hz1];
+    H2ler(jj,1:3)=[hx2 hy2 hz2];
+
+    detler(jj,1)=1./det([hx1 hy1;hx2 hy2]);
+
+    roa(jj,1)=abs(Z(1,1))^2/(mu*w);
+    roa(jj,2)=abs(Z(1,2))^2/(mu*w);
+    roa(jj,3)=abs(Z(2,1))^2/(mu*w);
+    roa(jj,4)=abs(Z(2,2))^2/(mu*w);
+
+    faza(jj,1)=angle(Z(1,1))/pi*180;
+    faza(jj,2)=angle(Z(1,2))/pi*180;
+    faza(jj,3)=angle(Z(2,1))/pi*180;
+    faza(jj,4)=angle(Z(2,2))/pi*180;
+
+end
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
