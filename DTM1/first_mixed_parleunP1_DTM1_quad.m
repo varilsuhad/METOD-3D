@@ -45,14 +45,14 @@ wt2=[-0.0789333333333333, 0.0457333333333333, 0.0457333333333333, 0.045733333333
      0.0656948493683187, 0.0656948493683187, 0.0656948493683187, 0.0656948493683187, 0.0656948493683187]/6;
 
 eleman=sort(eleman,1);
-[EL,node_no,edge_no,totkenar,totyuzey,yuzey_no,yuzeybd] = ELkurtet2(node,eleman,rho); %Eleman matrisi
+[EL,node_no,edge_no,totkenar,totyuzey,yuzey_no,yuzeybd] = ELkurtet2(node,eleman,rho); %Element matrix
 
 eleman=eleman';
 node=node';
 
 ep=10^-5;
 
-lis=[1 2;1 3; 1 4 ; 2 3; 2 4 ;3 4]; %bu kenar node listesi
+lis=[1 2;1 3; 1 4 ; 2 3; 2 4 ;3 4]; %this is the edge-node list
 lis2=[3 2 4 ; 3 1 4; 2 1 4; 2 1 3];
 
 d=zeros(4,1);
@@ -70,9 +70,9 @@ totnode=max(al)-totkenar;
 
 sag=zeros(totkenar+totnode,2);
 
-ix1=[];iy1=[];iv1a=[];iv1b=[];sayac1=0; %rot +F
-ix3=[];iy3=[];iv3=[];sayac3=0; %D
-ix4=[];iy4=[];iv4=[];sayac4=0; %P
+ix1=[];iy1=[];iv1a=[];iv1b=[];sayac1=0; %curl + F
+ix3=[];iy3=[];iv3=[];sayac3=0; %D matrix
+ix4=[];iy4=[];iv4=[];sayac4=0; %P matrix
 
 rot1=zeros(6,6);  %edge1 edge1
 F1=zeros(6,6);    %edge1 edge1
@@ -270,7 +270,7 @@ BB=[B1];
 MM=[F1];
 GG=MM\BB;
 
-F1=sigma*F1; %sonrada iw ve mu ekleyeceğiz şimdilik reel olarak kalsın
+F1=sigma*F1; %we will add i*w and mu later; keep it real for now
 
 FF=[F1];
 PP=GG'*FF*GG;
@@ -325,7 +325,7 @@ end
 
 kler3=EL(ii,12:15)-totkenar;
 
-klerv2=zeros(1,6);  %tüm non-phi
+klerv2=zeros(1,6);  %all non-phi terms
 for i=1:6
     if(kler(i)>0)
     klerv2(i)=kler(i);
@@ -336,16 +336,16 @@ for i=1:6
     end
 end
 
-klerv1=zeros(1,4); %tüm phi
+klerv1=zeros(1,4); %all phi terms
 klerv1(1:4)=kler3;
 
-iszerov1=length(find(klerv1<0));  %tüm phi
-iszerov2=length(find(klerv2<0));  %tüm non-phi
+iszerov1=length(find(klerv1<0));  %all phi terms
+iszerov2=length(find(klerv2<0));  %all non-phi terms
 
     if(iszerov2==0)
 
-        rr=repmat(klerv2',[1 6]); %row nolar
-        cc=rr'; %col nolar;
+        rr=repmat(klerv2',[1 6]); %row indices
+        cc=rr'; %column indices;
 
         ix1(sayac1+1:sayac1+36)=rr(:);
         iy1(sayac1+1:sayac1+36)=cc(:);
@@ -353,9 +353,9 @@ iszerov2=length(find(klerv2<0));  %tüm non-phi
         iv1b(sayac1+1:sayac1+36)=FF(:);
         sayac1=sayac1+36;
     else
-        nke=find(klerv2>0); % bunlar kalacak
-        rr=repmat(klerv2(nke)',[1 length(nke)]); %row nolar
-        cc=rr'; %col nolar;
+        nke=find(klerv2>0); % these will remain
+        rr=repmat(klerv2(nke)',[1 length(nke)]); %row indices
+        cc=rr'; %column indices;
         nonz=length(nke)^2;
 
         RRm=RR(nke,nke);
@@ -370,17 +370,17 @@ iszerov2=length(find(klerv2<0));  %tüm non-phi
 
     if(iszerov1==0)
 
-        rr=repmat(klerv1',[1 4]); %row nolar
-        cc=rr'; %col nolar;
+        rr=repmat(klerv1',[1 4]); %row indices
+        cc=rr'; %column indices;
 
         ix4(sayac4+1:sayac4+16)=rr(:);
         iy4(sayac4+1:sayac4+16)=cc(:);
         iv4(sayac4+1:sayac4+16)=PP(:);
         sayac4=sayac4+16;
     else
-        nke=find(klerv1>0); % bunlar kalacak
-        rr=repmat(klerv1(nke)',[1 length(nke)]); %row nolar
-        cc=rr'; %col nolar;
+        nke=find(klerv1>0); % these will remain
+        rr=repmat(klerv1(nke)',[1 length(nke)]); %row indices
+        cc=rr'; %column indices;
         nonz=length(nke)^2;
 
         PPm=PP(nke,nke);
@@ -392,8 +392,8 @@ iszerov2=length(find(klerv2<0));  %tüm non-phi
     end
 
     if(iszerov1==0 && iszerov2==0)
-        rr=repmat(klerv1',[1 6]); %row nolar
-        cc=repmat(klerv2,[4 1]); %row nolar
+        rr=repmat(klerv1',[1 6]); %row indices
+        cc=repmat(klerv2,[4 1]); %row indices
 
         ix3(sayac3+1:sayac3+24)=rr(:);
         iy3(sayac3+1:sayac3+24)=cc(:);
@@ -401,11 +401,11 @@ iszerov2=length(find(klerv2<0));  %tüm non-phi
         sayac3=sayac3+24;
 
     else
-        nke=find(klerv1>0); % bunlar kalacak
-        nke2=find(klerv2>0); % bunlar kalacak
+        nke=find(klerv1>0); % these will remain
+        nke2=find(klerv2>0); % these will remain
 
-        rr=repmat(klerv1(nke)',[1 length(nke2)]); %row nolar
-        cc=repmat(klerv2(nke2),[length(nke) 1]); %row nolar
+        rr=repmat(klerv1(nke)',[1 length(nke2)]); %row indices
+        cc=repmat(klerv2(nke2),[length(nke) 1]); %row indices
 
         nonz=length(nke)*length(nke2);
         DDm=DD(nke,nke2);
@@ -418,18 +418,18 @@ iszerov2=length(find(klerv2<0));  %tüm non-phi
 
     iszero=length(find(kler<0));
 
-    if(iszero~=0) %Eğer sınıra denk gelmiyorsa burası
+    if(iszero~=0) %If it does not lie on a boundary, use this block
 
-        %Eğer sınırda kenar varsa burası
+        %If there is a boundary edge, use this block
 
-        ke=find(kler<0); % bunlar dizeyden düşecek
-        nke=find(kler>0); % bunlar kalacak
+        ke=find(kler<0); % these will be removed from the system
+        nke=find(kler>0); % these will remain
 
         sag_local=zeros(6,2);
 
         for i=1:length(ke)
 
-            %Burada noktaların sırası önemli vektörler n1 den n2 ye gidiyor
+            %Point ordering is important here; vectors are oriented from n1 to n2
             if(ke(i)==1)
                 n1=nler(1);
                 n2=nler(2);
@@ -465,13 +465,13 @@ iszerov2=length(find(klerv2<0));  %tüm non-phi
                 end
             end
 
-            %Burada hangi yüzeyde olduğuba bakıyorum
-            if(kler(ke(i))==-1 || kler(ke(i))==-2) %solda sagda  y-z yönünde açı var
+            %Here I check which surface it lies on
+            if(kler(ke(i))==-1 || kler(ke(i))==-2) %left/right: angle in the y-z plane
             xyz1=node(n1,:);
             xyz2=node(n2,:);
 
             if( abs(xyz1(1)-xyz2(1))>ep)
-            error('x aynı olmalı');
+            error('x should be the same');
             end
 
             if( abs(xyz1(2)-xyz2(2))<ep)
@@ -487,17 +487,17 @@ iszerov2=length(find(klerv2<0));  %tüm non-phi
             vec=[1;0];
             R1=[cosd(aci) -sind(aci) ; sind(aci) cosd(aci)];
             al=R1*vec;
-            val=al(1); % sol yada sagdaki kenarın değeri
+            val=al(1); % value of the left or right edge
 
             sag_local(nke,1)=sag_local(nke,1)-rot1(nke,ke(i))*val;
             %
-            elseif(kler(ke(i))==-3 || kler(ke(i))==-4) %önde arkada x-z yönünde açı var
+            elseif(kler(ke(i))==-3 || kler(ke(i))==-4) %front/back: angle in the x-z plane
 
             xyz1=node(n1,:);
             xyz2=node(n2,:);
 
             if( abs(xyz1(2)-xyz2(2))>ep)
-            error('y aynı olmalı');
+            error('y should be the same');
             end
 
             if( abs(xyz1(1)-xyz2(1))<ep)
@@ -513,14 +513,14 @@ iszerov2=length(find(klerv2<0));  %tüm non-phi
             vec=[1;0];
             R1=[cosd(aci) -sind(aci) ; sind(aci) cosd(aci)];
             al=R1*vec;
-            val=al(1); % ön yada arka kenarın değeri bu
+            val=al(1); % this is the value of the front or back edge
 
             sag_local(nke,2)=sag_local(nke,2)-rot1(nke,ke(i))*val;
 
-            elseif(kler(ke(i))==-5 || kler(ke(i))==-6) %üstte altta x y yününde açı var
+            elseif(kler(ke(i))==-5 || kler(ke(i))==-6) %top/bottom: angle in the x-y plane
 
             if( abs(xyz1(3)-xyz2(3))>ep)
-            error('z aynı olmalı');
+            error('z should be the same');
             end
 
             xyz1=node(n1,:);
@@ -529,11 +529,11 @@ iszerov2=length(find(klerv2<0));  %tüm non-phi
             nor(2)=xyz2(2)-xyz1(2);
             aci=atan2(nor(2),nor(1))/pi*180;
 
-            %Ex basıyorum
+            %I apply Ex
             vec=[1;0];
             R1=[cosd(aci) -sind(aci) ; sind(aci) cosd(aci)];
             al=R1*vec;
-            val=al(1); % üst yada alt
+            val=al(1); % top or bottom
 
             sag_local(nke,2)=sag_local(nke,2)-rot1(nke,ke(i))*val;
             val=al(2);
@@ -541,7 +541,7 @@ iszerov2=length(find(klerv2<0));  %tüm non-phi
             sag_local(nke,1)=sag_local(nke,1)-rot1(nke,ke(i))*val;
 
             else
-            error('1-6 olmalı');
+            error('must be between 1 and 6');
 
             end
         end
@@ -581,7 +581,7 @@ ff=1./T;
 
 for kk=1:length(ff)
 
-f=ff(kk); % frekanslar
+f=ff(kk); % frequencies
 mu=4*pi*10^-7;
 w=2*pi*f;
 
@@ -611,7 +611,7 @@ tic
 toc
 
 relres=norm(Amatris2*xx-sag2)/norm(sag2);
-fprintf("Düz çözüm relative residual=%e\n",relres);
+fprintf("Direct solution relative residual=%e\n",relres);
 
 xx=gather(xx);
 dr2=size(bsag,1);

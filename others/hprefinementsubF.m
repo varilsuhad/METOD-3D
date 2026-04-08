@@ -43,7 +43,7 @@ for i=1:3
         cc=cc+1;
         if(bak(i)==1 && bak(j)==1)
 
-            %%%%%%%%%%%%%%%%%%%%GERI AÇ
+            %%%%%%%%%%%%%%%%%%%%RE-ENABLE
         % if(kler(cc)>0)
         % kler(cc)=0;
         % end
@@ -107,13 +107,13 @@ if(nnz(bak)==3)
         kler(4)=0;
         end
     else
-    error('Olamaz yuzey');
+    error('Invalid surface');
     end
 
 end
 
 if(nnz(bak)==4 && nnz(nler>0)==4)
-warning('Olamaz atıldı');
+warning('Unexpected case discarded');
 EL(el,20+hpl)=0;
 c=c-1;
 continue;
@@ -181,7 +181,7 @@ for ii=1:c
         HPm2(ii,i)=sakla;
 
         if(sakla==0)
-        error('Olamaz');
+        error('Invalid state');
         end
         elseif(ko<0)
         HPm2(ii,i)=ko;

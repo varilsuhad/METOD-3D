@@ -15,7 +15,7 @@ load('TM2_linear.mat');
 % load('TM2_p4.mat');
 
 eleman=sort(eleman,1);
-[EL,node_no,edge_no,totkenar,totyuzey,yuzey_no,yuzeybd] = ELkurtet2(node,eleman,rho); %Eleman matrisi
+[EL,node_no,edge_no,totkenar,totyuzey,yuzey_no,yuzeybd] = ELkurtet2(node,eleman,rho); %Element matrix
 
 [R1,M1,sag] = first_mixed_order_fun(eleman,node,EL);
 
@@ -27,7 +27,7 @@ flist=ww.f;
 
 for kk=1:length(flist)
 
-f=flist(kk); % frekanslar
+f=flist(kk); % frequencies
 
 mu=4*pi*10^-7;
 w=2*pi*f;
@@ -50,7 +50,7 @@ toc
 % toc
 
 relres=norm(Amatris*xx-sag)/norm(sag);
-fprintf("Düz çözüm relative residual=%e\n",relres);
+fprintf("Direct solution relative residual=%e\n",relres);
 
 xx=gather(xx);
 x1=xx(:,1);
@@ -59,7 +59,7 @@ x2=xx(:,2);
 [val,row,col]=sparse2csr(Amatris,1);
 n = size(sag,1);
 
-lis=[1 2;1 3; 1 4 ; 2 3; 2 4 ;3 4]; %bu kenar node listesi
+lis=[1 2;1 3; 1 4 ; 2 3; 2 4 ;3 4]; %this is the edge-node list
 lis2=[3 2 4 ; 3 1 4; 2 1 4; 2 1 3];
 
 M=ones(4,4);

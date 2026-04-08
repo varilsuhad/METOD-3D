@@ -8,10 +8,10 @@
 % ========================================================================
 function [EL,node_number,K2,totkenar,totyuzey,Y1,yuzeybd,EL2,K,yuzeybd2] = ELkurtet2(node,eleman,rho)
 
-%%%SORT ediyorumki DoF yönleri karışmasın
+%%%Sort so that DoF directions do not get mixed
 eleman=sort(eleman,1);
 
-%Sınırlardaki node'ların değerini bulduk
+%Found the values of boundary nodes
 
 xmin=min(node(1,:));
 xmax=max(node(1,:));
@@ -22,8 +22,8 @@ ymax=max(node(2,:));
 zmin=min(node(3,:));
 zmax=max(node(3,:));
 
-%Şimdi eleman matrisine bakıp kenar tanımlayalım
-%Bir sparse matris oluşturacağım burada
+%Now define edges from the element matrix
+%I will create a sparse matrix here
 
 c=0;
 ix=[];iy=[];iv=[];
@@ -31,7 +31,7 @@ for i=1:size(eleman,2)
     al=eleman(:,i);
     al=sort(al,'ascend');
 
-    %toplam 6 adet kenar
+    %a total of 6 edges
     for j=2:4
         c=c+1;
         ix(c)=al(1);iy(c)=al(j);iv(c)=1;
@@ -52,7 +52,7 @@ K=sparse(ix,iy,iv,tot,tot);
 ep=10^-5;
 c=0;
 
-%Sınırdaki nodelar bulunur
+%Boundary nodes are identified
 sinir_node=zeros(size(node,2),1);
 for i=1:size(node,2)
     xi=node(1,i);
@@ -75,29 +75,29 @@ for i=1:size(node,2)
     elseif (con2==1 && (con1==0 && con3==0 && con4==0 && con5==0 && con6==0))
     sinir_node(i)=2; %sagda
     elseif(con3==1 && (con1==0 && con2==0 && con4==0 && con5==0 && con6==0))
-    sinir_node(i)=3;  %önde
+    sinir_node(i)=3;  %front
     elseif(con4==1 && (con1==0 && con2==0 && con3==0 && con5==0 && con6==0))
     sinir_node(i)=4;   %arkada
     elseif(con5==1 && (con1==0 && con2==0 && con3==0 && con4==0 && con6==0))
-    sinir_node(i)=5;   %üstte
+    sinir_node(i)=5;   %top
     elseif(con6==1 && (con1==0 && con2==0 && con3==0 && con4==0 && con5==0))
     sinir_node(i)=6;   %altta
     elseif(con1==1 && con3==1 && con5==1 && (con2==0 && con4==0 && con6==0))
-    sinir_node(i)=7;   % köşe no1
+    sinir_node(i)=7;   % corner no.1
     elseif(con2==1 && con3==1 && con5==1 && (con1==0 && con4==0 && con6==0))
-    sinir_node(i)=8;   % köşe no2
+    sinir_node(i)=8;   % corner no.2
     elseif(con2==1 && con4==1 && con5==1 && (con1==0 && con3==0 && con6==0))
-    sinir_node(i)=9;   % köşe no3
+    sinir_node(i)=9;   % corner no.3
     elseif(con1==1 && con4==1 && con5==1 && (con2==0 && con3==0 && con6==0))
-    sinir_node(i)=10;   % köşe no4
+    sinir_node(i)=10;   % corner no.4
     elseif(con1==1 && con3==1 && con6==1 && (con2==0 && con4==0 && con5==0))
-    sinir_node(i)=11;   % köşe no5
+    sinir_node(i)=11;   % corner no.5
     elseif(con2==1 && con3==1 && con6==1 && (con1==0 && con4==0 && con5==0))
-    sinir_node(i)=12;   % köşe no6
+    sinir_node(i)=12;   % corner no.6
     elseif(con2==1 && con4==1 && con6==1 && (con1==0 && con3==0 && con5==0))
-    sinir_node(i)=13;   % köşe no7
+    sinir_node(i)=13;   % corner no.7
     elseif(con1==1 && con4==1 && con6==1 && (con2==0 && con3==0 && con5==0))
-    sinir_node(i)=14;   % köşe no8
+    sinir_node(i)=14;   % corner no.8
     elseif(con1==1 && con5==1 && (con2==0 && con3==0 && con4==0 && con6==0 ))
     sinir_node(i)=15;   % Ey1
     elseif(con2==1 && con5==1 && (con1==0 && con3==0 && con4==0 && con6==0 ))
@@ -128,7 +128,7 @@ for i=1:size(node,2)
 
 end
 
-%Şimdi kenarları numaralandıralım sınırlardaki kenarların no'su farklı
+%Now number the edges; boundary edges use different IDs
 %olacak
 [ix,iy,iv]=find(K);
 
@@ -137,7 +137,7 @@ iy2=iy;
 iv2=1:length(iv);
 K=sparse(ix2,iy2,iv2,tot,tot);
 
-%Kenarlar numaralandırılır
+%Edges are numbered
 c=0;
 c2=0;
 for i=1:length(ix)
@@ -158,38 +158,38 @@ else
         || sinir_node(xi)==15 || sinir_node(xi)==17 || sinir_node(xi)==23 || sinir_node(xi)==25) && ...
         (sinir_node(yi)==1 || sinir_node(yi)==7 || sinir_node(yi)==10 || sinir_node(yi)==11 || sinir_node(yi)==14 ...
         || sinir_node(yi)==15 || sinir_node(yi)==17 || sinir_node(yi)==23 || sinir_node(yi)==25))
-    iv(i)=-1;  % ayırt edebilmek için
-    %kenar solda
+    iv(i)=-1;  %for distinguishing them
+    %edge on the left
     elseif ((sinir_node(xi)==2 || sinir_node(xi)==8 || sinir_node(xi)==9 || sinir_node(xi)==12 || sinir_node(xi)==13 ...
         || sinir_node(xi)==16 || sinir_node(xi)==18 || sinir_node(xi)==24 || sinir_node(xi)==26) && ...
         (sinir_node(yi)==2 || sinir_node(yi)==8 || sinir_node(yi)==9 || sinir_node(yi)==12 || sinir_node(yi)==13 ...
         || sinir_node(yi)==16 || sinir_node(yi)==18 || sinir_node(yi)==24 || sinir_node(yi)==26))
     iv(i)=-2;
-    %kenar sagda
+    %edge on the right
     elseif ((sinir_node(xi)==3 || sinir_node(xi)==7 || sinir_node(xi)==8 || sinir_node(xi)==11 || sinir_node(xi)==12 ...
         || sinir_node(xi)==19 || sinir_node(xi)==21 || sinir_node(xi)==23 || sinir_node(xi)==24) && ...
         (sinir_node(yi)==3 || sinir_node(yi)==7 || sinir_node(yi)==8 || sinir_node(yi)==11 || sinir_node(yi)==12 ...
         || sinir_node(yi)==19 || sinir_node(yi)==21 || sinir_node(yi)==23 || sinir_node(yi)==24))
     iv(i)=-3;
-    %kenar önde
+    %edge on the front
     elseif ((sinir_node(xi)==4 || sinir_node(xi)==9 || sinir_node(xi)==10 || sinir_node(xi)==13 || sinir_node(xi)==14 ...
         || sinir_node(xi)==20 || sinir_node(xi)==22 || sinir_node(xi)==25 || sinir_node(xi)==26) && ...
         (sinir_node(yi)==4 || sinir_node(yi)==9 || sinir_node(yi)==10 || sinir_node(yi)==13 || sinir_node(yi)==14 ...
         || sinir_node(yi)==20 || sinir_node(yi)==22 || sinir_node(yi)==25 || sinir_node(yi)==26))
     iv(i)=-4;
-    %kenar arkada
+    %edge on the back
     elseif ((sinir_node(xi)==5 || sinir_node(xi)==7 || sinir_node(xi)==8 || sinir_node(xi)==9 || sinir_node(xi)==10 ...
         || sinir_node(xi)==19 || sinir_node(xi)==20 || sinir_node(xi)==15 || sinir_node(xi)==16) && ...
         (sinir_node(yi)==5 || sinir_node(yi)==7 || sinir_node(yi)==8 || sinir_node(yi)==9 || sinir_node(yi)==10 ...
         || sinir_node(yi)==19 || sinir_node(yi)==20 || sinir_node(yi)==15 || sinir_node(yi)==16))
     iv(i)=-5;
-    %kenar üstte
+    %edge on the top
     elseif ((sinir_node(xi)==6 || sinir_node(xi)==11 || sinir_node(xi)==12 || sinir_node(xi)==13 || sinir_node(xi)==14 ...
         || sinir_node(xi)==21 || sinir_node(xi)==22 || sinir_node(xi)==17 || sinir_node(xi)==18) && ...
         (sinir_node(yi)==6 || sinir_node(yi)==11 || sinir_node(yi)==12 || sinir_node(yi)==13 || sinir_node(yi)==14 ...
         || sinir_node(yi)==21 || sinir_node(yi)==22 || sinir_node(yi)==17 || sinir_node(yi)==18))
     iv(i)=-6;
-    %kenar altta
+    %edge on the bottom
     elseif ((sinir_node(xi)==7 || sinir_node(xi)==8) && (sinir_node(yi)==7 || sinir_node(yi)==8))
     iv(i)=-3;
     %kenar Ex1
@@ -229,24 +229,24 @@ else
     elseif( (sinir_node(xi)<=6) && (sinir_node(yi)<=6) && abs(sinir_node(xi)-sinir_node(yi))~=0)
     c=c+1;
     iv(i)=c;
-    %Yüzeyler arası meshin içinden geçiyor, sınırda değil
+    %Passes through the mesh interior between surfaces, not on a boundary
     elseif( ((sinir_node(xi)==23 || sinir_node(xi)==24 || sinir_node(xi)==25 || sinir_node(xi)==26 ) && (sinir_node(yi)==5 || sinir_node(yi)==6)) ...
          || ((sinir_node(yi)==23 || sinir_node(yi)==24 || sinir_node(yi)==25 || sinir_node(yi)==26) && (sinir_node(xi)==5 || sinir_node(xi)==6)))
-    %Ez kenarların ortasondaki nokta alt veya üst noktalarla bağ kuramaz
-    %meshin içinden geçer
-    c=c+1; %%DÜZELTTİM
+    %The midpoint node of Ez edges cannot connect to top or bottom nodes
+    %it passes through the mesh interior
+    c=c+1; %%D matrix fixed
     iv(i)=c;
     elseif( ((sinir_node(xi)==19 || sinir_node(xi)==20 || sinir_node(xi)==21 || sinir_node(xi)==22) && (sinir_node(yi)==1 || sinir_node(yi)==2)) ...
          || ((sinir_node(yi)==19 || sinir_node(yi)==20 || sinir_node(yi)==21 || sinir_node(yi)==22) && (sinir_node(xi)==1 || sinir_node(xi)==2)))
-    %Ex kenarların ortasındaki noktalar Sol ve sag yüzeylerdeki noktalarla
-    %bağ kuramaz meshin içinden geçer
-    c=c+1; %%DÜZELTTİM
+    %Midpoint nodes of Ex edges cannot connect to nodes on left/right surfaces
+    %they pass through the mesh interior
+    c=c+1; %%D matrix fixed
     iv(i)=c;
     elseif( ((sinir_node(xi)==15 || sinir_node(xi)==16 || sinir_node(xi)==17 || sinir_node(xi)==18) && (sinir_node(yi)==3 || sinir_node(yi)==4)) ...
          || ((sinir_node(yi)==15 || sinir_node(yi)==16 || sinir_node(yi)==17 || sinir_node(yi)==18) && (sinir_node(xi)==3 || sinir_node(xi)==4)))
-    %Ey kenarların ortasındaki noktalar ön ve arka yüzeylerdeki noktalarla
-    %bağ kuramaz meshin içinden geçer
-    c=c+1; %%DÜZELTTİM
+    %Midpoint nodes of Ey edges cannot connect to nodes on front/back surfaces
+    %they pass through the mesh interior
+    c=c+1; %%D matrix fixed
     iv(i)=c;
     else
 
@@ -264,13 +264,13 @@ sinirdakenar=length(find(iv<0));
 
 totkenar=max(iv);
 
-fprintf("\n %d kenar sınırda ve %d kenar içerde\n", sinirdakenar,totkenar);
+fprintf("\n %d edges are on the boundary and %d edges are inside\n", sinirdakenar,totkenar);
 
-%tekrar sparse matrisi kuralım
+%rebuild the sparse matrix
 K2=sparse(ix,iy,iv,tot,tot);
 % K2o=sparse(ix,iy,iv2,tot,tot);
 
-%Sınırdaki kenarları çizdirmece
+%Plot boundary edges
 figure;
 for i=1:length(sinir_node)
     if(sinir_node(i)~=0)
@@ -292,20 +292,20 @@ axis equal
 % return
 
 EL=zeros(size(eleman,2),15);
-%ilk 4 girdisi nodelar olacak sonraki 6 girdi kenarların no'ları olacak
-%11. değer ise rho olsun
-%Son 4 numara ise node numaraları olacak, belki ilerde onları da çözmek
-%gerekirse diye. Iteratif çözüm için gerekiyor
+%The first 4 entries are node IDs; the next 6 are edge IDs
+%The 11th value is rho
+%The last 4 values are node numbers, in case we solve for them later
+%This is needed for iterative solution workflows
 EL2=zeros(size(eleman,2),10);
 
 ii=find(sinir_node==0);
 vec=1:length(ii);
 node_number=ones(length(sinir_node),1)*-7;
 node_number(ii)=vec;
-totnode=length(vec); %sınırda olmayan node sayısı
-%Eğer sınırdaysa -7 verdim
+totnode=length(vec); %number of non-boundary nodes
+%If on the boundary, assigned as -7
 
-fprintf("\n %d node sınırda ve %d node içerde\n", length(sinir_node)-totnode,totnode);
+fprintf("\n %d nodes are on the boundary and %d nodes are inside\n", length(sinir_node)-totnode,totnode);
 
 for i=1:size(eleman,2)
     EL(i,1:4)=eleman(:,i);
@@ -368,12 +368,12 @@ for i=1:size(eleman,2)
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%% TÜM ELEMANLAR DAHİL DDÜŞÜRME YOK%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% ALL ELEMENTS INCLUDED, NO ELIMINATION %%%%%%%%%%%%%%%%%%%
 
 al=EL2(:,1:6);
 totkenar2=max(al(:));
 
-%Yüzeyler
+%Surfaces
 ix=[];iy=[];iv=[];
 c=0;c2=0;
 
@@ -471,7 +471,7 @@ EL2(ii,7:10)=kler2;
 
 end
 
-%Yüzeyler
+%Surfaces
 ix=[];iy=[];iv=[];
 c=0;c2=0;
 yuzeybd=zeros(size(EL,1),4);
@@ -654,7 +654,7 @@ for i=1:size(addi,1)
 
          jj1=addi(jj(1),6);
          jj2=addi(jj(2),6);
-        %Yüzeybd hem eksili hem de artılı elemanlara sahip
+        %yuzeybd has both negative and positive elements
         yuzeybd(ii1,jj1)=full(Y2(ii1,ii2))+totyuzey1;
         yuzeybd(ii2,jj2)=full(Y2(ii1,ii2))+totyuzey1;
 
@@ -672,7 +672,7 @@ end
 
 nz1=nnz(yuzeybd<0);
 
-fprintf("\n %d yuzey sınırda ve %d yuzey içerde\n", nz1,totyuzey);
+fprintf("\n %d surfaces are on the boundary and %d surfaces are inside\n", nz1,totyuzey);
 
 yuzeybd2=yuzeybd;
 % ii=find(yuzeybd2~=0);

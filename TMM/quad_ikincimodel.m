@@ -13,7 +13,7 @@ reset(gpuDevice);
 load('TM2_quad.mat');
 
 eleman=sort(eleman,1);
-[EL,node_no,edge_no,totkenar,totyuzey,yuzey_no,yuzeybd] = ELkurtet2(node,eleman,rho); %Eleman matrisi
+[EL,node_no,edge_no,totkenar,totyuzey,yuzey_no,yuzeybd] = ELkurtet2(node,eleman,rho); %Element matrix
 
 [R1,M1,sag] = second_mixed_order_fun(eleman,node,EL);
 
@@ -26,7 +26,7 @@ figure;hist(kal4,20);
 
 % return
 
-lis=[1 2;1 3; 1 4 ; 2 3; 2 4 ;3 4]; %bu kenar node listesi
+lis=[1 2;1 3; 1 4 ; 2 3; 2 4 ;3 4]; %this is the edge-node list
 lis2=[3 2 4 ; 3 1 4; 2 1 4; 2 1 3];
 
 % return
@@ -37,7 +37,7 @@ flist=ww.f;
 for kk=1:length(flist)
 
 kk=16
-f=flist(kk); % frekanslar
+f=flist(kk); % frequencies
 
 mu=4*pi*10^-7;
 w=2*pi*f;
@@ -64,7 +64,7 @@ tic
 toc
 
 relres=norm(Amatris*xx-sag)/norm(sag);
-fprintf("Düz çözüm relative residual=%e\n",relres);
+fprintf("Direct solution relative residual=%e\n",relres);
 
 xx=gather(xx);
 x1=xx(:,1);

@@ -18,7 +18,7 @@ node=node';
 
 ep=10^-5;
 
-lis=[1 2;1 3; 1 4 ; 2 3; 2 4 ;3 4]; %bu kenar node listesi
+lis=[1 2;1 3; 1 4 ; 2 3; 2 4 ;3 4]; %this is the edge-node list
 lis2=[3 2 4 ; 3 1 4; 2 1 4; 2 1 3];
 
 d=zeros(4,1);
@@ -39,7 +39,7 @@ totnode=max(al)-totkenar;
 
 sag=zeros(totkenar,2);
 
-ix1=[];iy1=[];iv1a=[];iv1b=[];sayac1=0; %rot +F
+ix1=[];iy1=[];iv1a=[];iv1b=[];sayac1=0; %curl + F
 
 rot1=zeros(6,6);  %edge1 edge1
 F1=zeros(6,6);    %edge1 edge1
@@ -214,7 +214,7 @@ for i=1:6
     end
 end
 
-F1=sigma*F1; %sonrada iw ve mu ekleyeceğiz şimdilik reel olarak kalsın
+F1=sigma*F1; %we will add i*w and mu later; keep it real for now
 FF=[F1];
 RR=rot1;
 
@@ -272,7 +272,7 @@ kler3=EL(ii,12:15)-totkenar;
 
 klerv2=kler;
 
-% klerv2=zeros(1,6);  %tüm non-phi
+% klerv2=zeros(1,6);  %all non-phi terms
 % for i=1:6
 %     if(kler(i)>0)
 %     % klerv2(i+6)=kler(i)+totkenar;
@@ -282,12 +282,12 @@ klerv2=kler;
 %     end
 % end
 
-iszerov2=length(find(klerv2<0));  %tüm non-phi
+iszerov2=length(find(klerv2<0));  %all non-phi terms
 
 if(iszerov2==0)
 
-    rr=repmat(klerv2',[1 6]); %row nolar
-    cc=rr'; %col nolar;
+    rr=repmat(klerv2',[1 6]); %row indices
+    cc=rr'; %column indices;
 
     ix1(sayac1+1:sayac1+36)=rr(:);
     iy1(sayac1+1:sayac1+36)=cc(:);
@@ -295,9 +295,9 @@ if(iszerov2==0)
     iv1b(sayac1+1:sayac1+36)=FF(:);
     sayac1=sayac1+36;
 else
-    nke=find(klerv2>0); % bunlar kalacak
-    rr=repmat(klerv2(nke)',[1 length(nke)]); %row nolar
-    cc=rr'; %col nolar;
+    nke=find(klerv2>0); % these will remain
+    rr=repmat(klerv2(nke)',[1 length(nke)]); %row indices
+    cc=rr'; %column indices;
     nonz=length(nke)^2;
 
     RRm=RR(nke,nke);
@@ -312,18 +312,18 @@ end
 
     iszero=length(find(kler<0));
 
-    if(iszero~=0) %Eğer sınıra denk gelmiyorsa burası
+    if(iszero~=0) %If it does not lie on a boundary, use this block
 
-        %Eğer sınırda kenar varsa burası
+        %If there is a boundary edge, use this block
 
-        ke=find(kler<0); % bunlar dizeyden düşecek
-        nke=find(kler>0); % bunlar kalacak
+        ke=find(kler<0); % these will be removed from the system
+        nke=find(kler>0); % these will remain
 
         sag_local=zeros(6,2);
 
         for i=1:length(ke)
 
-            %Burada noktaların sırası önemli vektörler n1 den n2 ye gidiyor
+            %Point ordering is important here; vectors are oriented from n1 to n2
             if(ke(i)==1)
                 n1=nler(1);
                 n2=nler(2);
@@ -359,13 +359,13 @@ end
                 end
             end
 
-            %Burada hangi yüzeyde olduğuba bakıyorum
-            if(kler(ke(i))==-1 || kler(ke(i))==-2) %solda sagda  y-z yönünde açı var
+            %Here I check which surface it lies on
+            if(kler(ke(i))==-1 || kler(ke(i))==-2) %left/right: angle in the y-z plane
             xyz1=node(n1,:);
             xyz2=node(n2,:);
 
             if( abs(xyz1(1)-xyz2(1))>ep)
-            error('x aynı olmalı');
+            error('x should be the same');
             end
 
             if( abs(xyz1(2)-xyz2(2))<ep)
@@ -381,19 +381,19 @@ end
             vec=[1;0];
             R1=[cosd(aci) -sind(aci) ; sind(aci) cosd(aci)];
             al=R1*vec;
-            val=al(1); % sol yada sagdaki kenarın değeri
+            val=al(1); % value of the left or right edge
 
             % val=1;
 
             sag_local(nke,1)=sag_local(nke,1)-rot1(nke,ke(i))*val;
             %
-            elseif(kler(ke(i))==-3 || kler(ke(i))==-4) %önde arkada x-z yönünde açı var
+            elseif(kler(ke(i))==-3 || kler(ke(i))==-4) %front/back: angle in the x-z plane
 
             xyz1=node(n1,:);
             xyz2=node(n2,:);
 
             if( abs(xyz1(2)-xyz2(2))>ep)
-            error('y aynı olmalı');
+            error('y should be the same');
             end
 
             if( abs(xyz1(1)-xyz2(1))<ep)
@@ -409,16 +409,16 @@ end
             vec=[1;0];
             R1=[cosd(aci) -sind(aci) ; sind(aci) cosd(aci)];
             al=R1*vec;
-            val=al(1); % ön yada arka kenarın değeri bu
+            val=al(1); % this is the value of the front or back edge
 
             % val=1;
 
             sag_local(nke,2)=sag_local(nke,2)-rot1(nke,ke(i))*val;
 
-            elseif(kler(ke(i))==-5 || kler(ke(i))==-6) %üstte altta x y yününde açı var
+            elseif(kler(ke(i))==-5 || kler(ke(i))==-6) %top/bottom: angle in the x-y plane
 
             if( abs(xyz1(3)-xyz2(3))>ep)
-            error('z aynı olmalı');
+            error('z should be the same');
             end
 
             xyz1=node(n1,:);
@@ -429,11 +429,11 @@ end
 
             % aci=360-aci;
 
-            %Ex basıyorum
+            %I apply Ex
             vec=[1;0];
             R1=[cosd(aci) -sind(aci) ; sind(aci) cosd(aci)];
             al=R1*vec;
-            val=al(1); % üst yada alt
+            val=al(1); % top or bottom
             % val=al(2);
 
             % val=1;
@@ -445,7 +445,7 @@ end
             sag_local(nke,1)=sag_local(nke,1)-rot1(nke,ke(i))*val;
 
             else
-            error('1-6 olmalı');
+            error('must be between 1 and 6');
 
             end
         end
