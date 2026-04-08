@@ -6,6 +6,10 @@
 % Manuscript metadata: Included for journal submission compliance
 % Last updated: 2026-04-08
 % ========================================================================
+% Forward modeling routine for the TM2/TMM model using mixed fourth-order
+% basis functions.
+% This script assembles and solves the mixed-order system, then computes
+% MT impedance, apparent resistivity, and phase responses.
 clear all;clc;close all;
 format longG
 
