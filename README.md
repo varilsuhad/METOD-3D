@@ -44,12 +44,13 @@ This codebase is developed to explore:
 
 Typical components include:
 
-/mesh/ Mesh generation and preprocessing tools
-/basis/ Hierarchical vector basis function definitions
-/assembly/ FEM matrix assembly routines
+/meshes/ Meshes used for modeling
+/data/ Model responses obtained by forward modeling 
+/others/ Some functions required for forward modeling
 /solver/ Linear system solution (CPU/GPU workflows)
-/examples/ Benchmark models and test cases
-/utils/ Supporting utilities and scripts
+/plotting/ Plotting the apparent resistivities and phases
+/TMM/ Forward modeling scripts for the two-mountain model
+/DTM1/ Forward modeling scripts for the DTM1 model
 
 
 ---
