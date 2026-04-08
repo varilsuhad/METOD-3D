@@ -1,6 +1,5 @@
 function [son] = sekil1(i1,a,b,c,J,ok)
 
-
 if(ok==1)
     if(i1==1)
     son=1-a-b-c;
@@ -26,8 +25,5 @@ else
     error('asf');
     end
 end
-
-
-
 
 end
