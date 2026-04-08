@@ -1,3 +1,11 @@
+% ========================================================================
+% Author: Deniz Varılsüha
+% Affiliation: Istanbul Technical University (ITU)
+% Contact: deniz.varilsuha@itu.edu.tr
+% Journal: Computers & Geosciences
+% Manuscript metadata: Included for journal submission compliance
+% Last updated: 2026-04-08
+% ========================================================================
 % The forward modeling routine for the DTM1 model using the mixed fourth
 % order bases
 % It loads the DTM1_final1.mat for mesh and calculates impedances/rho and

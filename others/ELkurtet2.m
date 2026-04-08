@@ -1,3 +1,11 @@
+% ========================================================================
+% Author: Deniz Varılsüha
+% Affiliation: Istanbul Technical University (ITU)
+% Contact: deniz.varilsuha@itu.edu.tr
+% Journal: Computers & Geosciences
+% Manuscript metadata: Included for journal submission compliance
+% Last updated: 2026-04-08
+% ========================================================================
 function [EL,node_number,K2,totkenar,totyuzey,Y1,yuzeybd,EL2,K,yuzeybd2] = ELkurtet2(node,eleman,rho)
 
 %%%SORT ediyorumki DoF yönleri karışmasın

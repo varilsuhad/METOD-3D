@@ -1,10 +1,23 @@
-clear all;clc;close all;
+% ========================================================================
+% Author: Deniz Varılsüha
+% Affiliation: Istanbul Technical University (ITU)
+% Contact: deniz.varilsuha@itu.edu.tr
+% Journal: Computers & Geosciences
+% Manuscript metadata: Included for journal submission compliance
+% Last updated: 2026-04-08
+% ========================================================================
+%% Initialization
+clear all;
+clc;
+close all;
 
-
+%% Load data
 load('DTM1hiersonuc.mat');
 load('DTM1_IE_veri.mat');
-P=2;
-ara=[21,14];    
+
+%% Configuration
+P = 2;
+ara = [21,14];
 
 a=e{11,P};
 xx1=real(a(1:21:end,7));

@@ -1,3 +1,11 @@
+% ========================================================================
+% Author: Deniz Varılsüha
+% Affiliation: Istanbul Technical University (ITU)
+% Contact: deniz.varilsuha@itu.edu.tr
+% Journal: Computers & Geosciences
+% Manuscript metadata: Included for journal submission compliance
+% Last updated: 2026-04-08
+% ========================================================================
 function [son] = sekil1(i1,a,b,c,J,ok)
 
 if(ok==1)
