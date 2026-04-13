@@ -44,13 +44,13 @@ This codebase is developed to explore:
 
 Typical components include:
 
-/meshes/ Meshes used for modeling
-/data/ Model responses obtained by forward modeling 
-/others/ Some functions required for forward modeling
-/solver/ Linear system solution (CPU/GPU workflows)
-/plotting/ Plotting the apparent resistivities and phases
-/TMM/ Forward modeling scripts for the two-mountain model
-/DTM1/ Forward modeling scripts for the DTM1 model
+- /meshes/ Meshes used for modeling
+- /data/ Model responses obtained by forward modeling 
+- /others/ Some functions required for forward modeling
+- /solver/ Linear system solution (CPU/GPU workflows)
+- /plotting/ Plotting the apparent resistivities and phases
+- /TMM/ Forward modeling scripts for the two-mountain model
+- /DTM1/ Forward modeling scripts for the DTM1 model
 
 
 ---
