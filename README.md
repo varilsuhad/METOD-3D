@@ -40,8 +40,6 @@ This codebase is developed to explore:
 
 ## Repository Structure
 
-> ⚠️ The repository is under active development. Structure may evolve.
-
 Typical components include:
 
 - /meshes/ Meshes used for modeling
@@ -120,4 +118,4 @@ Email: deniz.varilsuha@itu.edu.tr
 
 ## License
 
-(To be specified)
+This project is licensed under the MIT License – see the LICENSE file for details.
