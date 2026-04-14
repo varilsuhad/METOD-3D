@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as follows:"
+
+authors:
+
+* family-names: "Varılsüha"
+  given-names: "Deniz"
+
+title: "METOD-3D: 3D Magnetotelluric Forward Modeling on Unstructured Meshes with Higher-Order Vector Basis Functions and Multi-GPU Acceleration"
+
+version: "1.0.0"
+
+date-released: 2026-04-08
+
+repository-code: "https://github.com/varilsuhad/METOD-3D"
+
+abstract: >
+Research-oriented software for 3D magnetotelluric forward modeling
+using unstructured tetrahedral meshes and hierarchical curl-conforming
+vector basis functions, with support for multi-GPU direct solvers.
+
+keywords:
+
+* magnetotellurics
+* finite element method
+* unstructured mesh
+* Nedelec elements
+* GPU computing
+
+license: MIT
