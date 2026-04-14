@@ -152,7 +152,7 @@ If you use this code or concepts from this work, please cite:
 
 For questions or collaboration inquiries:
 
-**Deniz Varılsüha**  
+*Deniz Varılsüha*  
 GitHub: https://github.com/varilsuhad  
 Email: deniz.varilsuha@itu.edu.tr
 ---
