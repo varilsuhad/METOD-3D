@@ -68,7 +68,7 @@ lis2=[3 2 4 ; 3 1 4; 2 1 4; 2 1 3];
 
 M=ones(4,4);
 mu=4*pi*10^-7;
-clear G le kler a b c d
+clear G kler a b c d
 for jj=1:size(recv,1)
 
     ii=recv(jj,4);
@@ -128,13 +128,6 @@ for jj=1:size(recv,1)
 
     klern=EL(ii,12:15);
 
-    le(1)=sqrt((XYZ(1,1)-XYZ(1,2))^2+(XYZ(2,1)-XYZ(2,2))^2+(XYZ(3,1)-XYZ(3,2))^2);
-    le(2)=sqrt((XYZ(1,1)-XYZ(1,3))^2+(XYZ(2,1)-XYZ(2,3))^2+(XYZ(3,1)-XYZ(3,3))^2);
-    le(3)=sqrt((XYZ(1,1)-XYZ(1,4))^2+(XYZ(2,1)-XYZ(2,4))^2+(XYZ(3,1)-XYZ(3,4))^2);
-    le(4)=sqrt((XYZ(1,2)-XYZ(1,3))^2+(XYZ(2,2)-XYZ(2,3))^2+(XYZ(3,2)-XYZ(3,3))^2);
-    le(5)=sqrt((XYZ(1,2)-XYZ(1,4))^2+(XYZ(2,2)-XYZ(2,4))^2+(XYZ(3,2)-XYZ(3,4))^2);
-    le(6)=sqrt((XYZ(1,3)-XYZ(1,4))^2+(XYZ(2,3)-XYZ(2,4))^2+(XYZ(3,3)-XYZ(3,4))^2);
-    le(:)=1;
 
     for i=1:4
     duzkose(i,1)=1/(6*Ve)*(a(i)+b(i)*x0+c(i)*y0+d(i)*z0);
@@ -144,9 +137,9 @@ for jj=1:size(recv,1)
     i1=lis(i,1);
     i2=lis(i,2);
 
-    rotkenar(i,:)=2*cross(G(i1,:),G(i2,:))/(6*Ve)^2*le(i);
+    rotkenar(i,:)=2*cross(G(i1,:),G(i2,:))/(6*Ve)^2;
     % rotkenar(i+6,:)=0;
-    duzkenar(i,:)=(duzkose(i1)*G(i2,:)-duzkose(i2)*G(i1,:))/(6*Ve)*le(i);
+    duzkenar(i,:)=(duzkose(i1)*G(i2,:)-duzkose(i2)*G(i1,:))/(6*Ve);
     % duzkenar(i+6,:)=(duzkose(i1)*G(i2,:)+duzkose(i2)*G(i1,:))/(6*Ve);
 
     end

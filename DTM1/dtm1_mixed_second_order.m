@@ -6,6 +6,7 @@
 % Manuscript metadata: Included for journal submission compliance
 % Last updated: 2026-04-08
 % ========================================================================
+
 % The forward modeling routine for the DTM1 model using the mixed second
 % order bases
 % It loads the DTM1_final1.mat for mesh and calculates impedances/rho and
@@ -17,6 +18,7 @@ load('DTM1_final1.mat');
 % Quadrature notation used throughout this file:
 %   xaK, yaK, zaK : barycentric coordinates of tetrahedral quadrature points
 %   wtK           : weights for the corresponding quadrature rule
+
 % The index K increases with the polynomial order that must be integrated.
 % Higher-order edge/face/interior basis products are evaluated with higher K.
 % ------------------------------------------------------------------------
@@ -70,12 +72,16 @@ ix1=[];iy1=[];iv1a=[];iv1b=[];sayac1=0; %curl + F
 rot1=zeros(6,6);  %edge1 edge1
 F1=zeros(6,6);    %edge1 edge1
 kler=zeros(1,6);
+
 spmd
+
 for ii=1:size(eleman,1)
+
 if(mod(ii,spmdSize)==spmdIndex-1)
 else
 continue;
 end
+
 sigma=1./rho(ii);
 nler=eleman(ii,1:4);
 XYZ=node(nler,:)';
@@ -105,28 +111,36 @@ det1=det(Jabc)*sgn;
 Jxyz=inv(Jabc);
 Ve=abs(Ve);
 quad=0;
+
 if(ellst(ii)>0)
 % quad=1;
 % eknode=nodelst(ellst(ii),6:11);
 % ekval=vallst(eknode,:);
 end
+
 quad=0;
 xa=xa1;
 ya=ya1;
 za=za1;
 wt=wt1;
+
 %%% Rot edge1*edge1
+
 for i=1:6
+
     for j=1:6
     i1=lis(i,1);
     i2=lis(i,2);
     j1=lis(j,1);
     j2=lis(j,2);
         sum1=0;
+
        for jj=1:length(xa)
+
         if(quad==1)
         [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
         end
+
         p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
         p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
         % L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
@@ -139,15 +153,20 @@ for i=1:6
         sek2=2*cross(p1,p2);
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
+
         rot1(i,j)=sum1;
     end
 end
+
 xa=xa1;
 ya=ya1;
 za=za1;
 wt=wt1;
+
 %%% Rot edge1*face1
+
 for i=1:6
+
     for j=1:4
     i1=lis(i,1);
     i2=lis(i,2);
@@ -155,10 +174,13 @@ for i=1:6
     j2=lis2(j,2);
     j3=lis2(j,3);
         sum1=0;
+
        for jj=1:length(xa)
+
         if(quad==1)
         [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
         end
+
         p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
         p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
         % L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
@@ -173,15 +195,19 @@ for i=1:6
         sek2=3*cross(L3*p2+L2*p3,p1);
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
+
         rot4(i,j)=sum1;
         j1=lis2(j,2);
         j2=lis2(j,3);
         j3=lis2(j,1);
         sum1=0;
+
        for jj=1:length(xa)
+
         if(quad==1)
         [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
         end
+
         p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
         p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
         % L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
@@ -196,15 +222,20 @@ for i=1:6
         sek2=3*cross(L3*p2+L2*p3,p1);
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
+
         rot4(i,j+4)=sum1;
     end
 end
+
 xa=xa1;
 ya=ya1;
 za=za1;
 wt=wt1;
+
 %%% Rot face1*face1
+
 for i=1:4
+
     for j=1:4
     i1=lis2(i,1);
     i2=lis2(i,2);
@@ -213,10 +244,13 @@ for i=1:4
     j2=lis2(j,2);
     j3=lis2(j,3);
         sum1=0;
+
        for jj=1:length(xa)
+
         if(quad==1)
         [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
         end
+
         p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
         p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
         p3=evaluate_shape_function(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
@@ -233,15 +267,19 @@ for i=1:4
         sek2=3*cross(L3*p2+L2*p3,p1);
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
+
         rot6(i,j)=sum1;
         j1=lis2(j,2);
         j2=lis2(j,3);
         j3=lis2(j,1);
         sum1=0;
+
        for jj=1:length(xa)
+
         if(quad==1)
         [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
         end
+
         p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
         p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
         p3=evaluate_shape_function(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
@@ -258,16 +296,20 @@ for i=1:4
         sek2=3*cross(L3*p2+L2*p3,p1);
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
+
         rot6(i,j+4)=sum1;
         rot6(j+4,i)=sum1;
         i1=lis2(i,2);
         i2=lis2(i,3);
         i3=lis2(i,1);
         sum1=0;
+
        for jj=1:length(xa)
+
         if(quad==1)
         [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
         end
+
         p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
         p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
         p3=evaluate_shape_function(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
@@ -284,25 +326,33 @@ for i=1:4
         sek2=3*cross(L3*p2+L2*p3,p1);
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
+
         rot6(i+4,j+4)=sum1;
     end
 end
+
 xa=xa1;
 ya=ya1;
 za=za1;
 wt=wt1;
+
 %%% M edge1*edge1
+
 for i=1:6
+
     for j=1:6
     i1=lis(i,1);
     i2=lis(i,2);
     j1=lis(j,1);
     j2=lis(j,2);
         sum1=0;
+
        for jj=1:length(xa)
+
         if(quad==1)
         [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
         end
+
         p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
         p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
         L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
@@ -315,25 +365,33 @@ for i=1:6
         sek2=L1*p2-L2*p1;
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
+
         F1(i,j)=sum1;
     end
 end
+
 xa=xa1;
 ya=ya1;
 za=za1;
 wt=wt1;
+
 %%% M edge1*edge2
+
 for i=1:6
+
     for j=1:6
     i1=lis(i,1);
     i2=lis(i,2);
     j1=lis(j,1);
     j2=lis(j,2);
         sum1=0;
+
        for jj=1:length(xa)
+
         if(quad==1)
         [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
         end
+
         p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
         p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
         L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
@@ -346,25 +404,33 @@ for i=1:6
         sek2=L1*p2+L2*p1;
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
+
         F2(i,j)=sum1;
     end
 end
+
 xa=xa1;
 ya=ya1;
 za=za1;
 wt=wt1;
+
 %%% M edge2*edge2
+
 for i=1:6
+
     for j=1:6
     i1=lis(i,1);
     i2=lis(i,2);
     j1=lis(j,1);
     j2=lis(j,2);
         sum1=0;
+
        for jj=1:length(xa)
+
         if(quad==1)
         [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
         end
+
         p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
         p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
         L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
@@ -377,15 +443,20 @@ for i=1:6
         sek2=L1*p2+L2*p1;
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
+
         F3(i,j)=sum1;
     end
 end
+
 xa=xa1;
 ya=ya1;
 za=za1;
 wt=wt1;
+
 %%% M edge1*face1
+
 for i=1:6
+
     for j=1:4
     i1=lis(i,1);
     i2=lis(i,2);
@@ -393,10 +464,13 @@ for i=1:6
     j2=lis2(j,2);
     j3=lis2(j,3);
         sum1=0;
+
        for jj=1:length(xa)
+
         if(quad==1)
         [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
         end
+
         p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
         p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
         L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
@@ -412,15 +486,19 @@ for i=1:6
         sek2=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
+
         F4(i,j)=sum1;
         j1=lis2(j,2);
         j2=lis2(j,3);
         j3=lis2(j,1);
         sum1=0;
+
        for jj=1:length(xa)
+
         if(quad==1)
         [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
         end
+
         p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
         p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
         L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
@@ -436,15 +514,20 @@ for i=1:6
         sek2=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
+
         F4(i,j+4)=sum1;
     end
 end
+
 xa=xa1;
 ya=ya1;
 za=za1;
 wt=wt1;
+
 %%% M edge2*face1
+
 for i=1:6
+
     for j=1:4
     i1=lis(i,1);
     i2=lis(i,2);
@@ -452,10 +535,13 @@ for i=1:6
     j2=lis2(j,2);
     j3=lis2(j,3);
         sum1=0;
+
        for jj=1:length(xa)
+
         if(quad==1)
         [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
         end
+
         p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
         p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
         L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
@@ -471,15 +557,19 @@ for i=1:6
         sek2=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
+
         F5(i,j)=sum1;
         j1=lis2(j,2);
         j2=lis2(j,3);
         j3=lis2(j,1);
         sum1=0;
+
        for jj=1:length(xa)
+
         if(quad==1)
         [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
         end
+
         p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
         p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
         L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
@@ -495,15 +585,19 @@ for i=1:6
         sek2=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
+
         F5(i,j+4)=sum1;
     end
 end
+
 xa=xa2;
 ya=ya2;
 za=za2;
 wt=wt2;
 %M face1-face1
+
 for i=1:4
+
     for j=1:4
     i1=lis2(i,1);
     i2=lis2(i,2);
@@ -512,10 +606,13 @@ for i=1:4
     j2=lis2(j,2);
     j3=lis2(j,3);
         sum1=0;
+
        for jj=1:length(xa)
+
         if(quad==1)
         [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
         end
+
         p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
         p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
         p3=evaluate_shape_function(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
@@ -534,15 +631,19 @@ for i=1:4
         sek2=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
+
         F6(i,j)=sum1;
         j1=lis2(j,2);
         j2=lis2(j,3);
         j3=lis2(j,1);
         sum1=0;
+
        for jj=1:length(xa)
+
         if(quad==1)
         [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
         end
+
         p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
         p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
         p3=evaluate_shape_function(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
@@ -559,16 +660,20 @@ for i=1:4
         sek2=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
+
         F6(i,j+4)=sum1;
         F6(j+4,i)=sum1;
         i1=lis2(i,2);
         i2=lis2(i,3);
         i3=lis2(i,1);
         sum1=0;
+
        for jj=1:length(xa)
+
         if(quad==1)
         [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
         end
+
         p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
         p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
         p3=evaluate_shape_function(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
@@ -585,9 +690,11 @@ for i=1:4
         sek2=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
+
         F6(i+4,j+4)=sum1;
     end
 end
+
 F1=sigma*F1; %we will add i*w and mu later; keep it real for now
 F2=sigma*F2;
 F3=sigma*F3;
@@ -601,14 +708,19 @@ RR=[rot1 zeros(6,6) rot4;...
    zeros(6,6) zeros(6,6) zeros(6,8);...
    rot4' zeros(8,6) rot6];
 cc=0;
+
 for i=1:3
+
     for j=i+1:4
         cc=cc+1;
         kler(cc)=full(edge_no(nler(i),nler(j)));
     end
 end
+
 kler2=zeros(1,8);
+
 for i=1:4
+
     if(i==1)
         al=kler([4 5 6]);
         sw=1;
@@ -622,7 +734,9 @@ for i=1:4
         al=kler([1 2 4]);
         sw=4;
     end
+
     al(al<0)=0;
+
     if(nnz(al)>1)
         al=sort(al(al>0));
         kler2(i)=full(yuzey_no(al(1),al(2)));
@@ -630,20 +744,25 @@ for i=1:4
     elseif(nnz(al)==1)
         kler2(i)=yuzeybd(ii,sw);
         kler2(i+4)=kler2(i)+totyuzey;
+
         if(kler2(i)==0)
         error('0 index');
         end
     else
         kler2(i)=yuzeybd(ii,sw);
         kler2(i+4)=kler2(i);
+
         if(kler2(i)==0)
         error('0 index');
         end
     end
 end
+
 kler3=EL(ii,12:15)-totkenar;
 klerv2=zeros(1,20);  %all non-phi terms
+
 for i=1:6
+
     if(kler(i)>0)
     klerv2(i)=kler(i);
     klerv2(i+6)=kler(i)+totkenar;
@@ -652,14 +771,18 @@ for i=1:6
     klerv2(i+6)=kler(i);
     end
 end
+
 for i=13:20
+
     if(kler2(i-12)>0)
         klerv2(i)=kler2(i-12)+totkenar*2;
     else
         klerv2(i)=kler2(i-12);
     end
 end
+
 iszerov2=length(find(klerv2<0));  %all non-phi terms
+
     if(iszerov2==0)
         rr=repmat(klerv2',[1 20]); %row indices
         cc=rr'; %column indices;
@@ -681,7 +804,9 @@ iszerov2=length(find(klerv2<0));  %all non-phi terms
         iv1b(sayac1+1:sayac1+nonz)=FFm(:);
         sayac1=sayac1+nonz;
     end
+
     iszero=length(find(kler<0));
+
     if(iszero~=0) %If it does not lie on a boundary, use this block
         %If there is a boundary edge, use this block
         ke=find(kler<0); % these will be removed from the system
@@ -689,8 +814,10 @@ iszerov2=length(find(klerv2<0));  %all non-phi terms
         nke2=find(kler2>0); % these will remain
         sag_local1=zeros(6,2);
         sag_local3=zeros(8,2);
+
         for i=1:length(ke)
             %Point ordering is important here; vectors are oriented from n1 to n2
+
             if(ke(i)==1)
                 n1=nler(1);
                 n2=nler(2);
@@ -710,28 +837,38 @@ iszerov2=length(find(klerv2<0));  %all non-phi terms
                 n1=nler(3);
                 n2=nler(4);
             end
+
             xyz1=node(n1,:);
             xyz2=node(n2,:);
+
             if(kler(ke(i))==-5 || kler(ke(i))==-6)
+
                 if( abs(xyz1(3)-xyz2(3))>ep)
+
                     if(abs(xyz1(2)-xyz2(2))<ep)
                     kler(ke(i))=-3;
                     end
+
                     if(abs(xyz1(1)-xyz2(1))<ep)
                     kler(ke(i))=-1;
                     end
                 end
             end
+
             %Here I check which surface it lies on
+
             if(kler(ke(i))==-1 || kler(ke(i))==-2) %left/right: angle in the y-z plane
             xyz1=node(n1,:);
             xyz2=node(n2,:);
+
             if( abs(xyz1(1)-xyz2(1))>ep)
             error('x should be the same');
             end
+
             if( abs(xyz1(2)-xyz2(2))<ep)
                 continue;
             end
+
             nor(1)=xyz2(2)-xyz1(2);
             nor(2)=(xyz2(3)-xyz1(3));
             aci=atan2(nor(2),nor(1))/pi*180;
@@ -746,12 +883,15 @@ iszerov2=length(find(klerv2<0));  %all non-phi terms
             elseif(kler(ke(i))==-3 || kler(ke(i))==-4) %front/back: angle in the x-z plane
             xyz1=node(n1,:);
             xyz2=node(n2,:);
+
             if( abs(xyz1(2)-xyz2(2))>ep)
             error('y should be the same');
             end
+
             if( abs(xyz1(1)-xyz2(1))<ep)
                 continue;
             end
+
             nor(1)=xyz2(1)-xyz1(1);
             nor(2)=(xyz2(3)-xyz1(3));
             aci=atan2(nor(2),nor(1))/pi*180;
@@ -763,9 +903,11 @@ iszerov2=length(find(klerv2<0));  %all non-phi terms
             sag_local1(nke,2)=sag_local1(nke,2)-rot1(nke,ke(i))*val;
             sag_local3(nke2,2)=sag_local3(nke2,2)-rot4(ke(i),nke2)'*val;
             elseif(kler(ke(i))==-5 || kler(ke(i))==-6) %top/bottom: angle in the x-y plane
+
             if( abs(xyz1(3)-xyz2(3))>ep)
             error('z should be the same');
             end
+
             xyz1=node(n1,:);
             xyz2=node(n2,:);
             nor(1)=xyz2(1)-xyz1(1);
@@ -785,10 +927,13 @@ iszerov2=length(find(klerv2<0));  %all non-phi terms
             error('must be between 1 and 6');
             end
         end
+
             sag(kler(nke),:)=sag(kler(nke),:)+sag_local1(nke,:);
             sag(kler2(nke2)+totkenar*2,:)=sag(kler2(nke2)+totkenar*2,:)+sag_local3(nke2,:);
          end
+
     iszero2=length(find(kler2<0));
+
     if(iszero2~=0)
         nke=find(kler>0); % these will remain
         nke2=find(kler2>0); % these will remain
@@ -796,8 +941,10 @@ iszerov2=length(find(klerv2<0));  %all non-phi terms
         sag_local1=zeros(6,2);
         sag_local3=zeros(8,2);
         % lis2=[3 2 4 ; 3 1 4; 2 1 4; 2 1 3];
+
         for i=1:length(ke)
             %Point ordering is important here; vectors are oriented from n1 to n2
+
             if(ke(i)==1)
                 n1=nler(2);
                 n2=nler(4);
@@ -823,8 +970,10 @@ iszerov2=length(find(klerv2<0));  %all non-phi terms
                 n1=nler(1);
                 n2=nler(2);
             end
+
             xyz1=node(n1,:);
             xyz2=node(n2,:);
+
             if( abs(xyz1(1)-xyz2(1))<ep)
             kler2(ke(i))=-1;
             % error('x should be the same');
@@ -833,15 +982,19 @@ iszerov2=length(find(klerv2<0));  %all non-phi terms
             else
             kler2(ke(i))=-5;
             end
+
             if(kler2(ke(i))==-1 || kler2(ke(i))==-2) %left/right: angle in the y-z plane
             xyz1=node(n1,:);
             xyz2=node(n2,:);
+
             if( abs(xyz1(1)-xyz2(1))>ep)
             error('x should be the same');
             end
+
             if( abs(xyz1(2)-xyz2(2))<ep)
                 continue;
             end
+
             nor(1)=xyz2(2)-xyz1(2);
             nor(2)=(xyz2(3)-xyz1(3));
             aci=atan2(nor(2),nor(1))/pi*180;
@@ -856,12 +1009,15 @@ iszerov2=length(find(klerv2<0));  %all non-phi terms
             elseif(kler2(ke(i))==-3 || kler2(ke(i))==-4) %front/back: angle in the x-z plane
             xyz1=node(n1,:);
             xyz2=node(n2,:);
+
             if( abs(xyz1(2)-xyz2(2))>ep)
             error('y should be the same');
             end
+
             if( abs(xyz1(1)-xyz2(1))<ep)
                 continue;
             end
+
             nor(1)=xyz2(1)-xyz1(1);
             nor(2)=(xyz2(3)-xyz1(3));
             aci=atan2(nor(2),nor(1))/pi*180;
@@ -873,9 +1029,11 @@ iszerov2=length(find(klerv2<0));  %all non-phi terms
             sag_local1(nke,2)=sag_local1(nke,2)-rot4(nke,ke(i))*val;
             sag_local3(nke2,2)=sag_local3(nke2,2)-rot6(nke2,ke(i))*val;
             elseif(kler2(ke(i))==-5 || kler2(ke(i))==-6) %top/bottom: angle in the x-y plane
+
             if( abs(xyz1(3)-xyz2(3))>ep)
             error('z should be the same');
             end
+
             % %Disabling this section does not change anything
             %
             xyz1=node(n1,:);
@@ -897,10 +1055,12 @@ iszerov2=length(find(klerv2<0));  %all non-phi terms
             error('must be between 1 and 6');
             end
         end
+
         sag(kler(nke),:)=sag(kler(nke),:)+sag_local1(nke,:);
         sag(kler2(nke2)+totkenar*2,:)=sag(kler2(nke2)+totkenar*2,:)+sag_local3(nke2,:);
     end
 end
+
 % return
 R1=sparse(ix1,iy1,iv1a,totkenar*2+totyuzey*2,totkenar*2+totyuzey*2); % double curl
 M1=sparse(ix1,iy1,iv1b,totkenar*2+totyuzey*2,totkenar*2+totyuzey*2); %
@@ -909,6 +1069,7 @@ R1=spmdReduce(@plus,R1,1);
 M1=spmdReduce(@plus,M1,1);
 sag=spmdReduce(@plus,sag,1);
 end
+
 R1=R1{1};
 M1=M1{1};
 sag=sag{1};
@@ -918,6 +1079,7 @@ ara=[21,14];
 a=e{11,P};
 T=a(1:21,5);
 ff=1./T;
+
 for kk=1:length(ff)
 f=ff(kk); % frequencies
 mu=4*pi*10^-7;
@@ -944,6 +1106,7 @@ x2=xx(:,2);
 M=ones(4,4);
 mu=4*pi*10^-7;
 clear G kler a b c d jj
+
 for jj=1:size(recv,1)
     ii=recv(jj,4);
     nler=eleman(ii,1:4);
@@ -981,15 +1144,20 @@ for jj=1:size(recv,1)
     Ve=abs(Ve);
     cc=0;
  clear kler
+
     for i=1:3
+
         for j=i+1:4
             cc=cc+1;
             kler(cc)=full(edge_no(nler(i),nler(j)));
             kler(cc+6)=full(edge_no(nler(i),nler(j)))+totkenar;
         end
     end
+
     kler2=zeros(1,8);
+
     for i=1:4
+
         if(i==1)
             al=kler([4 5 6]);
             sw=1;
@@ -1003,7 +1171,9 @@ for jj=1:size(recv,1)
             al=kler([1 2 4]);
             sw=4;
         end
+
         al(al<0)=0;
+
         if(nnz(al)>1)
             al=sort(al(al>0));
             kler2(i)=full(yuzey_no(al(1),al(2)));
@@ -1011,21 +1181,26 @@ for jj=1:size(recv,1)
         elseif(nnz(al)==1)
             kler2(i)=yuzeybd(ii,sw);
             kler2(i+4)=kler2(i)+totyuzey;
+
             if(kler2(i)==0)
             error('0 index');
             end
         else
             kler2(i)=yuzeybd(ii,sw);
             kler2(i+4)=kler2(i);
+
             if(kler2(i)==0)
             error('0 index');
             end
         end
     end
+
     kler2=kler2+totkenar*2;
+
     for i=1:4
     duzkose(i,1)=1/(6*Ve)*(a(i)+b(i)*x0+c(i)*y0+d(i)*z0);
     end
+
     for i=1:6
     i1=lis(i,1);
     i2=lis(i,2);
@@ -1038,6 +1213,7 @@ for jj=1:size(recv,1)
     duzkenar(i,:)=(L1*p2-L2*p1)/(6*Ve);
     duzkenar(i+6,:)=(L1*p2+L2*p1)/(6*Ve);
     end
+
     for i=1:4
     i1=lis2(i,1);
     i2=lis2(i,2);
@@ -1062,6 +1238,7 @@ for jj=1:size(recv,1)
     duzkenar2(i+4,:)=(2*L2*L3*p1-L1*L2*p3-L1*L3*p2)/(6*Ve);
     rotkenar2(i+4,:)=3*cross(L3*p2+L2*p3,p1)/(6*Ve)^2;
     end
+
     Rx=eye(3);
     Rz=eye(3);
     Ry=eye(3);

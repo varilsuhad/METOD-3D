@@ -301,7 +301,6 @@ lisa=[1 2 1 1;1 3 1 1; 1 4 1 1; 2 3 1 1; 2 4 1 1;3 4 1 1;...  %edge1
 
 d=zeros(4,1);
 c=d;b=d;a=d;
-le=zeros(6,1);
 M=ones(4,4);
 
 Clar=zeros(4,4,3);
@@ -373,14 +372,7 @@ Jabc=[ (-XYZ(1,1)+XYZ(1,2)) (-XYZ(2,1)+XYZ(2,2)) (-XYZ(3,1)+XYZ(3,2));...
 
 det1=det(Jabc)*sgn;
 
-le(1)=sqrt((XYZ(1,1)-XYZ(1,2))^2+(XYZ(2,1)-XYZ(2,2))^2+(XYZ(3,1)-XYZ(3,2))^2);
-le(2)=sqrt((XYZ(1,1)-XYZ(1,3))^2+(XYZ(2,1)-XYZ(2,3))^2+(XYZ(3,1)-XYZ(3,3))^2);
-le(3)=sqrt((XYZ(1,1)-XYZ(1,4))^2+(XYZ(2,1)-XYZ(2,4))^2+(XYZ(3,1)-XYZ(3,4))^2);
-le(4)=sqrt((XYZ(1,2)-XYZ(1,3))^2+(XYZ(2,2)-XYZ(2,3))^2+(XYZ(3,2)-XYZ(3,3))^2);
-le(5)=sqrt((XYZ(1,2)-XYZ(1,4))^2+(XYZ(2,2)-XYZ(2,4))^2+(XYZ(3,2)-XYZ(3,4))^2);
-le(6)=sqrt((XYZ(1,3)-XYZ(1,4))^2+(XYZ(2,3)-XYZ(2,4))^2+(XYZ(3,3)-XYZ(3,4))^2);
 
-le(:)=1;
 
 Jxyz=inv(Jabc);
 Ve=abs(Ve);
@@ -1150,7 +1142,7 @@ x2=xx(:,2);
 
 M=ones(4,4);
 mu=4*pi*10^-7;
-clear G le kler a b c d
+clear G kler a b c d
 for jj=1:size(recv,1)
 
     ii=recv(jj,4);
@@ -1278,13 +1270,6 @@ for jj=1:size(recv,1)
         kler4=[kler2(1:16)]+totkenar*4+totyuzey*8+totel;
         kler5=[ii ii+totel ii+totel*2 ii+totel*3 ii+totel*4 ii+totel*5 ii+totel*6 ii+totel*7]+totkenar*4+totyuzey*12+totel*4;
 
-    le(1)=sqrt((XYZ(1,1)-XYZ(1,2))^2+(XYZ(2,1)-XYZ(2,2))^2+(XYZ(3,1)-XYZ(3,2))^2);
-    le(2)=sqrt((XYZ(1,1)-XYZ(1,3))^2+(XYZ(2,1)-XYZ(2,3))^2+(XYZ(3,1)-XYZ(3,3))^2);
-    le(3)=sqrt((XYZ(1,1)-XYZ(1,4))^2+(XYZ(2,1)-XYZ(2,4))^2+(XYZ(3,1)-XYZ(3,4))^2);
-    le(4)=sqrt((XYZ(1,2)-XYZ(1,3))^2+(XYZ(2,2)-XYZ(2,3))^2+(XYZ(3,2)-XYZ(3,3))^2);
-    le(5)=sqrt((XYZ(1,2)-XYZ(1,4))^2+(XYZ(2,2)-XYZ(2,4))^2+(XYZ(3,2)-XYZ(3,4))^2);
-    le(6)=sqrt((XYZ(1,3)-XYZ(1,4))^2+(XYZ(2,3)-XYZ(2,4))^2+(XYZ(3,3)-XYZ(3,4))^2);
-    le(:)=1;
 
     for i=1:4
     duzkose(i,1)=1/(6*Ve)*(a(i)+b(i)*x0+c(i)*y0+d(i)*z0);
@@ -1299,15 +1284,15 @@ for jj=1:size(recv,1)
     p1=G(i1,:);
     p2=G(i2,:);
 
-    rotkenar(i,:)=2*cross(p1,p2)/(6*Ve)^2*le(i);
+    rotkenar(i,:)=2*cross(p1,p2)/(6*Ve)^2;
     rotkenar(i+6,:)=0;
     rotkenar(i+12,:)=0;
     rotkenar(i+18,:)=0;
 
-    duzkenar(i,:)=(L1*p2-L2*p1)/(6*Ve)*le(i);
-    duzkenar(i+6,:)=(L1*p2+L2*p1)/(6*Ve)*le(i);
-    duzkenar(i+12,:)=((2*L1*L2-L2^2)*p1+(L1^2-2*L1*L2)*p2)/(6*Ve)*le(i);
-    duzkenar(i+18,:)=((3*L1^2*L2-6*L1*L2^2+L2^3)*p1+(L1^3-6*L2*L1^2+3*L1*L2^2)*p2)/(6*Ve)*le(i);
+    duzkenar(i,:)=(L1*p2-L2*p1)/(6*Ve);
+    duzkenar(i+6,:)=(L1*p2+L2*p1)/(6*Ve);
+    duzkenar(i+12,:)=((2*L1*L2-L2^2)*p1+(L1^2-2*L1*L2)*p2)/(6*Ve);
+    duzkenar(i+18,:)=((3*L1^2*L2-6*L1*L2^2+L2^3)*p1+(L1^3-6*L2*L1^2+3*L1*L2^2)*p2)/(6*Ve);
     end
 
     for i=1:4

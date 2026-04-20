@@ -23,7 +23,6 @@ lis2=[3 2 4 ; 3 1 4; 2 1 4; 2 1 3];
 
 d=zeros(4,1);
 c=d;b=d;a=d;
-le=zeros(6,1);
 M=ones(4,4);
 
 Clar=zeros(4,4,3);
@@ -93,13 +92,6 @@ Jabc=[ (-XYZ(1,1)+XYZ(1,2)) (-XYZ(2,1)+XYZ(2,2)) (-XYZ(3,1)+XYZ(3,2));...
 
 det1=det(Jabc)*sgn;
 
-le(1)=sqrt((XYZ(1,1)-XYZ(1,2))^2+(XYZ(2,1)-XYZ(2,2))^2+(XYZ(3,1)-XYZ(3,2))^2);
-le(2)=sqrt((XYZ(1,1)-XYZ(1,3))^2+(XYZ(2,1)-XYZ(2,3))^2+(XYZ(3,1)-XYZ(3,3))^2);
-le(3)=sqrt((XYZ(1,1)-XYZ(1,4))^2+(XYZ(2,1)-XYZ(2,4))^2+(XYZ(3,1)-XYZ(3,4))^2);
-le(4)=sqrt((XYZ(1,2)-XYZ(1,3))^2+(XYZ(2,2)-XYZ(2,3))^2+(XYZ(3,2)-XYZ(3,3))^2);
-le(5)=sqrt((XYZ(1,2)-XYZ(1,4))^2+(XYZ(2,2)-XYZ(2,4))^2+(XYZ(3,2)-XYZ(3,4))^2);
-le(6)=sqrt((XYZ(1,3)-XYZ(1,4))^2+(XYZ(2,3)-XYZ(2,4))^2+(XYZ(3,3)-XYZ(3,4))^2);
-le(:)=1;
 
 Jxyz=inv(Jabc);
 
@@ -138,7 +130,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        rot1(i,j)=sum1*le(i)*le(j);
+        rot1(i,j)=sum1;
     end
 end
 
@@ -175,7 +167,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        F1(i,j)=sum1*le(i)*le(j);
+        F1(i,j)=sum1;
     end
 end
 
@@ -210,7 +202,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        B1(i,j)=sum1*le(i);
+        B1(i,j)=sum1;
     end
 end
 
