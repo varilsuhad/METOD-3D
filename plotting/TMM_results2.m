@@ -28,7 +28,7 @@ tzx1=ww.veri(ii).T0(ara,1);
 tzy1=ww.veri(ii).T0(ara,2);
 
 
-load('lineersonuc.mat');
+load('TMM_linear_result.mat');
 
 zxy1a=abs(zxy1).^2/(mu*2*pi*flist(ii));
 zyx1a=abs(zyx1).^2/(mu*2*pi*flist(ii));
@@ -44,7 +44,7 @@ tzy2=Tler(ii,ara,2).';
 zxy2a=abs(zxy2).^2/(mu*2*pi*flist(ii));
 zyx2a=abs(zyx2).^2/(mu*2*pi*flist(ii));
 
-load('kuadsonuc.mat');
+load('TMM_quadratic_result.mat');
 
 zxx3=Zler(ii,ara,1).';
 zxy3=Zler(ii,ara,2).';
@@ -56,7 +56,7 @@ tzy3=Tler(ii,ara,2).';
 zxy3a=abs(zxy3).^2/(mu*2*pi*flist(ii));
 zyx3a=abs(zyx3).^2/(mu*2*pi*flist(ii));
 
-load('kubiksonuc.mat');
+load('TMM_cubic_result.mat');
 
 
 zxx4=Zler(ii,ara,1).';
@@ -70,7 +70,7 @@ tzy4=Tler(ii,ara,2).';
 zxy4a=abs(zxy4).^2/(mu*2*pi*flist(ii));
 zyx4a=abs(zyx4).^2/(mu*2*pi*flist(ii));
 
-load('p4sonuc.mat');
+load('TMM_quartic_result.mat');
 % load('hpsonucTM1.mat');
 
 
@@ -106,7 +106,7 @@ tzy1=ww.veri(ii).T0(ara,2);
 
 
 
-load('lineersonuc.mat');
+load('TMM_linear_result.mat');
 
 zxy1b=abs(zxy1).^2/(mu*2*pi*flist(ii));
 zyx1b=abs(zyx1).^2/(mu*2*pi*flist(ii));
@@ -122,7 +122,7 @@ tzy2=Tler(ii,ara,2).';
 zxy2b=abs(zxy2).^2/(mu*2*pi*flist(ii));
 zyx2b=abs(zyx2).^2/(mu*2*pi*flist(ii));
 
-load('kuadsonuc.mat');
+load('TMM_quadratic_result.mat');
 
 zxx3=Zler(ii,ara,1).';
 zxy3=Zler(ii,ara,2).';
@@ -134,7 +134,7 @@ tzy3=Tler(ii,ara,2).';
 zxy3b=abs(zxy3).^2/(mu*2*pi*flist(ii));
 zyx3b=abs(zyx3).^2/(mu*2*pi*flist(ii));
 
-load('kubiksonuc.mat');
+load('TMM_cubic_result.mat');
 
 
 zxx4=Zler(ii,ara,1).';
@@ -148,7 +148,7 @@ tzy4=Tler(ii,ara,2).';
 zxy4b=abs(zxy4).^2/(mu*2*pi*flist(ii));
 zyx4b=abs(zyx4).^2/(mu*2*pi*flist(ii));
 
-load('p4sonuc.mat');
+load('TMM_quartic_result.mat');
 
 zxx5=Zler(ii,ara,1).';
 zxy5=Zler(ii,ara,2).';

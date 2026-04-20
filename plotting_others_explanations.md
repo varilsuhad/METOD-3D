@@ -6,7 +6,7 @@ This note summarizes what each openable MATLAB (`.m`) file in `plotting/` and `o
 
 ### `plotting/TMM_results.m`
 - **Purpose:** Compares transfer-matrix-model (TMM) MT responses against three hp-FEM cases (`Case A/B/C`) along a receiver profile.
-- **Inputs loaded:** `usuimodelFEFF.mat` (reference), `hpsonucCaseA.mat`, `hpsonucCaseB.mat`, `hpsonucCaseC.mat`.
+- **Inputs loaded:** `usuimodelFEFF.mat` (reference), `TMM_hp_case_a_result.mat`, `TMM_hp_case_b_result.mat`, `TMM_hp_case_c_result.mat`.
 - **What it computes/plots:**
   - Extracts impedance tensor components (`Zxx, Zxy, Zyx, Zyy`) and tipper components (`Tzx, Tzy`) at selected frequency/receiver indices.
   - Builds a 3x4 subplot layout showing real/imaginary parts of impedance and tipper terms.
@@ -15,7 +15,7 @@ This note summarizes what each openable MATLAB (`.m`) file in `plotting/` and `o
 
 ### `plotting/TMM_results2.m`
 - **Purpose:** Compares several basis/order variants (linear, quadratic, cubic, and p4) against a reference for one profile/frequency setup.
-- **Inputs loaded:** `usuimodelFEFF.mat`, `lineersonuc.mat`, `kuadsonuc.mat`, `kubiksonuc.mat`, `p4sonuc.mat`.
+- **Inputs loaded:** `usuimodelFEFF.mat`, `TMM_linear_result.mat`, `TMM_quadratic_result.mat`, `TMM_cubic_result.mat`, `TMM_quartic_result.mat`.
 - **What it computes/plots:**
   - Converts impedance values to apparent resistivity and phase where needed.
   - Produces multi-panel comparisons (real/imag components, apparent resistivity/phase style comparisons) across methods.
