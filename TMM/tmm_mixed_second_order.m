@@ -331,7 +331,7 @@ end
 
 end
 
-save('Z:\kod\3DMTINVUns\makale5kod\data\kuadsonuc.mat','roa','faza','flist','Zler','Tler');
+save('Z:\kod\3DMTINVUns\makale5kod\data\TMM_quadratic_result.mat','roa','faza','flist','Zler','Tler');
 
 % B=load('makaleveri2.mat');
 

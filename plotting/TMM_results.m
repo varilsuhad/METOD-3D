@@ -27,7 +27,7 @@ tzx1=ww.veri(ii).T0(ara,1);
 tzy1=ww.veri(ii).T0(ara,2);
 
 
-load('hpsonucCaseA.mat');
+load('TMM_hp_case_a_result.mat');
 
 
 zxx2=Zler(ii,ara,1).';
@@ -38,7 +38,7 @@ zyy2=Zler(ii,ara,4).';
 tzx2=Tler(ii,ara,1).';
 tzy2=Tler(ii,ara,2).';
 
-load('hpsonucCaseB.mat');
+load('TMM_hp_case_b_result.mat');
 zxx3=Zler(ii,ara,1).';
 zxy3=Zler(ii,ara,2).';
 zyx3=Zler(ii,ara,3).';
@@ -48,7 +48,7 @@ tzx3=Tler(ii,ara,1).';
 tzy3=Tler(ii,ara,2).';
 
 
-load('hpsonucCaseC.mat');
+load('TMM_hp_case_c_result.mat');
 zxx4=Zler(ii,ara,1).';
 zxy4=Zler(ii,ara,2).';
 zyx4=Zler(ii,ara,3).';
