@@ -1137,15 +1137,8 @@ w=2*pi*f;
 
 kat=sqrt(-1)*w*mu;
 
-kat2=mu;
-kat3=mu*sqrt(-1)/w;
-
-B1=[R1+kat*M1];
-Amatris1=[B1];
-
-bsag=sag(:,:);
-
-[v0,r0,c0]=sparse2csr(Amatris1);
+B1=R1+kat*M1;
+[v0,r0,c0]=sparse2csr(B1);
 rowg=gpuArray(r0);
 colg=gpuArray(c0);
 valg=gpuArray(v0);
@@ -1159,7 +1152,7 @@ tic
 [xx]=LUcuDSSMG(rowg,colg,valg,complex(bg),int32(2),int32(8)); %sweeping
 toc
 
-relres=norm(Amatris1*xx-sag)/norm(sag);
+relres=norm(B1*xx-sag)/norm(sag);
 fprintf("Direct solution relative residual=%e\n",relres);
 
 xx=gather(xx);

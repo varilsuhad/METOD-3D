@@ -3901,9 +3901,6 @@ f=ff(kk); % frequencies
 mu=4*pi*10^-7;
 w=2*pi*f;
 
-mu=4*pi*10^-7;
-w=2*pi*f;
-
 kat=sqrt(-1)*w*mu;
 
 B1=R1+kat*M1;
@@ -3911,9 +3908,8 @@ B1=R1+kat*M1;
 tot=totkenar*3+totyuzey*6+totel*3;
 ekle=totkenar*2+totyuzey*1;
 
-bsag=sag(1:tot,:);
 AA=B1;
-
+bsag=sag(1:tot,:);
 [v0,r0,c0]=sparse2csr(AA);
 rowg=gpuArray(r0);
 colg=gpuArray(c0);

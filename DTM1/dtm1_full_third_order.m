@@ -5550,12 +5550,8 @@ w=2*pi*f;
 kat=sqrt(-1)*w*mu;
 
 B1=R1+kat*M1;
-Amatris1=B1;
-
-bsag=sag(:,:);
-
 dr=totkenar*4+totyuzey*8+totel*4;
-Amatris2=Amatris1(1:dr,1:dr);
+Amatris2=B1(1:dr,1:dr);
 sag2=sag(1:dr,:);
 
 [v0,r0,c0]=sparse2csr(Amatris2);
@@ -5576,9 +5572,7 @@ relres=norm(Amatris2*xx-sag2)/norm(sag2);
 fprintf("Direct solution relative residual=%e\n",relres);
 
 xx=gather(xx);
-dr2=size(bsag,1);
-
-xx=[xx;zeros(dr2-dr,2)];
+xx=[xx;zeros(size(sag,1)-dr,2)];
 
 x1=xx(:,1);
 x2=xx(:,2);
