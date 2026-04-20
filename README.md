@@ -95,19 +95,23 @@ Forward modeling experiments can be reproduced by running the scripts provided i
    cd TMM
    ```
 
-2. Run the main forward modeling script:
+2. Run one of the available TMM forward scripts (there is no `run_tmm_forward.m` wrapper yet):
 
    ```matlab
-   run_tmm_forward
+   tmm_mixed_first_order
+   % or: tmm_mixed_second_order
+   % or: tmm_mixed_third_order
+   % or: tmm_mixed_fourth_order
+   % or: tmm_mixed_quadratic_cubic_hybrid
    ```
 
-3. Output MT responses will be saved in the `/data/` directory.
+3. Output MT responses will be saved in the `/data/` directory (for example as `tmm_*.mat`).
 
 4. Visualization:
 
    ```matlab
    cd ../plotting
-   plot_tmm_results
+   % run the plotting script you want for generated outputs
    ```
 
 ### Notes

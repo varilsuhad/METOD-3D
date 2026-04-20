@@ -6,7 +6,7 @@
 % Manuscript metadata: Included for journal submission compliance
 % Last updated: 2026-04-08
 % ========================================================================
-% Forward modeling routine for the TM2/TMM model using mixed fourth-order
+% Forward modeling routine for the TMM model using mixed fourth-order
 % basis functions.
 % This script assembles and solves the mixed-order system, then computes
 % MT impedance, apparent resistivity, and phase responses.
@@ -14,7 +14,7 @@ clear all;clc;close all;
 format longG
 
 reset(gpuDevice);
-load('TM2_quartic.mat');
+load('TMM_quartic.mat');
 
 xa1= [ 0.2500000000000000, 0.5000000000000000, 0.1666666666666667, 0.1666666666666667, 0.1666666666666667];
 ya1= [ 0.2500000000000000, 0.1666666666666667, 0.1666666666666667, 0.1666666666666667, 0.5000000000000000];
