@@ -34,7 +34,7 @@ This note summarizes what each openable MATLAB (`.m`) file in `plotting/` and `o
 
 ## `others/`
 
-### `others/sekil1.m`
+### `others/evaluate_shape_function.m`
 - **Purpose:** Small helper for tetrahedral shape-function evaluation.
 - **Behavior:**
   - `ok==1`: returns barycentric scalar basis (`L1..L4`).
@@ -74,7 +74,7 @@ This note summarizes what each openable MATLAB (`.m`) file in `plotting/` and `o
   - `M1`: mass-like sparse matrix.
   - `sag`: two-column right-hand-side/source contribution container.
 - **Implementation notes:**
-  - Uses tetrahedral quadrature and vector basis operations with `sekil1`.
+  - Uses tetrahedral quadrature and vector basis operations with `evaluate_shape_function`.
   - Parallelized with `spmd` and reduced via `spmdReduce`.
   - Includes boundary/source coupling logic that maps field orientation to edge DoFs.
 

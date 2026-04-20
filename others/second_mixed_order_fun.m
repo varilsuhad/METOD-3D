@@ -128,17 +128,17 @@ for i=1:6
         sum1=0;
        for jj=1:length(xa)
 
-        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        % L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        % L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        % L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         sek1=2*cross(p1,p2);
 
-        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        % L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        % L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        % L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         sek2=2*cross(p1,p2);
 
@@ -166,19 +166,19 @@ for i=1:6
         sum1=0;
        for jj=1:length(xa)
 
-        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        % L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        % L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        % L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         sek1=2*cross(p1,p2);
 
-        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
-        % L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         sek2=3*cross(L3*p2+L2*p3,p1);
 
@@ -193,19 +193,19 @@ for i=1:6
         sum1=0;
        for jj=1:length(xa)
 
-        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        % L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        % L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        % L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         sek1=2*cross(p1,p2);
 
-        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
-        % L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         sek2=3*cross(L3*p2+L2*p3,p1);
 
@@ -234,21 +234,21 @@ for i=1:4
         sum1=0;
        for jj=1:length(xa)
 
-        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
-        % L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=evaluate_shape_function(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=evaluate_shape_function(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         sek1=3*cross(L3*p2+L2*p3,p1);
 
-        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
-        % L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         sek2=3*cross(L3*p2+L2*p3,p1);
 
@@ -263,21 +263,21 @@ for i=1:4
         sum1=0;
        for jj=1:length(xa)
 
-        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
-        % L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=evaluate_shape_function(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=evaluate_shape_function(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         sek1=3*cross(L3*p2+L2*p3,p1);
 
-        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
-        % L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         sek2=3*cross(L3*p2+L2*p3,p1);
 
@@ -293,21 +293,21 @@ for i=1:4
         sum1=0;
        for jj=1:length(xa)
 
-        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
-        % L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=evaluate_shape_function(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=evaluate_shape_function(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         sek1=3*cross(L3*p2+L2*p3,p1);
 
-        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
-        % L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        % L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         sek2=3*cross(L3*p2+L2*p3,p1);
 
@@ -335,17 +335,17 @@ for i=1:6
         sum1=0;
        for jj=1:length(xa)
 
-        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         sek1=L1*p2-L2*p1;
 
-        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         sek2=L1*p2-L2*p1;
 
@@ -372,17 +372,17 @@ for i=1:6
         sum1=0;
        for jj=1:length(xa)
 
-        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         sek1=L1*p2-L2*p1;
 
-        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         sek2=L1*p2+L2*p1;
 
@@ -409,17 +409,17 @@ for i=1:6
         sum1=0;
        for jj=1:length(xa)
 
-        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         sek1=L1*p2+L2*p1;
 
-        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         sek2=L1*p2+L2*p1;
 
@@ -447,19 +447,19 @@ for i=1:6
         sum1=0;
        for jj=1:length(xa)
 
-        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         sek1=(L1*p2-L2*p1)*le(i);
 
-        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         % sek2=2*L2*L3*p1-L1*L2*p3-L1*L3*p2;
         sek2=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
@@ -475,19 +475,19 @@ for i=1:6
         sum1=0;
        for jj=1:length(xa)
 
-        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         sek1=(L1*p2-L2*p1)*le(i);
 
-        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         % sek2=2*L2*L3*p1-L1*L2*p3-L1*L3*p2;
         sek2=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
@@ -517,19 +517,19 @@ for i=1:6
         sum1=0;
        for jj=1:length(xa)
 
-        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         sek1=(L1*p2+L2*p1);
 
-        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         % sek2=2*L2*L3*p1-L1*L2*p3-L1*L3*p2;
         sek2=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
@@ -545,19 +545,19 @@ for i=1:6
         sum1=0;
        for jj=1:length(xa)
 
-        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         sek1=(L1*p2+L2*p1);
 
-        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         % sek2=2*L2*L3*p1-L1*L2*p3-L1*L3*p2;
         sek2=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
@@ -588,22 +588,22 @@ for i=1:4
         sum1=0;
        for jj=1:length(xa)
 
-        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=evaluate_shape_function(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=evaluate_shape_function(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         % sek1=2*L2*L3*p1-L1*L2*p3-L1*L3*p2;
         sek1=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
 
-        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         % sek2=2*L2*L3*p1-L1*L2*p3-L1*L3*p2;
         sek2=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
@@ -619,21 +619,21 @@ for i=1:4
         sum1=0;
        for jj=1:length(xa)
 
-        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=evaluate_shape_function(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=evaluate_shape_function(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         sek1=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
 
-        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         sek2=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
 
@@ -649,21 +649,21 @@ for i=1:4
         sum1=0;
        for jj=1:length(xa)
 
-        p1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=sekil1(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L3=sekil1(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=evaluate_shape_function(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=evaluate_shape_function(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         sek1=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
 
-        p1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=sekil1(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=sekil1(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L3=sekil1(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
+        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
+        p3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
+        L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
+        L3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
 
         sek2=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
 

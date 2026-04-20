@@ -14,7 +14,7 @@ clear all;clc;close all;
 format longG
 
 reset(gpuDevice);
-load('TM2_quad.mat');
+load('TM2_quadratic.mat');
 
 eleman=sort(eleman,1);
 [EL,node_no,edge_no,totkenar,totyuzey,yuzey_no,yuzeybd] = ELkurtet2(node,eleman,rho); %Element matrix

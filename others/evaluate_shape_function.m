@@ -6,7 +6,7 @@
 % Manuscript metadata: Included for journal submission compliance
 % Last updated: 2026-04-08
 % ========================================================================
-function [son] = sekil1(i1,a,b,c,J,ok)
+function [son] = evaluate_shape_function(i1,a,b,c,J,ok)
 
 if(ok==1)
     if(i1==1)
