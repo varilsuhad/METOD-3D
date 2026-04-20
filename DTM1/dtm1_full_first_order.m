@@ -72,12 +72,9 @@ totnode=max(al)-totkenar;
 sag=zeros(totkenar*2+totnode,2);
 
 ix1=[];iy1=[];iv1a=[];iv1b=[];sayac1=0; %curl + F
-ix3=[];iy3=[];iv3=[];sayac3=0; %D matrix
-ix4=[];iy4=[];iv4=[];sayac4=0; %P matrix
 
 rot1=zeros(6,6);  %edge1 edge1
 F1=zeros(6,6);    %edge1 edge1
-B1=zeros(6,4);
 kler=zeros(1,6);
 
 spmd
@@ -286,88 +283,12 @@ for i=1:6
     end
 end
 
-xa=xa2;
-ya=ya2;
-za=za2;
-wt=wt2;
-%%% M edge1*node1
-for i=1:6
-    i1=lis(i,1);
-    i2=lis(i,2);
-
-    for j=1:4
-    j1=j;
-
-        sum1=0;
-       for jj=1:length(xa)
-
-        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
-
-        sek1=L1*p2-L2*p1;
-
-        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        % p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        % L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-
-        sek2=p1;
-
-        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
-       end
-        B1a(i,j)=sum1*le(i);
-    end
-end
-
-xa=xa2;
-ya=ya2;
-za=za2;
-wt=wt2;
-%%% M edge2*node1
-for i=1:6
-    i1=lis(i,1);
-    i2=lis(i,2);
-
-    for j=1:4
-    j1=j;
-
-        sum1=0;
-       for jj=1:length(xa)
-
-        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
-
-        sek1=L1*p2+L2*p1;
-
-        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        % p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        % L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-
-        sek2=p1;
-
-        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
-       end
-        B2a(i,j)=sum1*le(i);
-    end
-end
-
-BB=[B1a;B2a];
-MM=[F1 F2;F2' F3];
-GG=MM\BB;
-
 F1=sigma*F1; %we will add i*w and mu later; keep it real for now
 F2=sigma*F2;
 F3=sigma*F3;
 
 FF=[F1 F2;F2' F3];
 
-PP=GG'*FF*GG;
-DD=GG'*FF;
 
 RR=[rot1 zeros(6,6);...
    zeros(6,6) zeros(6,6)];
@@ -430,9 +351,6 @@ for i=1:6
     end
 end
 
-klerv1=zeros(1,4); %all phi terms
-klerv1(1:4)=kler3;
-iszerov1=length(find(klerv1<0));  %all phi terms
 iszerov2=length(find(klerv2<0));  %all non-phi terms
 
     if(iszerov2==0)
@@ -459,54 +377,6 @@ iszerov2=length(find(klerv2<0));  %all non-phi terms
         iv1a(sayac1+1:sayac1+nonz)=RRm(:);
         iv1b(sayac1+1:sayac1+nonz)=FFm(:);
         sayac1=sayac1+nonz;
-    end
-
-    if(iszerov1==0)
-
-        rr=repmat(klerv1',[1 4]); %row indices
-        cc=rr'; %column indices;
-
-        ix4(sayac4+1:sayac4+16)=rr(:);
-        iy4(sayac4+1:sayac4+16)=cc(:);
-        iv4(sayac4+1:sayac4+16)=PP(:);
-        sayac4=sayac4+16;
-    else
-        nke=find(klerv1>0); % these will remain
-        rr=repmat(klerv1(nke)',[1 length(nke)]); %row indices
-        cc=rr'; %column indices;
-        nonz=length(nke)^2;
-
-        PPm=PP(nke,nke);
-
-        ix4(sayac4+1:sayac4+nonz)=rr(:);
-        iy4(sayac4+1:sayac4+nonz)=cc(:);
-        iv4(sayac4+1:sayac4+nonz)=PPm(:);
-        sayac4=sayac4+nonz;
-    end
-
-    if(iszerov1==0 && iszerov2==0)
-        rr=repmat(klerv1',[1 12]); %row indices
-        cc=repmat(klerv2,[4 1]); %column indices
-
-        ix3(sayac3+1:sayac3+48)=rr(:);
-        iy3(sayac3+1:sayac3+48)=cc(:);
-        iv3(sayac3+1:sayac3+48)=DD(:);
-        sayac3=sayac3+48;
-
-    else
-        nke=find(klerv1>0); % these will remain
-        nke2=find(klerv2>0); % these will remain
-
-        rr=repmat(klerv1(nke)',[1 length(nke2)]); %row indices
-        cc=repmat(klerv2(nke2),[length(nke) 1]); %row indices
-
-        nonz=length(nke)*length(nke2);
-        DDm=DD(nke,nke2);
-
-        ix3(sayac3+1:sayac3+nonz)=rr(:);
-        iy3(sayac3+1:sayac3+nonz)=cc(:);
-        iv3(sayac3+1:sayac3+nonz)=DDm(:);
-        sayac3=sayac3+nonz;
     end
 
     iszero=length(find(kler<0));
@@ -653,13 +523,9 @@ end
 
 R1=sparse(ix1,iy1,iv1a,totkenar*2,totkenar*2); % double curl
 M1=sparse(ix1,iy1,iv1b,totkenar*2,totkenar*2); %
-D1=sparse(ix3,iy3,iv3,totnode,totkenar*2); %
-P1=sparse(ix4,iy4,iv4,totnode,totnode); %
 
 R1=spmdReduce(@plus,R1,1);
 M1=spmdReduce(@plus,M1,1);
-D1=spmdReduce(@plus,D1,1);
-P1=spmdReduce(@plus,P1,1);
 
 sag=spmdReduce(@plus,sag,1);
 
@@ -667,8 +533,6 @@ end
 
 R1=R1{1};
 M1=M1{1};
-D1=D1{1};
-P1=P1{1};
 
 sag=sag{1};
 
@@ -687,12 +551,8 @@ w=2*pi*f;
 
 kat=sqrt(-1)*w*mu;
 
-kat2=mu;
-kat3=mu*sqrt(-1)/w;
-
-B1=[R1+kat*M1];
-Amatris1=[B1 -kat2*D1' ; ...
-          -kat2*D1  -kat3*P1];
+B1=R1+kat*M1;
+Amatris1=B1;
 
 bsag=sag(1:totkenar*2+totnode,:);
 
