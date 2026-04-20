@@ -18,6 +18,7 @@ These support:
 ### 3. System Assembly
 
 The finite element system is assembled using curl-conforming formulations of Maxwell’s equations in the frequency domain (E-field formulation).
+Mesh topology/DoF indexing (node-edge-face connectivity and sparse lookup maps) is prepared in `others/build_tet_topology_maps.m` before assembly.
 
 ### 4. Linear Solver
 

@@ -48,7 +48,7 @@ This note summarizes what each openable MATLAB (`.m`) file in `plotting/` and `o
   - `det1`: signed determinant term (with orientation sign).
 - **Use case:** Geometric mapping and integration for higher-order tetrahedra.
 
-### `others/ELkurtet2.m`
+### `others/build_tet_topology_maps.m`
 - **Purpose:** Mesh-topology preprocessing and DoF numbering for tetrahedral EM formulation.
 - **Main responsibilities:**
   - Sort/connect element nodes and construct edge graph.

@@ -101,7 +101,7 @@ wt2=[-0.0789333333333333, 0.0457333333333333, 0.0457333333333333, 0.045733333333
   za4=xyz(3,:);
 
 eleman=sort(eleman,1);
-[EL,node_no,edge_no,totkenar,totyuzey,yuzey_no,yuzeybd] = ELkurtet2(node,eleman,rho); %Element matrix
+[EL,node_no,edge_no,totkenar,totyuzey,yuzey_no,yuzeybd] = build_tet_topology_maps(node,eleman,rho); %Element matrix
 
 EL=[EL zeros(size(EL,1),1)];
 [EL,HPK1,HPY1,totkenarhp1,totyuzeyhp1] = hprefinementsubF(EL,eleman,node,elemhp2,nodehp2,0);  %%%KAPADIM

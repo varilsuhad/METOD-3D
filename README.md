@@ -53,6 +53,7 @@ The repository is organized into modular components corresponding to different s
 
 * `/others/`
   Auxiliary routines required for forward modeling, including basis function definitions, numerical integration utilities, and assembly helpers.
+  This folder also contains mesh-topology preprocessing utilities such as `build_tet_topology_maps.m` for node/edge/face indexing used during global assembly.
 
 * `/plotting/`
   Scripts for visualization of MT responses, including apparent resistivity and phase curves, as well as comparison plots used in the manuscript.

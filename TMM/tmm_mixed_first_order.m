@@ -19,7 +19,7 @@ load('TM2_linear.mat');
 % load('TM2_quartic.mat');
 
 eleman=sort(eleman,1);
-[EL,node_no,edge_no,totkenar,totyuzey,yuzey_no,yuzeybd] = ELkurtet2(node,eleman,rho); %Element matrix
+[EL,node_no,edge_no,totkenar,totyuzey,yuzey_no,yuzeybd] = build_tet_topology_maps(node,eleman,rho); %Element matrix
 
 [R1,M1,sag] = first_mixed_order_fun(eleman,node,EL);
 
