@@ -6,7 +6,7 @@
 % Manuscript metadata: Included for journal submission compliance
 % Last updated: 2026-04-08
 % ========================================================================
-function [EL,node_number,K2,totkenar,totyuzey,Y1,yuzeybd,EL2,K,yuzeybd2] = ELkurtet2(node,eleman,rho)
+function [EL,node_number,K2,totkenar,totyuzey,Y1,yuzeybd,EL2,K,yuzeybd2] = build_tet_topology_maps(node,eleman,rho)
 
 %%%Sort so that DoF directions do not get mixed
 eleman=sort(eleman,1);

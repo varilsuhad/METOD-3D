@@ -267,7 +267,7 @@ wt2=[-0.0789333333333333, 0.0457333333333333, 0.0457333333333333, 0.045733333333
         0.0134324384376852]/6;
 
 eleman=sort(eleman,1);
-[EL,node_no,edge_no,totkenar,totyuzey,yuzey_no,yuzeybd] = ELkurtet2(node,eleman,rho); %Element matrix
+[EL,node_no,edge_no,totkenar,totyuzey,yuzey_no,yuzeybd] = build_tet_topology_maps(node,eleman,rho); %Element matrix
 
 close all;
 eleman=eleman';
