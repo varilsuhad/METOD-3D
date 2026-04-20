@@ -83,12 +83,9 @@ totnode=max(al)-totkenar;
 sag=zeros(totkenar*3+totnode+totyuzey*2,2);
 
 ix1=[];iy1=[];iv1a=[];iv1b=[];sayac1=0; %curl + F
-ix3=[];iy3=[];iv3=[];sayac3=0; %D matrix
-ix4=[];iy4=[];iv4=[];sayac4=0; %P matrix
 
 rot1=zeros(6,6);  %edge1 edge1
 F1=zeros(6,6);    %edge1 edge1
-B1=zeros(6,4);
 kler=zeros(1,6);
 
 spmd
@@ -785,455 +782,6 @@ for i=1:4
     end
 end
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%BLER%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-xa=xa1;
-ya=ya1;
-za=za1;
-wt=wt1;
-%%% M edge1*node1
-for i=1:6
-    i1=lis(i,1);
-    i2=lis(i,2);
-
-    for j=1:4
-    j1=j;
-
-        sum1=0;
-       for jj=1:length(xa)
-
-        if(quad==1)
-        [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
-        end
-
-        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
-
-        sek1=L1*p2-L2*p1;
-
-        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        % p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        % L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-
-        sek2=4*L1*p1-p1;
-
-        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
-       end
-        B1a(i,j)=sum1*le(i);
-    end
-end
-
-xa=xa1;
-ya=ya1;
-za=za1;
-wt=wt1;
-%%% M edge1*node2
-for i=1:6
-    i1=lis(i,1);
-    i2=lis(i,2);
-
-    for j=1:6
-    j1=lis(j,1);
-    j2=lis(j,2);
-
-        sum1=0;
-       for jj=1:length(xa)
-
-        if(quad==1)
-        [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
-        end
-
-        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
-
-        sek1=L1*p2-L2*p1;
-
-        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-
-        sek2=4*L1*p2+4*L2*p1;
-
-        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
-       end
-        B1b(i,j)=sum1*le(i);
-    end
-end
-
-xa=xa1;
-ya=ya1;
-za=za1;
-wt=wt1;
-%%% M edge2*node1
-for i=1:6
-    i1=lis(i,1);
-    i2=lis(i,2);
-
-    for j=1:4
-    j1=j;
-
-        sum1=0;
-       for jj=1:length(xa)
-
-        if(quad==1)
-        [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
-        end
-
-        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
-
-        sek1=L1*p2+L2*p1;
-
-        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        % p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        % L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-
-        sek2=4*L1*p1-p1;
-
-        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
-       end
-        B2a(i,j)=sum1*le(i);
-    end
-end
-
-xa=xa1;
-ya=ya1;
-za=za1;
-wt=wt1;
-%%% M edge2*node2
-for i=1:6
-    i1=lis(i,1);
-    i2=lis(i,2);
-
-    for j=1:6
-    j1=lis(j,1);
-    j2=lis(j,2);
-
-        sum1=0;
-       for jj=1:length(xa)
-
-        if(quad==1)
-        [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
-        end
-
-        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
-
-        sek1=L1*p2+L2*p1;
-
-        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-
-        sek2=4*L1*p2+4*L2*p1;
-
-        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
-       end
-        B2b(i,j)=sum1*le(i);
-    end
-end
-
-xa=xa2;
-ya=ya2;
-za=za2;
-wt=wt2;
-%M face1-node1
-for i=1:4
-    for j=1:4
-
-    i1=lis2(i,1);
-    i2=lis2(i,2);
-    i3=lis2(i,3);
-
-    j1=j;
-
-        sum1=0;
-       for jj=1:length(xa)
-
-        if(quad==1)
-        [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
-        end
-
-        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p3=evaluate_shape_function(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L3=evaluate_shape_function(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
-
-        % sek1=2*L2*L3*p1-L1*L2*p3-L1*L3*p2;
-        sek1=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
-
-        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        % p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        % p3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        % L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-        % L3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
-
-        sek2=4*L1*p1-p1;
-
-        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
-       end
-        B3a(i,j)=sum1;
-
-        i1=lis2(i,2);
-        i2=lis2(i,3);
-        i3=lis2(i,1);
-
-        sum1=0;
-       for jj=1:length(xa)
-
-        if(quad==1)
-        [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
-        end
-
-        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p3=evaluate_shape_function(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L3=evaluate_shape_function(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
-
-        sek1=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
-
-        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        % p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        % p3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        % L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-        % L3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
-
-        sek2=4*L1*p1-p1;
-
-        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
-       end
-        B3a(i+4,j)=sum1;
-    end
-end
-
-xa=xa2;
-ya=ya2;
-za=za2;
-wt=wt2;
-%M face1-node2
-for i=1:4
-    for j=1:6
-
-    i1=lis2(i,1);
-    i2=lis2(i,2);
-    i3=lis2(i,3);
-
-    j1=lis(j,1);
-    j2=lis(j,2);
-
-        sum1=0;
-       for jj=1:length(xa)
-
-        if(quad==1)
-        [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
-        end
-
-        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p3=evaluate_shape_function(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L3=evaluate_shape_function(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
-
-        % sek1=2*L2*L3*p1-L1*L2*p3-L1*L3*p2;
-        sek1=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
-
-        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        % p3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-        % L3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
-
-        sek2=4*L1*p2+4*L2*p1;
-
-        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
-       end
-        B3b(i,j)=sum1;
-
-        i1=lis2(i,2);
-        i2=lis2(i,3);
-        i3=lis2(i,1);
-
-        sum1=0;
-       for jj=1:length(xa)
-
-        if(quad==1)
-        [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
-        end
-
-        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p3=evaluate_shape_function(i3,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L3=evaluate_shape_function(i3,xa(jj),ya(jj),za(jj),Jxyz,1);
-
-        sek1=L2*(L3*p1-L1*p3)+L3*(L2*p1-L1*p2);
-
-        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        % p3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-        % L3=evaluate_shape_function(j3,xa(jj),ya(jj),za(jj),Jxyz,1);
-
-        sek2=4*L1*p2+4*L2*p1;
-
-        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
-       end
-        B3b(i+4,j)=sum1;
-    end
-end
-
-%%%%%%%%%%%%%%CLER%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-xa=xa1;
-ya=ya1;
-za=za1;
-wt=wt1;
-%%% M node1*node1
-for i=1:4
-    i1=i;
-
-    for j=1:4
-    j1=j;
-
-        sum1=0;
-       for jj=1:length(xa)
-
-        if(quad==1)
-        [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
-        end
-
-        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        % p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        % L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-
-        sek1=4*L1*p1-p1;
-
-        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        % p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        % L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-
-        sek2=4*L1*p1-p1;
-
-        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
-       end
-        C1a(i,j)=sum1;
-
-    end
-end
-
-xa=xa1;
-ya=ya1;
-za=za1;
-wt=wt1;
-%%% M node1*node2
-for i=1:4
-    i1=i;
-
-        for j=1:6
-        j1=lis(j,1);
-        j2=lis(j,2);
-
-       sum1=0;
-       for jj=1:length(xa)
-
-        if(quad==1)
-        [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
-        end
-
-        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        % p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        % L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-
-        sek1=4*L1*p1-p1;
-
-        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-
-        sek2=4*L1*p2+4*L2*p1;
-
-        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
-       end
-        C2a(i,j)=sum1;
-
-    end
-end
-
-xa=xa1;
-ya=ya1;
-za=za1;
-wt=wt1;
-%%% M node2*node2
-for i=1:6
-i1=lis(i,1);
-i2=lis(i,2);
-
-       for j=1:6
-        j1=lis(j,1);
-        j2=lis(j,2);
-
-       sum1=0;
-       for jj=1:length(xa)
-
-        if(quad==1)
-        [Jxyz,det1] = quadJac(XYZ,xa(jj),ya(jj),za(jj),ekval,sgn);
-        end
-
-        p1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
-
-        sek1=4*L1*p2+4*L2*p1;
-
-        p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
-        p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
-        L1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,1);
-        L2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,1);
-
-        sek2=4*L1*p2+4*L2*p1;
-
-        sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
-       end
-        C3a(i,j)=sum1;
-
-    end
-end
-
-BB=[B1a B1b;
-    B2a B2b;
-    B3a B3b];
-PP=[C1a C2a;C2a' C3a]*sigma;
-BB(abs(BB)<10^-9)=0;
-
-DD=BB'*sigma;
-
 F1=sigma*F1; %we will add i*w and mu later; keep it real for now
 F2=sigma*F2;
 F3=sigma*F3;
@@ -1315,19 +863,6 @@ for i=13:20
     end
 end
 
-klerv1=zeros(1,10); %all phi terms
-klerv1(1:4)=kler3;
-for i=1:6
-if(kler(i)>0)
-klerv1(i+4)=kler(i)+totnode;
-else
-klerv1(i+4)=kler(i);
-end
-end
-
-% return
-
-iszerov1=length(find(klerv1<0));  %all phi terms
 iszerov2=length(find(klerv2<0));  %all non-phi terms
 
     if(iszerov2==0)
@@ -1354,54 +889,6 @@ iszerov2=length(find(klerv2<0));  %all non-phi terms
         iv1a(sayac1+1:sayac1+nonz)=RRm(:);
         iv1b(sayac1+1:sayac1+nonz)=FFm(:);
         sayac1=sayac1+nonz;
-    end
-
-    if(iszerov1==0)
-
-        rr=repmat(klerv1',[1 10]); %row indices
-        cc=rr'; %column indices;
-
-        ix4(sayac4+1:sayac4+100)=rr(:);
-        iy4(sayac4+1:sayac4+100)=cc(:);
-        iv4(sayac4+1:sayac4+100)=PP(:);
-        sayac4=sayac4+100;
-    else
-        nke=find(klerv1>0); % these will remain
-        rr=repmat(klerv1(nke)',[1 length(nke)]); %row indices
-        cc=rr'; %column indices;
-        nonz=length(nke)^2;
-
-        PPm=PP(nke,nke);
-
-        ix4(sayac4+1:sayac4+nonz)=rr(:);
-        iy4(sayac4+1:sayac4+nonz)=cc(:);
-        iv4(sayac4+1:sayac4+nonz)=PPm(:);
-        sayac4=sayac4+nonz;
-    end
-
-    if(iszerov1==0 && iszerov2==0)
-        rr=repmat(klerv1',[1 20]); %row indices
-        cc=repmat(klerv2,[10 1]); %column indices
-
-        ix3(sayac3+1:sayac3+200)=rr(:);
-        iy3(sayac3+1:sayac3+200)=cc(:);
-        iv3(sayac3+1:sayac3+200)=DD(:);
-        sayac3=sayac3+200;
-
-    else
-        nke=find(klerv1>0); % these will remain
-        nke2=find(klerv2>0); % these will remain
-
-        rr=repmat(klerv1(nke)',[1 length(nke2)]); %row indices
-        cc=repmat(klerv2(nke2),[length(nke) 1]); %row indices
-
-        nonz=length(nke)*length(nke2);
-        DDm=DD(nke,nke2);
-
-        ix3(sayac3+1:sayac3+nonz)=rr(:);
-        iy3(sayac3+1:sayac3+nonz)=cc(:);
-        iv3(sayac3+1:sayac3+nonz)=DDm(:);
-        sayac3=sayac3+nonz;
     end
 
     iszero=length(find(kler<0));
@@ -1698,15 +1185,11 @@ end
 
 R1=sparse(ix1,iy1,iv1a,totkenar*2+totyuzey*2,totkenar*2+totyuzey*2); % double curl
 M1=sparse(ix1,iy1,iv1b,totkenar*2+totyuzey*2,totkenar*2+totyuzey*2); %
-D1=sparse(ix3,iy3,iv3,totnode+totkenar,totkenar*2+totyuzey*2); %
-P1=sparse(ix4,iy4,iv4,totnode+totkenar,totnode+totkenar); %
 
 % return
 
 R1=spmdReduce(@plus,R1,1);
 M1=spmdReduce(@plus,M1,1);
-D1=spmdReduce(@plus,D1,1);
-P1=spmdReduce(@plus,P1,1);
 
 sag=spmdReduce(@plus,sag,1);
 
@@ -1714,8 +1197,6 @@ end
 
 R1=R1{1};
 M1=M1{1};
-D1=D1{1};
-P1=P1{1};
 
 sag=sag{1};
 
@@ -1734,12 +1215,8 @@ w=2*pi*f;
 
 kat=sqrt(-1)*w*mu;
 
-kat2=mu;
-kat3=mu*sqrt(-1)/w;
-
-B1=[R1+kat*M1];
-Amatris1=[B1 -kat2*D1' ; ...
-          -kat2*D1  -kat3*P1];
+B1=R1+kat*M1;
+Amatris1=B1;
 
 bsag=sag(1:totkenar*3+totyuzey*2+totnode,:);
 
