@@ -6,7 +6,7 @@
 % Manuscript metadata: Included for journal submission compliance
 % Last updated: 2026-04-08
 % ========================================================================
-% Forward modeling routine for the TM2/TMM model using mixed first-order
+% Forward modeling routine for the TMM model using mixed first-order
 % basis functions.
 % This script assembles and solves the mixed-order system, then computes
 % MT impedance, apparent resistivity, and phase responses.
@@ -15,8 +15,8 @@ format longG
 
 reset(gpuDevice);
 
-load('TM2_linear.mat');
-% load('TM2_quartic.mat');
+load('TMM_linear.mat');
+% load('TMM_quartic.mat');
 
 eleman=sort(eleman,1);
 [EL,node_no,edge_no,totkenar,totyuzey,yuzey_no,yuzeybd] = build_tet_topology_maps(node,eleman,rho); %Element matrix
