@@ -191,13 +191,6 @@ Jabc=[ (-XYZ(1,1)+XYZ(1,2)) (-XYZ(2,1)+XYZ(2,2)) (-XYZ(3,1)+XYZ(3,2));...
 
 det1=det(Jabc)*sgn;
 
-le(1)=sqrt((XYZ(1,1)-XYZ(1,2))^2+(XYZ(2,1)-XYZ(2,2))^2+(XYZ(3,1)-XYZ(3,2))^2);
-le(2)=sqrt((XYZ(1,1)-XYZ(1,3))^2+(XYZ(2,1)-XYZ(2,3))^2+(XYZ(3,1)-XYZ(3,3))^2);
-le(3)=sqrt((XYZ(1,1)-XYZ(1,4))^2+(XYZ(2,1)-XYZ(2,4))^2+(XYZ(3,1)-XYZ(3,4))^2);
-le(4)=sqrt((XYZ(1,2)-XYZ(1,3))^2+(XYZ(2,2)-XYZ(2,3))^2+(XYZ(3,2)-XYZ(3,3))^2);
-le(5)=sqrt((XYZ(1,2)-XYZ(1,4))^2+(XYZ(2,2)-XYZ(2,4))^2+(XYZ(3,2)-XYZ(3,4))^2);
-le(6)=sqrt((XYZ(1,3)-XYZ(1,4))^2+(XYZ(2,3)-XYZ(2,4))^2+(XYZ(3,3)-XYZ(3,4))^2);
-le(:)=1;
 
 Jxyz=inv(Jabc);
 
@@ -236,7 +229,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        rot1(i,j)=sum1*le(i)*le(j);
+        rot1(i,j)=sum1;
     end
 end
 
@@ -276,7 +269,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        rot4(i,j)=sum1*le(i);
+        rot4(i,j)=sum1;
 
         j1=lis2(j,2);
         j2=lis2(j,3);
@@ -303,7 +296,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        rot4(i,j+4)=sum1*le(i);
+        rot4(i,j+4)=sum1;
     end
 end
 
@@ -1090,7 +1083,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        F1(i,j)=sum1*le(i)*le(j);
+        F1(i,j)=sum1;
     end
 end
 
@@ -1127,7 +1120,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        F2(i,j)=sum1*le(i)*le(j);
+        F2(i,j)=sum1;
     end
 end
 
@@ -1164,7 +1157,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        F3(i,j)=sum1*le(i)*le(j);
+        F3(i,j)=sum1;
     end
 end
 
@@ -1191,7 +1184,7 @@ for i=1:6
         L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
         L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
 
-        sek1=(L1*p2-L2*p1)*le(i);
+        sek1=(L1*p2-L2*p1);
 
         p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
         p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
@@ -1219,7 +1212,7 @@ for i=1:6
         L1=evaluate_shape_function(i1,xa(jj),ya(jj),za(jj),Jxyz,1);
         L2=evaluate_shape_function(i2,xa(jj),ya(jj),za(jj),Jxyz,1);
 
-        sek1=(L1*p2-L2*p1)*le(i);
+        sek1=(L1*p2-L2*p1);
 
         p1=evaluate_shape_function(j1,xa(jj),ya(jj),za(jj),Jxyz,2);
         p2=evaluate_shape_function(j2,xa(jj),ya(jj),za(jj),Jxyz,2);
@@ -1275,7 +1268,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        F5(i,j)=le(i)*sum1;
+        F5(i,j)=sum1;
 
         j1=lis2(j,2);
         j2=lis2(j,3);
@@ -1303,7 +1296,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        F5(i,j+4)=le(i)*sum1;
+        F5(i,j+4)=sum1;
 
     end
 end
@@ -1446,7 +1439,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        F7(i,j)=sum1*le(i)*le(j);
+        F7(i,j)=sum1;
     end
 end
 
@@ -1486,7 +1479,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        F8(i,j)=le(i)*sum1;
+        F8(i,j)=sum1;
 
     end
 end
@@ -1524,7 +1517,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        F9(i,j)=sum1*le(i)*le(j);
+        F9(i,j)=sum1;
     end
 end
 
@@ -1564,7 +1557,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        F10(i,j)=le(i)*sum1;
+        F10(i,j)=sum1;
 
     end
 end
@@ -1602,7 +1595,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        F11(i,j)=sum1*le(i)*le(j);
+        F11(i,j)=sum1;
     end
 end
 
@@ -1642,7 +1635,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        F12(i,j)=le(i)*sum1;
+        F12(i,j)=sum1;
 
         j1=lis2(j,2);
         j2=lis2(j,3);
@@ -1669,7 +1662,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        F12(i,j+4)=le(i)*sum1;
+        F12(i,j+4)=sum1;
 
     end
 end
@@ -1710,7 +1703,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        F13(i,j)=le(i)*sum1;
+        F13(i,j)=sum1;
 
     end
 end
@@ -1868,7 +1861,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        F16(i,j)=le(i)*sum1;
+        F16(i,j)=sum1;
 
         j1=lis2(j,2);
         j2=lis2(j,3);
@@ -1895,7 +1888,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        F16(i,j+4)=le(i)*sum1;
+        F16(i,j+4)=sum1;
 
         j1=lis2(j,3);
         j2=lis2(j,1);
@@ -1922,7 +1915,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        F16(i,j+8)=le(i)*sum1;
+        F16(i,j+8)=sum1;
 
     end
 end
@@ -1966,7 +1959,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        F17(i,j)=le(i)*sum1;
+        F17(i,j)=sum1;
 
     end
 end
@@ -2006,7 +1999,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        F18(i,j)=le(i)*sum1;
+        F18(i,j)=sum1;
 
         j1=lis2(j,2);
         j2=lis2(j,3);
@@ -2033,7 +2026,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        F18(i,j+4)=le(i)*sum1;
+        F18(i,j+4)=sum1;
 
         j1=lis2(j,3);
         j2=lis2(j,1);
@@ -2060,7 +2053,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        F18(i,j+8)=le(i)*sum1;
+        F18(i,j+8)=sum1;
 
     end
 end
@@ -2104,7 +2097,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        F19(i,j)=le(i)*sum1;
+        F19(i,j)=sum1;
 
     end
 end
@@ -2144,7 +2137,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        F20(i,j)=le(i)*sum1;
+        F20(i,j)=sum1;
 
         j1=lis2(j,2);
         j2=lis2(j,3);
@@ -2171,7 +2164,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        F20(i,j+4)=le(i)*sum1;
+        F20(i,j+4)=sum1;
 
         j1=lis2(j,3);
         j2=lis2(j,1);
@@ -2198,7 +2191,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        F20(i,j+8)=le(i)*sum1;
+        F20(i,j+8)=sum1;
 
     end
 end
@@ -2242,7 +2235,7 @@ for i=1:6
 
         sum1=sum1+dot(sek1,sek2)*wt(jj)*det1;
        end
-        F21(i,j)=le(i)*sum1;
+        F21(i,j)=sum1;
 
     end
 end
@@ -3608,7 +3601,7 @@ totel=size(EL,1);
 
 M=ones(4,4);
 mu=4*pi*10^-7;
-clear G le kler a b c d
+clear G kler a b c d
 for jj=1:size(recv,1)
 
     ii=recv(jj,4);
@@ -3721,13 +3714,6 @@ for jj=1:size(recv,1)
 
     kler3=[ii ii+totel ii+totel*2]+totkenar*3+totyuzey*6;
 
-    le(1)=sqrt((XYZ(1,1)-XYZ(1,2))^2+(XYZ(2,1)-XYZ(2,2))^2+(XYZ(3,1)-XYZ(3,2))^2);
-    le(2)=sqrt((XYZ(1,1)-XYZ(1,3))^2+(XYZ(2,1)-XYZ(2,3))^2+(XYZ(3,1)-XYZ(3,3))^2);
-    le(3)=sqrt((XYZ(1,1)-XYZ(1,4))^2+(XYZ(2,1)-XYZ(2,4))^2+(XYZ(3,1)-XYZ(3,4))^2);
-    le(4)=sqrt((XYZ(1,2)-XYZ(1,3))^2+(XYZ(2,2)-XYZ(2,3))^2+(XYZ(3,2)-XYZ(3,3))^2);
-    le(5)=sqrt((XYZ(1,2)-XYZ(1,4))^2+(XYZ(2,2)-XYZ(2,4))^2+(XYZ(3,2)-XYZ(3,4))^2);
-    le(6)=sqrt((XYZ(1,3)-XYZ(1,4))^2+(XYZ(2,3)-XYZ(2,4))^2+(XYZ(3,3)-XYZ(3,4))^2);
-    le(:)=1;
 
     for i=1:4
     duzkose(i,1)=1/(6*Ve)*(a(i)+b(i)*x0+c(i)*y0+d(i)*z0);
@@ -3742,13 +3728,13 @@ for jj=1:size(recv,1)
     p1=G(i1,:);
     p2=G(i2,:);
 
-    rotkenar(i,:)=2*cross(p1,p2)/(6*Ve)^2*le(i);
+    rotkenar(i,:)=2*cross(p1,p2)/(6*Ve)^2;
     rotkenar(i+6,:)=0;
     rotkenar(i+12,:)=0;
 
-    duzkenar(i,:)=(L1*p2-L2*p1)/(6*Ve)*le(i);
-    duzkenar(i+6,:)=(L1*p2+L2*p1)/(6*Ve)*le(i);
-    duzkenar(i+12,:)=((2*L1*L2-L2^2)*p1+(L1^2-2*L1*L2)*p2)/(6*Ve)*le(i);
+    duzkenar(i,:)=(L1*p2-L2*p1)/(6*Ve);
+    duzkenar(i+6,:)=(L1*p2+L2*p1)/(6*Ve);
+    duzkenar(i+12,:)=((2*L1*L2-L2^2)*p1+(L1^2-2*L1*L2)*p2)/(6*Ve);
     end
 
     for i=1:4

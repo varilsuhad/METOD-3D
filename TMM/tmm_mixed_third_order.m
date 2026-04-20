@@ -81,7 +81,7 @@ totel=size(EL,1);
 
 M=ones(4,4);
 mu=4*pi*10^-7;
-clear G le kler a b c d
+clear G kler a b c d
 for jj=1:size(recv,1)
 
     ii=recv(jj,4);
@@ -194,13 +194,6 @@ for jj=1:size(recv,1)
 
     kler3=[ii ii+totel ii+totel*2]+totkenar*3+totyuzey*6;
 
-    le(1)=sqrt((XYZ(1,1)-XYZ(1,2))^2+(XYZ(2,1)-XYZ(2,2))^2+(XYZ(3,1)-XYZ(3,2))^2);
-    le(2)=sqrt((XYZ(1,1)-XYZ(1,3))^2+(XYZ(2,1)-XYZ(2,3))^2+(XYZ(3,1)-XYZ(3,3))^2);
-    le(3)=sqrt((XYZ(1,1)-XYZ(1,4))^2+(XYZ(2,1)-XYZ(2,4))^2+(XYZ(3,1)-XYZ(3,4))^2);
-    le(4)=sqrt((XYZ(1,2)-XYZ(1,3))^2+(XYZ(2,2)-XYZ(2,3))^2+(XYZ(3,2)-XYZ(3,3))^2);
-    le(5)=sqrt((XYZ(1,2)-XYZ(1,4))^2+(XYZ(2,2)-XYZ(2,4))^2+(XYZ(3,2)-XYZ(3,4))^2);
-    le(6)=sqrt((XYZ(1,3)-XYZ(1,4))^2+(XYZ(2,3)-XYZ(2,4))^2+(XYZ(3,3)-XYZ(3,4))^2);
-    le(:)=1;
 
     for i=1:4
     duzkose(i,1)=1/(6*Ve)*(a(i)+b(i)*x0+c(i)*y0+d(i)*z0);
@@ -215,13 +208,13 @@ for jj=1:size(recv,1)
     p1=G(i1,:);
     p2=G(i2,:);
 
-    rotkenar(i,:)=2*cross(p1,p2)/(6*Ve)^2*le(i);
+    rotkenar(i,:)=2*cross(p1,p2)/(6*Ve)^2;
     rotkenar(i+6,:)=0;
     rotkenar(i+12,:)=0;
 
-    duzkenar(i,:)=(L1*p2-L2*p1)/(6*Ve)*le(i);
-    duzkenar(i+6,:)=(L1*p2+L2*p1)/(6*Ve)*le(i);
-    duzkenar(i+12,:)=((2*L1*L2-L2^2)*p1+(L1^2-2*L1*L2)*p2)/(6*Ve)*le(i);
+    duzkenar(i,:)=(L1*p2-L2*p1)/(6*Ve);
+    duzkenar(i+6,:)=(L1*p2+L2*p1)/(6*Ve);
+    duzkenar(i+12,:)=((2*L1*L2-L2^2)*p1+(L1^2-2*L1*L2)*p2)/(6*Ve);
     end
 
     for i=1:4
