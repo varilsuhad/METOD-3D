@@ -17,6 +17,14 @@ format longG
 reset(gpuDevice);
 load('DTM1_final1.mat');
 
+% ------------------------------------------------------------------------
+% Quadrature notation used throughout this file:
+%   xaK, yaK, zaK : barycentric coordinates of tetrahedral quadrature points
+%   wtK           : weights for the corresponding quadrature rule
+% The index K increases with the polynomial order that must be integrated.
+% Higher-order edge/face/interior basis products are evaluated with higher K.
+% ------------------------------------------------------------------------
+
 xa1= [ 0.2500000000000000, 0.5000000000000000, 0.1666666666666667, 0.1666666666666667, 0.1666666666666667];
 ya1= [ 0.2500000000000000, 0.1666666666666667, 0.1666666666666667, 0.1666666666666667, 0.5000000000000000];
 za1= [ 0.2500000000000000, 0.1666666666666667, 0.1666666666666667, 0.5000000000000000, 0.1666666666666667];
@@ -115,6 +123,11 @@ lis3=[1 2 3 4 ; 2 3 4 1; 3 4 1 2; 4 1 2 3];
 d=zeros(4,1);
 c=d;b=d;a=d;
 le=zeros(6,1);
+% Local element geometry/Jacobian workspace:
+%   M    : [1 x y z] Vandermonde-like matrix used to compute volume and
+%          barycentric-gradient coefficients (a,b,c,d)
+%   rot* : local double-curl (curl-curl) integral blocks
+%   F*   : local mass-matrix integral blocks (N_i · N_j)
 M=ones(4,4);
 
 Clar=zeros(4,4,3);
