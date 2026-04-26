@@ -114,6 +114,12 @@ Forward modeling experiments can be reproduced by running the scripts provided i
    % run the plotting script you want for generated outputs
    ```
 
+### MATLAB, MEX, and External Solvers (PARDISO / cuDSS)
+
+The overall METOD-3D workflow is written in **MATLAB**. To connect MATLAB to high-performance sparse direct solvers, this repository uses precompiled **MEX interfaces** (C-based gateway functions) for libraries such as **PARDISO** and **NVIDIA cuDSS**.
+
+This means users run the modeling pipeline directly from MATLAB scripts/functions; they do **not** need to rewrite the project in standalone C or Fortran. C is used here specifically to build the MEX bridge layer so MATLAB can call the solver libraries efficiently.
+
 ### Notes
 
 * Users may need to adjust solver settings (CPU/GPU) depending on available hardware
